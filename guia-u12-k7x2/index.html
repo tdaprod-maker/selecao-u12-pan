@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow,noarchive">
+<title>Guia de Viagem U12</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Oswald:wght@500;600&display=swap">
+<style>
+/* Layout: faixa azul da seleção no topo, seções em coluna única (leitura no celular), tabelas e listas simples */
+:root{--bg:#0B1426;--surface:#111C33;--fg:#E8EDF8;--muted:#9FAAC4;--line:#243255;--navy:#092D69;--gold:#F5C400;--accent:#F5C400;--chip:#1A2A4F;--warn:#3A3210;--warn-fg:#F5E7A6;--head-fg:#FFFFFF;
+--font:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;--display:'Oswald','Arial Narrow',Impact,sans-serif;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--font);font-size:15px;line-height:1.5;-webkit-text-size-adjust:100%}
+.wrap{max-width:860px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.top{background:var(--navy);border-bottom:5px solid var(--gold);color:#fff}
+header.top .wrap{display:flex;align-items:center;gap:18px;padding-block:18px}
+header.top img{width:76px;height:auto;flex:none}
+header.top h1{font-family:var(--display);font-weight:600;font-size:clamp(28px,7vw,40px);letter-spacing:.02em;line-height:1.05;margin:0;text-transform:uppercase}
+header.top p{margin:4px 0 0;font-size:14px;opacity:.92}
+header.top .ev{color:var(--gold);font-weight:600;font-size:13px;margin-top:6px}
+main{padding-block:8px 40px}
+h2{font-family:var(--display);font-weight:500;text-transform:uppercase;letter-spacing:.04em;font-size:19px;color:var(--accent);margin:28px 0 10px;text-wrap:balance}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:4px 16px}
+dl.kv{margin:0}
+dl.kv>div{display:grid;grid-template-columns:150px minmax(0,1fr);gap:4px 14px;padding:11px 0;border-bottom:1px solid var(--line)}
+dl.kv>div:last-child{border-bottom:0}
+dt{font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:2px}
+dd{margin:0;min-width:0;overflow-wrap:anywhere}
+.big{font-weight:700}
+.meet{background:var(--warn);color:var(--warn-fg);border-radius:8px;padding:10px 12px;margin:-2px 0}
+a{color:var(--accent);text-underline-offset:2px}
+ol.docs{margin:0;padding:12px 16px 12px 36px}
+ol.docs li{padding:3px 0}
+.check{list-style:none;margin:0;padding:6px 0;display:grid;grid-template-columns:1fr 1fr;column-gap:24px}
+.check li{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px}
+.check input{width:18px;height:18px;flex:none;margin:2px 0 0;accent-color:var(--navy)}
+.check label{display:flex;gap:10px;width:100%;cursor:pointer}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th{background:var(--navy);color:#fff;text-align:left;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;padding:9px 12px;white-space:nowrap}
+td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.pnr{font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tn{font-variant-numeric:tabular-nums}
+.pax{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pax section{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 16px}
+.pax h3{margin:0 0 6px;font-size:15px}
+.pax h3 span{font-weight:400;color:var(--muted);font-size:12.5px}
+.pax ul{margin:0;padding:0;list-style:none}
+.pax li{padding:2px 0;font-size:14px}
+.note{color:var(--muted);font-size:13px;margin:6px 2px 0}
+.copy{font:inherit;font-size:12px;border:1px solid var(--line);background:var(--chip);color:var(--fg);border-radius:6px;padding:2px 8px;margin-left:6px;cursor:pointer}
+footer{color:var(--muted);font-size:12.5px;padding-bottom:32px}
+@media (max-width:620px){
+ header.top img{width:58px}
+ dl.kv>div{grid-template-columns:1fr;gap:2px}
+ .check{grid-template-columns:1fr}
+ .pax{grid-template-columns:1fr}
+}
+@media print{.copy{display:none}}
+</style>
+<header class="top"><div class="wrap">
+<img alt="Logo Brasil U12" src="data:image/png;base64,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">
+<div><h1>Guia de Viagem</h1><p>Seleção Brasileira de Beisebol U12</p><p class="ev">Campeonato Panamericano U12 – Pré-Mundial · República Dominicana</p></div>
+</div></header>
+<main class="wrap">
+
+<h2>Informações essenciais</h2>
+<div class="card"><dl class="kv">
+<div><dt>Evento</dt><dd>Campeonato Panamericano de Beisebol U12 – Pré-Mundial</dd></div>
+<div><dt>Viagem</dt><dd>Ida: 18/11/2026 (quarta-feira). Volta: 28/11/2026 (sábado). Érico Morita e Wagner Kanabushi voltam em 27/11 (veja a consulta rápida).</dd></div>
+<div><dt>Hotel oficial</dt><dd><span class="big">Whala!Boca Chica</span><br>Av. Abraham Núñez, 4, Boca Chica 15700, República Dominicana<br><a href="https://www.hmhotels.com/en/whalabocachica/" target="_blank" rel="noopener">hmhotels.com/en/whalabocachica</a></dd></div>
+<div><dt>Chefe da delegação</dt><dd><span class="big">Ricardo Takumi Yokoyama</span><br><span class="tn" id="tel">+55 19 99370-1221</span><button class="copy" type="button" data-copy="+55 19 99370-1221">Copiar</button></dd></div>
+<div><dt>Coordenador da seleção</dt><dd><span class="big">Ricardo Jimenes</span><br><span class="tn">+55 19 98113-4741</span><button class="copy" type="button" data-copy="+55 19 98113-4741">Copiar</button></dd></div>
+<div><dt>Encontro do grupo</dt><dd><div class="meet"><span class="big">17/11 (terça-feira), às 19h30</span><br>Aeroporto de Guarulhos (GRU), <span class="big">Terminal 3, Setor G – Copa Airlines</span><br>O voo CM841 parte às 01h30 de 18/11.</div></dd></div>
+</dl></div>
+
+<h2>Bagagem</h2>
+<div class="card"><dl class="kv">
+<div><dt>Despachada</dt><dd>23 kg. Dimensões: 158 cm (altura + comprimento + largura).</dd></div>
+<div><dt>De mão</dt><dd>10 kg. Dimensões: 118 cm (altura + comprimento + largura). Permite mais um item pessoal (bolsa ou mochila), desde que o total não ultrapasse 10 kg.</dd></div>
+</dl></div>
+
+<h2>Documentação obrigatória</h2>
+<div class="card"><ol class="docs">
+<li><b>Passaporte</b> dentro da validade.</li>
+<li><b>Autorização de Viagem Internacional</b> para menores de 16 anos (2 vias), exigida de todos, mesmo de quem tem a autorização registrada no passaporte.</li>
+<li><b>Certificado de Vacina contra Febre Amarela.</b></li>
+<li><b>Formulário de Imigração</b> do responsável por família: <a href="https://eticket.migracion.gob.do/" target="_blank" rel="noopener">eticket.migracion.gob.do</a></li>
+</ol></div>
+
+<h2>Checklist pessoal antes de sair de casa</h2>
+<div class="card"><ul class="check">
+<li><label><input type="checkbox">Passaporte original e cópia digital offline; conferir validade e nome</label></li>
+<li><label><input type="checkbox">E-Ticket de entrada/saída da República Dominicana (formulário de imigração)</label></li>
+<li><label><input type="checkbox">Autorização internacional de viagem de menor, 2 vias</label></li>
+<li><label><input type="checkbox">Bilhete de ida e volta: localizador, voos, horários e cartão de embarque</label></li>
+<li><label><input type="checkbox">Comprovante de hospedagem e endereço do hotel</label></li>
+<li><label><input type="checkbox">Certificado individual do seguro, número do bilhete e contatos de emergência</label></li>
+<li><label><input type="checkbox">Comprovante de vacina contra febre amarela</label></li>
+<li><label><input type="checkbox">Uniformes de jogo, chuteira e luva (na mochila de viagem)</label></li>
+<li><label><input type="checkbox">Medicamentos de uso pessoal, com receita</label></li>
+<li><label><input type="checkbox">Salvar os contatos do chefe da delegação e do coordenador e avisar antes de qualquer imprevisto</label></li>
+</ul></div>
+
+<h2>Seguro viagem e emergência</h2>
+<div class="card"><dl class="kv">
+<div><dt>Delegação (exceto Davi)</dt><dd><span class="big">GTA Global Viagens</span>, plano 11150 Prata AL (América Latina). Vigência de 18/11 a 29/11/2026. Despesas médicas até US$ 36.000.<br><span class="big">Central de assistência 24 h (WhatsApp): <span class="tn">+1 305 404 2167</span></span><button class="copy" type="button" data-copy="+1 305 404 2167">Copiar</button><br>Avise a central antes de procurar clínica ou hospital.</dd></div>
+<div><dt>Atleta Davi</dt><dd><span class="big">Voyager</span>, plano Premiere, voucher VY-EJGI65. Cobertura mundial, até US$ 250.000, de 16/11 a 28/11/2026. A partir de 29/11, seguro próprio com a família.<br><span class="big">Assistência Voyager: <span class="tn">+1 863 204 2848</span></span> (internacional)<button class="copy" type="button" data-copy="+1 863 204 2848">Copiar</button><br>Brasil 0800 038 0622 · EUA +1 888 816 1811<br>É preciso ligar antes, ou em até 24 h do incidente.</dd></div>
+</dl></div>
+
+<h2>Consulta rápida: itinerários e localizadores</h2>
+<p class="note" style="margin:0 2px 8px"><b>Ida (todos, exceto Davi)</b> · quarta-feira, 18/11/2026 · Copa Airlines</p>
+<div class="card scroll" style="padding:0"><table>
+<thead><tr><th>Voo</th><th>Trecho</th><th>Saída</th><th>Chegada</th></tr></thead>
+<tbody>
+<tr><td class="tn"><b>CM841</b></td><td>São Paulo (GRU) → Panamá (PTY)</td><td class="tn">01h30</td><td class="tn">06h29</td></tr>
+<tr><td class="tn"><b>CM298</b></td><td>Panamá (PTY) → Santo Domingo (SDQ)</td><td class="tn">09h42</td><td class="tn">13h10</td></tr>
+</tbody></table></div>
+
+<p class="note" style="margin:18px 2px 8px"><b>Volta</b> · Copa Airlines</p>
+<div class="card scroll" style="padding:0"><table>
+<thead><tr><th>Localizador</th><th>Data</th><th>Voos</th><th>Horários</th></tr></thead>
+<tbody>
+<tr><td class="pnr">BF410L<br>BGCFTX</td><td>Sáb., 28/11</td><td class="tn">CM299 SDQ → PTY<br>CM810 PTY → GRU</td><td class="tn">14h24 → 15h58<br>18h51 → 03h40 (29/11)</td></tr>
+<tr><td class="pnr">A3QHKN</td><td>Sáb., 28/11</td><td class="tn">CM888 SDQ → PTY<br>CM800 PTY → GRU</td><td class="tn">12h10 → 13h45<br>15h26 → 00h15 (29/11)</td></tr>
+<tr><td class="pnr">BGFRN5</td><td>Sex., 27/11</td><td class="tn">CM464 SDQ → PTY<br>CM759 PTY → GRU</td><td class="tn">19h06 → 20h40<br>21h41 → 06h30 (28/11)</td></tr>
+</tbody></table></div>
+
+<h2>Passageiros por localizador</h2>
+<div class="pax">
+<section><h3>BF410L <span>volta 28/11</span></h3><ul>
+<li>Guilherme Watanabe Jimenes Amador</li><li>Antony Honorato dos Santos Araújo</li><li>Felipe Filoni Yoshida</li><li>Cesar Seiki Imoto</li><li>Heitor Maruo Kanabushi</li><li>Eduardo França Amorim Filho</li><li>André Takao Cesetti Kina</li><li>Hugo Kanabushi</li><li>Ricardo Caldas Jimenes Amador</li></ul></section>
+<section><h3>BGCFTX <span>volta 28/11</span></h3><ul>
+<li>Lucas Castello Branco Jelski</li><li>Pedro Gonçalves Tonzar Pereira</li><li>Pedro Vinicius Batista</li><li>Victor Yukio Nakashima dos Santos</li><li>Theo Yuji Nomi Takahashi</li><li>Heitor Wong Pires</li><li>Tony Ryuzo Okimasu</li><li>Lucas Kiyoharu Yonamine</li><li>André Tadeu Guimarães Ribeiro</li></ul></section>
+<section><h3>A3QHKN <span>volta 28/11, voo antecipado</span></h3><ul>
+<li>Ricardo Takumi Yokoyama (chefe)</li><li>Miguel Arthur Bevilaqua Barbosa da Silva</li><li>Gabriel Marques Maia</li></ul></section>
+<section><h3>BGFRN5 <span>volta 27/11</span></h3><ul>
+<li>Érico Morita</li><li>Wagner Kanabushi</li></ul></section>
+</div>
+
+<h2>Atleta Davi Matos de Carvalho Cansian</h2>
+<p class="note" style="margin:0 2px 8px">Itinerário separado: viaja desde Seattle (EUA) pela American Airlines, com conexão em Miami.</p>
+<div class="card scroll" style="padding:0"><table>
+<thead><tr><th>Trecho</th><th>Voo</th><th>Data</th><th>Horários</th></tr></thead>
+<tbody>
+<tr><td><b>Ida</b></td><td class="tn">AA 2142<br>AA 2099</td><td class="tn">17/11 e 18/11</td><td class="tn">SEA 21h14 → MIA 06h00<br>MIA 08h35 → SDQ 11h59</td></tr>
+<tr><td><b>Volta</b></td><td class="tn">AA 987<br>AA 2363</td><td class="tn">01/12</td><td class="tn">SDQ 15h46 → MIA 17h20<br>MIA 19h40 → SEA 23h33</td></tr>
+</tbody></table></div>
+
+<footer style="margin-top:28px">Seleção Brasileira de Beisebol U12 · Guia de Viagem. Horários locais de cada aeroporto.</footer>
+</main>
+<script>
+document.querySelectorAll('.copy').forEach(function(b){b.addEventListener('click',function(){
+ var t=b.getAttribute('data-copy');
+ try{navigator.clipboard.writeText(t).then(function(){b.textContent='Copiado'},function(){sel(b,t)})}catch(e){sel(b,t)}
+ setTimeout(function(){b.textContent='Copiar'},1600)})});
+function sel(b,t){var r=document.createRange();var n=b.previousElementSibling;if(n){r.selectNodeContents(n);var s=getSelection();s.removeAllRanges();s.addRange(r)}}
+</script>
+
+</html>
