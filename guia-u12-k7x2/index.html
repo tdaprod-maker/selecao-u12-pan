@@ -55,6 +55,21 @@ footer{color:var(--muted);font-size:12.5px;padding-bottom:32px}
  .check{grid-template-columns:1fr}
  .pax{grid-template-columns:1fr}
 }
+dialog#et{border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--fg);padding:0;width:min(680px,calc(100vw - 24px));max-height:calc(100vh - 32px);font-family:var(--font)}
+dialog#et::backdrop{background:rgba(5,10,22,.72)}
+#et .eh{position:sticky;top:0;background:var(--navy);color:#fff;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+#et .eh b{font-family:var(--display);font-weight:500;letter-spacing:.03em;text-transform:uppercase;font-size:17px}
+#et .x{font:inherit;border:1px solid rgba(255,255,255,.4);background:transparent;color:#fff;border-radius:6px;padding:4px 10px;cursor:pointer}
+#et .eb{padding:6px 18px 18px;font-size:14.5px}
+#et .eb h4{margin:16px 0 4px;font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+#et .eb ol,#et .eb ul{margin:4px 0;padding-left:20px}
+#et .eb li{padding:2px 0}
+#et .warn{background:var(--warn);color:var(--warn-fg);border-radius:8px;padding:10px 12px;margin:12px 0}
+#et .go{display:block;text-align:center;background:var(--gold);color:#092D69;font-weight:700;text-decoration:none;border-radius:8px;padding:12px 14px;margin-top:16px}
+.cg{margin-bottom:12px}
+.gh{display:flex;align-items:center;gap:10px;margin:10px 0 2px;padding:6px 0 8px;font-size:15px;border-bottom:1px solid var(--line)}
+.gh .ic{flex:none;color:var(--accent)}
+.gh span{font-weight:400;color:var(--muted);font-size:12.5px}
 @media print{.copy{display:none}}
 </style>
 <header class="top"><div class="wrap">
@@ -85,35 +100,46 @@ footer{color:var(--muted);font-size:12.5px;padding-bottom:32px}
 <li><b>Passaporte</b> dentro da validade.</li>
 <li><b>Autorização de Viagem Internacional</b> para menores de 16 anos (2 vias), exigida de todos, mesmo de quem tem a autorização registrada no passaporte.</li>
 <li><b>Certificado de Vacina contra Febre Amarela.</b></li>
-<li><b>Formulário de Imigração</b> do responsável por família: <a href="https://eticket.migracion.gob.do/" target="_blank" rel="noopener">eticket.migracion.gob.do</a></li>
+<li><b>Formulário de Imigração (E-Ticket)</b> do responsável por família: <a href="https://eticket.migracion.gob.do/" data-et target="_blank" rel="noopener">veja como preencher</a></li>
 </ol></div>
 
 <h2>Roupas, mochila e dinheiro</h2>
 <div class="card"><dl class="kv">
 <div><dt>No aeroporto</dt><dd>Todos vão vestidos com a <b>calça de passeio</b> e a <b>camiseta amarela</b> da seleção, para a foto da delegação em Guarulhos. A calça de jogo não é usada no embarque.</dd></div>
 <div><dt>Mochila de mão</dt><dd>Uniformes de jogo (incluindo as <b>duas calças de jogo</b>), chuteira, luva, <b>uma camiseta azul adicional</b> e o <b>moletom</b>, por causa do frio no avião.</dd></div>
-<div><dt>Dinheiro</dt><dd>Levar <b>dólares em espécie</b>. O dinheiro é de responsabilidade exclusiva do atleta; nenhum membro da comissão guarda valores nem responde por eles.</dd></div>
+<div><dt>Dinheiro</dt><dd>Levar <b>dólares em espécie</b>. Quem tiver pode levar também <b>cartão internacional</b>. Dinheiro e cartão são de responsabilidade exclusiva do atleta; nenhum membro da comissão guarda valores nem responde por eles.</dd></div>
 <div><dt>Medicamentos</dt><dd>A caixinha de medicamentos da equipe é fornecida pelos médicos da seleção. Remédio de uso pessoal fica por conta da família, com receita.</dd></div>
 </dl></div>
 
 <h2>Checklist pessoal antes de sair de casa</h2>
-<div class="card"><ul class="check">
+<div class="card cg"><h3 class="gh"><svg class="ic" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6V5a3 3 0 0 1 6 0v1"/><rect x="5" y="6" width="14" height="15" rx="4"/><rect x="8.5" y="12" width="7" height="5" rx="1.5"/></svg><div>Na mochila de mão<br><span>sempre com o atleta; limite de 10 kg com o item pessoal</span></div></h3><ul class="check">
 <li><label><input type="checkbox">Passaporte original e cópia digital offline; conferir validade e nome</label></li>
-<li><label><input type="checkbox">E-Ticket de entrada/saída da República Dominicana (formulário de imigração)</label></li>
 <li><label><input type="checkbox">Autorização internacional de viagem de menor, 2 vias</label></li>
+<li><label><input type="checkbox">E-Ticket de entrada: QR code salvo no celular e impresso</label></li>
 <li><label><input type="checkbox">Bilhete de ida e volta: localizador, voos, horários e cartão de embarque</label></li>
 <li><label><input type="checkbox">Comprovante de hospedagem e endereço do hotel</label></li>
 <li><label><input type="checkbox">Certificado individual do seguro, número do bilhete e contatos de emergência</label></li>
 <li><label><input type="checkbox">Comprovante de vacina contra febre amarela</label></li>
-<li><label><input type="checkbox">Mochila de mão pronta: uniformes de jogo (com as duas calças), chuteira, luva, camiseta azul e moletom</label></li>
-<li><label><input type="checkbox">Calça de passeio e camiseta amarela para vestir no aeroporto</label></li>
-<li><label><input type="checkbox">Dólares em espécie (responsabilidade do atleta)</label></li>
+<li><label><input type="checkbox">Dólares em espécie e, quem tiver, cartão internacional (responsabilidade do atleta)</label></li>
 <li><label><input type="checkbox">Medicamentos de uso pessoal, com receita</label></li>
+<li><label><input type="checkbox">Uniformes de jogo (com as duas calças), chuteira e luva</label></li>
+<li><label><input type="checkbox">Camiseta azul adicional e moletom (frio no avião)</label></li>
 <li><label><input type="checkbox">Adaptador de tomada (padrão americano, 110 V)</label></li>
-<li><label><input type="checkbox">Protetor solar, repelente e boné</label></li>
 <li><label><input type="checkbox">Garrafa de água reutilizável (vazia na segurança)</label></li>
+</ul></div>
+<div class="card cg"><h3 class="gh"><svg class="ic" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7v13M15 7v13"/></svg><div>Na mala despachada<br><span>até 23 kg</span></div></h3><ul class="check">
+<li><label><input type="checkbox">Roupas de passeio e de treino, roupa íntima e meias</label></li>
 <li><label><input type="checkbox">Roupa de banho e chinelo</label></li>
-<li><label><input type="checkbox">Salvar os contatos do chefe da delegação e do coordenador e avisar antes de qualquer imprevisto</label></li>
+<li><label><input type="checkbox">Protetor solar e repelente</label></li>
+<li><label><input type="checkbox">Boné</label></li>
+<li><label><input type="checkbox">Itens de higiene e qualquer líquido acima de 100 ml</label></li>
+</ul></div>
+<div class="card cg"><h3 class="gh"><svg class="ic" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4 3 7l2 4 3-1v10h8V10l3 1 2-4-5-3a4 4 0 0 1-8 0z"/></svg><div>Vestido no aeroporto<br><span>foto da delegação em Guarulhos</span></div></h3><ul class="check">
+<li><label><input type="checkbox">Calça de passeio (não a de jogo)</label></li>
+<li><label><input type="checkbox">Camiseta amarela da seleção</label></li>
+</ul></div>
+<div class="card cg"><h3 class="gh"><svg class="ic" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 18h2"/></svg><div>No celular<br><span>antes de sair de casa</span></div></h3><ul class="check">
+<li><label><input type="checkbox">Contatos do chefe da delegação e do coordenador salvos; avisar antes de qualquer imprevisto</label></li>
 </ul></div>
 
 <h2>Seguro viagem e emergência</h2>
@@ -169,12 +195,46 @@ footer{color:var(--muted);font-size:12.5px;padding-bottom:32px}
 
 <footer style="margin-top:28px">Seleção Brasileira de Beisebol U12 · Guia de Viagem. Horários locais de cada aeroporto.</footer>
 </main>
+<dialog id="et" aria-labelledby="et-t">
+<div class="eh"><b id="et-t">Formulário de imigração (E-Ticket)</b><button class="x" type="button" data-close>Fechar</button></div>
+<div class="eb">
+<div class="warn">O formulário é <b>gratuito</b> e só existe no site oficial do governo dominicano. Não pague taxa a nenhum site ou intermediário. Papel não é aceito.</div>
+<h4>Quem preenche e quando</h4>
+<ul>
+<li>O responsável pelo atleta preenche com os dados do atleta. Um formulário cobre até <b>7 pessoas</b>, então irmãos que viajam juntos podem entrar no mesmo.</li>
+<li>Dá para iniciar cerca de 1 semana antes da viagem. Precisa estar concluído antes do check-in.</li>
+<li>Entrada e saída são formulários separados, cada um com seu QR code.</li>
+</ul>
+<h4>Passo a passo da entrada</h4>
+<ol>
+<li>Abra o site oficial, escolha o idioma e crie o usuário. Guarde o <b>código da solicitação</b>.</li>
+<li>Escolha a opção de <b>entrada</b> e informe quantos acompanhantes entram no mesmo formulário.</li>
+<li>Dados pessoais: nome, nascimento, nacionalidade e <b>número do passaporte</b>. Confira o passaporte duas vezes: número errado invalida o formulário.</li>
+<li>Hospedagem: escolha <b>Whala!Boca Chica</b> na lista de hotéis.</li>
+<li>Voo de chegada: <b>CM298</b>, Copa Airlines, chegando em Santo Domingo (SDQ) em 18/11. Escala: origem GRU, conexão PTY, chegada SDQ. Davi: AA 2099, também chegando em SDQ em 18/11.</li>
+<li>Dias de estada: <b>10</b> (volta 28/11), <b>9</b> (volta 27/11, Érico e Wagner) e <b>13</b> (Davi, volta 01/12). Motivo da visita: escolha a opção de esporte ou competição, se existir; senão, turismo.</li>
+<li>Alfândega: crianças não preenchem esta parte. Quem preencher deve declarar valores acima de US$ 10.000, alimentos, plantas e animais.</li>
+<li>Saúde: países visitados nos últimos 30 dias, sintomas e um telefone de contato do responsável.</li>
+<li>Aceite os termos, conclua e <b>salve o QR code</b> (PDF ou captura de tela) no celular e no e-mail. Imprima uma cópia, se possível.</li>
+</ol>
+<h4>Volta</h4>
+<ul>
+<li>Antes do voo de volta, preencha o formulário de <b>saída</b>, com os dados do voo de retorno (veja os voos na seção Volta).</li>
+<li>Se algum horário ou voo mudar, abra o portal, consulte a solicitação pelo código e edite. Vale sempre o último formulário enviado.</li>
+</ul>
+<p class="note">As regras do portal podem mudar. Em caso de dúvida, fale com o chefe da delegação.</p>
+<a class="go" href="https://eticket.migracion.gob.do/" target="_blank" rel="noopener">Abrir o formulário oficial (eticket.migracion.gob.do)</a>
+</div></dialog>
 <script>
 document.querySelectorAll('.copy').forEach(function(b){b.addEventListener('click',function(){
  var t=b.getAttribute('data-copy');
  try{navigator.clipboard.writeText(t).then(function(){b.textContent='Copiado'},function(){sel(b,t)})}catch(e){sel(b,t)}
  setTimeout(function(){b.textContent='Copiar'},1600)})});
 function sel(b,t){var r=document.createRange();var n=b.previousElementSibling;if(n){r.selectNodeContents(n);var s=getSelection();s.removeAllRanges();s.addRange(r)}}
+
+(function(){var d=document.getElementById('et');if(!d||!d.showModal)return;
+document.querySelectorAll('a[data-et]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();d.showModal()})});
+d.addEventListener('click',function(e){if(e.target===d||e.target.hasAttribute('data-close'))d.close()})})();
 </script>
 
 </html>
