@@ -55,6 +55,7 @@ footer{color:var(--muted);font-size:12.5px;padding-bottom:32px}
  .check{grid-template-columns:1fr}
  .pax{grid-template-columns:1fr}
 }
+.lk{font:inherit;color:var(--accent);background:none;border:0;padding:0;text-decoration:underline;text-underline-offset:2px;cursor:pointer}
 dialog#et{border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--fg);padding:0;width:min(680px,calc(100vw - 24px));max-height:calc(100vh - 32px);font-family:var(--font)}
 dialog#et::backdrop{background:rgba(5,10,22,.72)}
 #et .eh{position:sticky;top:0;background:var(--navy);color:#fff;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px}
@@ -100,13 +101,13 @@ dialog#et::backdrop{background:rgba(5,10,22,.72)}
 <li><b>Passaporte</b> dentro da validade.</li>
 <li><b>Autorização de Viagem Internacional</b> para menores de 16 anos (2 vias), exigida de todos, mesmo de quem tem a autorização registrada no passaporte.</li>
 <li><b>Certificado de Vacina contra Febre Amarela.</b></li>
-<li><b>Formulário de Imigração (E-Ticket)</b> do responsável por família: <a href="https://eticket.migracion.gob.do/" data-et target="_blank" rel="noopener">veja como preencher</a></li>
+<li><b>Formulário de Imigração (E-Ticket)</b> do responsável por família: <button type="button" class="lk" data-et>veja como preencher</button></li>
 </ol></div>
 
 <h2>Roupas, mochila e dinheiro</h2>
 <div class="card"><dl class="kv">
 <div><dt>No aeroporto</dt><dd>Todos vão vestidos com a <b>calça de passeio</b> e a <b>camiseta amarela</b> da seleção, para a foto da delegação em Guarulhos. A calça de jogo não é usada no embarque.</dd></div>
-<div><dt>Mochila de mão</dt><dd>Uniformes de jogo (incluindo as <b>duas calças de jogo</b>), chuteira, luva, <b>uma camiseta azul adicional</b> e o <b>moletom</b>, por causa do frio no avião.</dd></div>
+<div><dt>Mochila de mão</dt><dd>Uniformes de jogo (incluindo as <b>duas calças de jogo</b>), chuteira, luva, <b>uma camiseta azul adicional</b>, <b>dois bonés (um azul e um amarelo)</b> e o <b>moletom</b>, por causa do frio no avião.</dd></div>
 <div><dt>Dinheiro</dt><dd>Levar <b>dólares em espécie</b>. Quem tiver pode levar também <b>cartão internacional</b>. Dinheiro e cartão são de responsabilidade exclusiva do atleta; nenhum membro da comissão guarda valores nem responde por eles.</dd></div>
 <div><dt>Medicamentos</dt><dd>A caixinha de medicamentos da equipe é fornecida pelos médicos da seleção. Remédio de uso pessoal fica por conta da família, com receita.</dd></div>
 </dl></div>
@@ -125,13 +126,12 @@ dialog#et::backdrop{background:rgba(5,10,22,.72)}
 <li><label><input type="checkbox">Uniformes de jogo (com as duas calças), chuteira e luva</label></li>
 <li><label><input type="checkbox">Camiseta azul adicional e moletom (frio no avião)</label></li>
 <li><label><input type="checkbox">Adaptador de tomada (padrão americano, 110 V)</label></li>
-<li><label><input type="checkbox">Garrafa de água reutilizável (vazia na segurança)</label></li>
+<li><label><input type="checkbox">Dois bonés: 1 azul e 1 amarelo</label></li>
 </ul></div>
 <div class="card cg"><h3 class="gh"><svg class="ic" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7v13M15 7v13"/></svg><div>Na mala despachada<br><span>até 23 kg</span></div></h3><ul class="check">
 <li><label><input type="checkbox">Roupas de passeio e de treino, roupa íntima e meias</label></li>
 <li><label><input type="checkbox">Roupa de banho e chinelo</label></li>
 <li><label><input type="checkbox">Protetor solar e repelente</label></li>
-<li><label><input type="checkbox">Boné</label></li>
 <li><label><input type="checkbox">Itens de higiene e qualquer líquido acima de 100 ml</label></li>
 </ul></div>
 <div class="card cg"><h3 class="gh"><svg class="ic" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4 3 7l2 4 3-1v10h8V10l3 1 2-4-5-3a4 4 0 0 1-8 0z"/></svg><div>Vestido no aeroporto<br><span>foto da delegação em Guarulhos</span></div></h3><ul class="check">
@@ -233,7 +233,7 @@ document.querySelectorAll('.copy').forEach(function(b){b.addEventListener('click
 function sel(b,t){var r=document.createRange();var n=b.previousElementSibling;if(n){r.selectNodeContents(n);var s=getSelection();s.removeAllRanges();s.addRange(r)}}
 
 (function(){var d=document.getElementById('et');if(!d||!d.showModal)return;
-document.querySelectorAll('a[data-et]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();d.showModal()})});
+document.querySelectorAll('[data-et]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();d.showModal()})});
 d.addEventListener('click',function(e){if(e.target===d||e.target.hasAttribute('data-close'))d.close()})})();
 </script>
 
