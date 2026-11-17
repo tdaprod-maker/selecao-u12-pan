@@ -53,8 +53,19 @@ const PAG = Object.fromEntries(PAGINAS.map(p => [p.p, p.t]));
 
 module.exports = async (req, res) => {
   res.setHeader("Cache-Control", "no-store");
-  if (req.method !== "POST") return res.status(405).json({ erro: "Use POST" });
   if (!process.env.ANTHROPIC_API_KEY) return res.status(503).json({ erro: "Assistente ainda não configurado (falta a chave da API)." });
+  // Diagnóstico: GET /api/perguntar?ping=1 confere chave e modelos
+  if (req.method === "GET" && req.query && req.query.ping) {
+    const out = {};
+    for (const m of [MODELO_RAPIDO, MODELO_RESPOSTA]) {
+      try { await claude(m, "Responda apenas: ok", [{ role: "user", content: "ok?" }], 5); out[m] = "ok"; }
+      catch (e) { out[m] = String(e.message).slice(0, 200); }
+    }
+    return res.status(200).json(out);
+  }
+  if (req.method === "GET" && req.query && req.query.q) {
+    req.body = { pergunta: String(req.query.q), hoje: new Date(Date.now() - 4 * 3600e3).toISOString().slice(0, 10) };
+  } else if (req.method !== "POST") return res.status(405).json({ erro: "Use POST" });
 
   try {
     const body = typeof req.body === "string" ? JSON.parse(req.body) : (req.body || {});
