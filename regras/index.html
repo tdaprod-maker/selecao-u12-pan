@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Comissão Técnica · Brasil U12 · Pan-Americano 2026</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0D2255">
+<link rel="manifest" href="/regras/manifest.webmanifest">
+<link rel="icon" href="/regras/icon-180.png" type="image/png">
+<link rel="apple-touch-icon" href="/regras/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Brasil U12">
+<style>
+@font-face{font-family:"Bebas Neue";src:url(/regras/fonts/bebas-neue-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Barlow";src:url(/regras/fonts/barlow-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Barlow";src:url(/regras/fonts/barlow-latin-600-normal.woff2) format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Barlow";src:url(/regras/fonts/barlow-latin-700-normal.woff2) format("woff2");font-weight:700;font-display:swap}
+:root{
+  --navy:#0D2255; --navy-mid:#1A3A7A; --navy-soft:#E7ECF6;
+  --gold:#F5C400; --gold-soft:#FFF4C2;
+  --green:#1E8C3A; --green-soft:#E2F2E6;
+  --bg:#F4F4F0; --card:#FFFFFF; --ink:#111111; --mid:#4A4F5C; --line:#E2E3DD;
+  --red:#B42318; --red-soft:#FDE8E6; --amber:#8A5A00; --amber-soft:#FFF0D2;
+  --r:14px; --nav:66px;
+  --head:"Bebas Neue",Impact,"Arial Narrow",sans-serif;
+  --body:"Barlow",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;min-width:0}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 var(--body);-webkit-text-size-adjust:100%}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:var(--navy-mid)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+
+/* Cabeçalho */
+header{background:var(--navy);color:#fff;padding:calc(env(safe-area-inset-top) + 10px) 16px 0;position:sticky;top:0;z-index:20}
+.hrow{display:flex;align-items:center;gap:12px;max-width:760px;margin:0 auto;padding-bottom:10px}
+.hrow img{height:46px;width:auto;flex:none}
+.ht b{display:block;font:400 26px/1 var(--head);letter-spacing:.02em}
+.ht span{display:block;font-size:13px;opacity:.75;margin-top:2px}
+.net{margin-left:auto;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 9px;border-radius:99px;background:rgba(255,255,255,.12);flex:none}
+.net.off{background:var(--gold);color:var(--navy)}
+.stripe{height:4px;background:linear-gradient(90deg,var(--green) 0 33%,var(--gold) 33% 66%,var(--green) 66%);margin:0 -16px}
+
+main{max-width:760px;margin:0 auto;padding:16px 14px calc(var(--nav) + env(safe-area-inset-bottom) + 28px)}
+section.view{display:none}
+section.view.on{display:block;animation:fade .18s ease}
+@keyframes fade{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){section.view.on{animation:none}}
+
+h2{font:400 34px/1 var(--head);letter-spacing:.01em;margin:6px 2px 12px;color:var(--navy)}
+h3{font:400 20px/1 var(--head);letter-spacing:.03em;color:var(--navy);margin:24px 2px 10px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin-bottom:10px}
+.muted{color:var(--mid)} .small{font-size:14px}
+.btn{border:0;border-radius:12px;padding:12px 16px;font-weight:700;min-height:44px}
+.btn.p{background:var(--navy);color:#fff}
+.btn.g{background:var(--green);color:#fff}
+.btn.y{background:var(--gold);color:var(--navy)}
+.btn.o{background:transparent;border:1px solid var(--line)}
+.btn:disabled{opacity:.5}
+
+/* Próximo jogo */
+.next{background:var(--navy);color:#fff;border:0;position:relative;overflow:hidden;padding:18px}
+.next::after{content:"";position:absolute;right:-40px;top:-40px;width:170px;height:170px;border-radius:50%;border:16px solid rgba(245,196,0,.16)}
+.next .lbl{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
+.next .vs{font:400 40px/1 var(--head);letter-spacing:.01em;margin:8px 0 6px}
+.next .when{font-size:16px}
+.next .where{font-size:14px;opacity:.8;margin-top:2px}
+.next .tag{display:inline-block;margin-top:12px;background:var(--gold);color:var(--navy);font-weight:800;font-size:14px;padding:5px 12px;border-radius:99px}
+
+/* Chips */
+.chips{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 6px;margin:0 -2px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1px solid var(--line);background:var(--card);border-radius:99px;padding:9px 14px;font-size:15px;font-weight:600;white-space:nowrap;min-height:44px}
+.chip.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.chip small{display:block;font-size:11px;font-weight:500;opacity:.7;line-height:1.1}
+
+/* Assistente */
+.chat{display:flex;flex-direction:column;gap:10px;margin-bottom:12px}
+.msg,.confirm{scroll-margin-bottom:150px}
+.msg{max-width:92%;padding:12px 14px;border-radius:16px;font-size:16px;white-space:pre-wrap;word-wrap:break-word}
+.msg.u{align-self:flex-end;background:var(--navy);color:#fff;border-bottom-right-radius:4px}
+.msg.a{align-self:flex-start;background:var(--card);border:1px solid var(--line);border-bottom-left-radius:4px}
+.msg.a .ref{display:block;margin-top:8px;font-size:12.5px;color:var(--mid)}
+.msg.err{background:var(--red-soft);border-color:#F5C2BD;color:var(--red)}
+.msg.wait{color:var(--mid)}
+.dots::after{content:"";animation:dots 1.2s steps(4) infinite}
+@keyframes dots{0%{content:""}25%{content:"."}50%{content:".."}75%{content:"..."}}
+.confirm{align-self:stretch;background:var(--gold-soft);border:1px solid #EBD47A;border-radius:16px;padding:14px}
+.confirm table{width:100%;border-collapse:collapse;margin:8px 0}
+.confirm td{padding:7px 4px;border-bottom:1px solid #EBD47A;font-size:15px}
+.confirm td:last-child{text-align:right;font-weight:800}
+.confirm .acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.composer{position:sticky;bottom:calc(var(--nav) + env(safe-area-inset-bottom) + 8px);background:var(--card);border:1px solid var(--line);border-radius:18px;padding:8px;display:flex;gap:8px;align-items:flex-end;box-shadow:0 6px 20px rgba(13,34,85,.10)}
+.composer textarea{flex:1;border:0;resize:none;outline:none;padding:10px 6px;font-size:16px;max-height:120px;background:transparent}
+.ib{width:46px;height:46px;border-radius:14px;border:0;display:grid;place-items:center;flex:none}
+.ib svg{width:22px;height:22px}
+.mic{background:var(--navy-soft);color:var(--navy)}
+.mic.rec{background:var(--red);color:#fff;animation:pulse 1.2s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 8px rgba(180,35,24,.18)}}
+.send{background:var(--navy);color:#fff}
+.hint{font-size:13px;color:var(--mid);margin:8px 4px 0}
+.sug{margin-bottom:10px}
+
+/* Regras */
+.search{position:relative;margin-bottom:10px}
+.search input{width:100%;padding:14px 44px;border-radius:12px;border:1px solid var(--line);background:var(--card);font-size:16px;outline:none;-webkit-appearance:none}
+.search input::-webkit-search-cancel-button{-webkit-appearance:none;display:none}
+.search input:focus{border-color:var(--navy-mid);box-shadow:0 0 0 3px var(--navy-soft)}
+.search svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:20px;height:20px;color:var(--mid)}
+.search .clr{position:absolute;right:4px;top:50%;transform:translateY(-50%);border:0;background:none;padding:12px;color:var(--mid);display:none}
+.rule{padding:0;overflow:hidden}
+.rule>button{all:unset;display:block;width:100%;padding:14px 16px;cursor:pointer;box-sizing:border-box}
+.rule .rt{display:flex;align-items:flex-start;gap:8px}
+.rule .rt b{font-size:17px;flex:1;color:var(--navy)}
+.rule .rr{margin:6px 0 0;font-size:16px}
+.rule .meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.badge{display:inline-block;font-size:12px;font-weight:700;padding:3px 8px;border-radius:6px;background:var(--navy-soft);color:var(--navy-mid)}
+.badge.u{background:var(--gold-soft);color:#6B5200}
+.rule .more{display:none;border-top:1px solid var(--line);padding:12px 16px 14px;background:#FAFAF7}
+.rule.open .more{display:block}
+.rule ul{margin:0;padding-left:18px}
+.rule li{margin:6px 0;font-size:15.5px}
+.rule .chev{width:20px;height:20px;color:var(--mid);transition:transform .15s;flex:none;margin-top:2px}
+.rule.open .chev{transform:rotate(180deg)}
+.ttable{width:100%;border-collapse:collapse;margin:4px 0 10px;font-size:15px}
+.ttable td{padding:8px 10px;border-bottom:1px solid var(--line)}
+.ttable td:last-child{text-align:right;font-weight:700}
+.ttable tr:last-child td{border-bottom:0}
+mark{background:var(--gold-soft);color:inherit;border-radius:3px;padding:0 1px}
+.empty{text-align:center;padding:26px 16px;color:var(--mid)}
+
+/* Jogos */
+.day{margin-top:18px}
+.dayh{display:flex;align-items:baseline;justify-content:space-between;margin:0 2px 8px}
+.dayh b{font:400 21px/1 var(--head);letter-spacing:.03em;color:var(--navy)}
+.dayh span{font-size:13px;color:var(--mid)}
+.game{display:grid;grid-template-columns:64px 1fr;gap:12px;align-items:center;padding:12px 14px}
+.game .hr{font-weight:800;font-size:17px;line-height:1.1}
+.game .hr small{display:block;font-weight:500;font-size:12px;color:var(--mid);margin-top:3px}
+.teams .tm{display:flex;justify-content:space-between;gap:8px;font-size:16px}
+.teams .tm .sc{font-weight:800}
+.teams .tm.br{font-weight:800;color:var(--green)}
+.game .info{font-size:13px;color:var(--mid);margin-top:4px}
+.game.brg{border-color:var(--green);box-shadow:inset 5px 0 0 var(--green)}
+.game.ev{background:transparent;border-style:dashed}
+.toggle{display:flex;background:#E6E7E1;border-radius:12px;padding:4px;gap:4px;margin-bottom:6px}
+.toggle button{flex:1;border:0;background:none;padding:10px;border-radius:9px;font-weight:700;font-size:15px;color:var(--mid)}
+.toggle button.on{background:var(--card);color:var(--navy);box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.grp{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.grp .card{padding:12px;margin:0}
+.grp b{font:400 18px/1 var(--head);color:var(--navy);letter-spacing:.04em}
+.grp ol{margin:6px 0 0;padding:0;list-style:none;font-size:14.5px}
+.grp li{padding:3px 0;display:flex;justify-content:space-between;gap:4px}
+.grp li.br{font-weight:800;color:var(--green)}
+.grp li span{color:var(--mid);font-size:12px;font-weight:500}
+@media (max-width:440px){.grp{grid-template-columns:1fr 1fr}.grp .card:last-child{grid-column:span 2}}
+.path{width:100%;border-collapse:collapse;margin-top:6px}
+.path td{padding:9px 6px;border-bottom:1px solid var(--line);font-size:15px;vertical-align:top}
+.path tr:last-child td{border-bottom:0}
+.path td:first-child{color:var(--mid);white-space:nowrap;width:74px}
+
+/* Arremessadores */
+.pit{padding:14px 16px}
+.pit .top{display:flex;align-items:center;gap:12px}
+.num{width:42px;height:42px;border-radius:11px;background:var(--navy);color:var(--gold);display:grid;place-items:center;font:400 22px/1 var(--head);flex:none}
+.pit .nm{flex:1}
+.pit .nm b{display:block;font-size:17px}
+.pit .nm span{font-size:13px;color:var(--mid)}
+.st{font-size:13px;font-weight:800;padding:5px 10px;border-radius:99px;white-space:nowrap}
+.st.livre{background:var(--green-soft);color:var(--green)}
+.st.limitado{background:var(--amber-soft);color:var(--amber)}
+.st.descanso{background:#ECEDE8;color:var(--mid)}
+.st.violacao{background:var(--red-soft);color:var(--red)}
+.bar{height:9px;border-radius:99px;background:#ECEDE8;margin:12px 0 6px;overflow:hidden;display:flex}
+.bar i{display:block;height:100%}
+.pit .line{font-size:15px}
+.pit .hist{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+.pit .hist span{font-size:12.5px;padding:3px 8px;border-radius:6px;background:var(--bg);color:var(--mid)}
+.pit .hist span b{color:var(--ink)}
+.free{display:flex;flex-wrap:wrap;gap:6px}
+.free span{font-size:14px;background:var(--green-soft);color:var(--green);font-weight:600;padding:5px 10px;border-radius:99px}
+.form{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:8px}
+.form select,.form input{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;font-size:16px;background:#fff;min-height:46px}
+.form .full{grid-column:1/-1}
+.sim{display:flex;align-items:center;gap:12px;margin-top:6px}
+.sim input{width:110px;padding:12px;border:1px solid var(--line);border-radius:10px;font-size:22px;font-weight:800;text-align:center}
+.sim .out{font:400 26px/1 var(--head);color:var(--navy);letter-spacing:.02em}
+.legend{display:flex;gap:4px;margin-top:10px}
+.legend div{flex:1;text-align:center;font-size:12px;padding:6px 2px;border-radius:6px;background:var(--bg);color:var(--mid);line-height:1.2}
+.legend div b{display:block;font-size:13px;color:var(--ink)}
+.legend div.on{background:var(--navy);color:#fff}
+.legend div.on b{color:var(--gold)}
+.reg{width:100%;border-collapse:collapse}
+.reg td{padding:9px 4px;border-bottom:1px solid var(--line);font-size:14.5px}
+.reg td.n{text-align:right;font-weight:800}
+.reg button{border:0;background:none;color:var(--red);font-weight:700;padding:8px}
+.check li{margin:8px 0}
+.foot{font-size:13px;color:var(--mid);text-align:center;margin-top:26px}
+.foot img{height:34px;display:block;margin:0 auto 8px;opacity:.8}
+
+/* Navegação */
+nav{position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom);z-index:30}
+nav .in{max-width:760px;margin:0 auto;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));height:var(--nav)}
+nav a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;text-decoration:none;color:var(--mid);font-size:11.5px;font-weight:700}
+nav a svg{width:24px;height:24px}
+nav a.on{color:var(--navy)}
+nav a.ai{color:var(--navy)}
+nav a.ai span.dot{width:46px;height:46px;border-radius:15px;background:var(--navy);color:var(--gold);display:grid;place-items:center;margin-top:-18px;box-shadow:0 4px 12px rgba(13,34,85,.3)}
+nav a.ai.on span.dot{background:var(--gold);color:var(--navy)}
+
+/* Diálogo PIN */
+dialog{border:0;border-radius:18px;padding:20px;max-width:340px;width:calc(100% - 32px)}
+dialog::backdrop{background:rgba(13,34,85,.45)}
+dialog input{width:100%;font-size:26px;letter-spacing:.3em;text-align:center;padding:12px;border:1px solid var(--line);border-radius:12px;margin:12px 0}
+</style>
+</head>
+<body>
+<header>
+  <div class="hrow">
+    <img src="/regras/logo-u12-sm.png" alt="Brasil U12">
+    <div class="ht"><b>Comissão Técnica</b><span>Pan-Americano U-12 · 2026</span></div>
+    <div class="net" id="net">online</div>
+  </div>
+  <div class="stripe"></div>
+</header>
+
+<main>
+  <!-- PAINEL -->
+  <section class="view" id="v-painel">
+    <div id="nextGame"></div>
+    <h3>Arremessadores <span id="pDayLbl" class="muted" style="font:600 14px var(--body);letter-spacing:0"></span></h3>
+    <div id="pSummary"></div>
+    <h3>Confirmar no congresso técnico</h3>
+    <div class="card"><ul class="check" id="pend" style="margin:0;padding-left:18px"></ul></div>
+    <h3>Atalhos de regras</h3>
+    <div class="chips" id="quick"></div>
+    <p class="foot"><img src="/regras/logo-panam.png" alt="WBSC U-12 Baseball PanAm"><span id="upd"></span></p>
+  </section>
+
+  <!-- ASSISTENTE -->
+  <section class="view" id="v-assistente">
+    <h2>Assistente</h2>
+    <div class="chips sug" id="sug"></div>
+    <div class="chat" id="chat"></div>
+    <div class="composer">
+      <button class="ib mic" id="mic" aria-label="Falar" title="Falar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button>
+      <textarea id="txt" rows="1" placeholder="Pergunte uma regra ou registre arremessos…" enterkeyhint="send"></textarea>
+      <button class="ib send" id="send" aria-label="Enviar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    </div>
+    <p class="hint" id="micHint">Toque no microfone e fale. Ex.: “Quantas visitas ao montinho posso fazer?” ou “Davi 32, Gabriel 18”.</p>
+  </section>
+
+  <!-- JOGOS -->
+  <section class="view" id="v-jogos">
+    <h2>Jogos</h2>
+    <div class="toggle" id="gFilter"><button data-f="br" class="on">Brasil</button><button data-f="all">Todos</button><button data-f="grp">Grupos</button></div>
+    <p class="small muted" style="margin:6px 2px 0">Horários de Santo Domingo. Em Brasília é 1 hora a mais.</p>
+    <div id="games"></div>
+  </section>
+
+  <!-- ARREMESSOS -->
+  <section class="view" id="v-arremessos">
+    <h2>Arremessos</h2>
+    <div class="chips" id="dayChips"></div>
+    <div id="pitchers"></div>
+    <h3>Registrar manualmente</h3>
+    <div class="card">
+      <div class="form">
+        <select id="fAt" aria-label="Atleta"></select>
+        <input id="fN" type="number" inputmode="numeric" min="0" max="150" placeholder="Arremessos" aria-label="Arremessos">
+        <select id="fDia" aria-label="Data"></select>
+        <input id="fJogo" type="number" inputmode="numeric" placeholder="Jogo nº" aria-label="Jogo">
+        <button class="btn g full" id="fOk">Registrar</button>
+      </div>
+      <p class="small muted" style="margin:10px 0 0">Ou mande pelo Assistente: “Davi 32, Gabriel 18”.</p>
+    </div>
+    <h3>Calculadora rápida</h3>
+    <div class="card">
+      <div class="small muted">Total do atleta no dia (somando os dias seguidos, se houver)</div>
+      <div class="sim"><input id="simIn" type="number" inputmode="numeric" min="0" max="120" placeholder="0" aria-label="Arremessos"><div class="out" id="simOut">—</div></div>
+      <div class="legend" id="simLeg"></div>
+    </div>
+    <h3>Registros</h3>
+    <div class="card" id="regs"></div>
+    <p class="small muted" style="margin:10px 2px">Regra A1.8 / A.1.8.1, pág. 166–168. A contagem oficial é do Comissário Técnico.</p>
+  </section>
+
+  <!-- REGRAS -->
+  <section class="view" id="v-regras">
+    <h2>Regras</h2>
+    <div class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="Buscar: visita, taco, empate, protesto…" autocomplete="off" enterkeyhint="search">
+      <button class="clr" id="qClr" aria-label="Limpar busca">✕</button>
+    </div>
+    <div class="chips" id="cats"></div>
+    <div id="rules"></div>
+    <p class="small muted" style="margin:14px 2px">Fonte: WBSC Official Rules of Baseball 2025–2026. Número da regra e página do PDF em cada item, para mostrar ao árbitro ou ao Comissário Técnico. Não achou? Pergunte ao <a href="#assistente">Assistente</a>.</p>
+  </section>
+</main>
+
+<nav><div class="in">
+  <a href="#painel" data-v="painel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>Painel</a>
+  <a href="#jogos" data-v="jogos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Jogos</a>
+  <a href="#assistente" data-v="assistente" class="ai"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span>Assistente</a>
+  <a href="#arremessos" data-v="arremessos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M6.2 5.6c1.6 1.7 2.5 4 2.5 6.4s-.9 4.7-2.5 6.4M17.8 5.6c-1.6 1.7-2.5 4-2.5 6.4s.9 4.7 2.5 6.4"/></svg>Arremessos</a>
+  <a href="#regras" data-v="regras"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4.5A1.5 1.5 0 0 1 5.5 3H20v15H5.5A1.5 1.5 0 0 0 4 19.5z"/><path d="M4 19.5A1.5 1.5 0 0 0 5.5 21H20v-3M8 7h8M8 11h6"/></svg>Regras</a>
+</div></nav>
+
+<dialog id="pinDlg">
+  <form method="dialog" id="pinForm">
+    <b style="font:400 24px var(--head);color:var(--navy)">PIN de registro</b>
+    <div class="small muted">Só quem tem o PIN grava arremessos. Ele fica salvo neste aparelho.</div>
+    <input id="pinIn" type="password" inputmode="numeric" autocomplete="off" maxlength="12" aria-label="PIN">
+    <div style="display:flex;gap:8px"><button class="btn o" value="cancel" style="flex:1">Cancelar</button><button class="btn p" value="ok" style="flex:1">Confirmar</button></div>
+  </form>
+</dialog>
+
+<script src="/regras/pitch.js"></script>
+<script src="/regras/regras-conteudo.js"></script>
+<script>
+{
+"use strict";
+const SB_URL = "https://jpecedlidyfvrayxzyhb.supabase.co";
+const SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpwZWNlZGxpZHlmdnJheXh6eWhiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI3ODU5NzEsImV4cCI6MjA4ODM2MTk3MX0.Hp2B52nd34r0ztEZgr_5wIAT4G4d781vs_oyj_X0dEA";
+const $ = s => document.querySelector(s);
+const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const store = { get(k){ try{ return JSON.parse(localStorage.getItem(k)); }catch(e){ return null; } }, set(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} } };
+let DATA = null, ROWS = [];
+const DIAS = ["dom","seg","ter","qua","qui","sex","sáb"], DIAS_L = ["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"];
+const FASES = {SR:"Super Ronda", PR:"Ronda de Classificação", F:"Final"};
+
+const fmtDia = (iso, longo) => { const d = new Date(iso+"T12:00:00Z"); const s = String(d.getUTCDate()).padStart(2,"0")+"/"+String(d.getUTCMonth()+1).padStart(2,"0"); return longo ? DIAS_L[d.getUTCDay()]+", "+s : DIAS[d.getUTCDay()]+" "+s; };
+const brasilia = h => { if(!h) return ""; const p = h.split(":"); return String((+p[0]+1)%24).padStart(2,"0")+":"+p[1]; };
+const hojeRD = () => new Date(Date.now() - 4*3600e3).toISOString().slice(0,10);
+const seed = c => { const m = /^([1-4])([ABC])$/.exec(c||""); return m ? m[1]+"º do Grupo "+m[2] : c; };
+const isBR = g => g.visitante==="Brasil" || g.mandante==="Brasil";
+const curto = nome => { const a = (DATA.elenco||[]).find(x => x.nome===nome); return a ? a.curto : nome; };
+
+/* Rede */
+function setNet(){ const n=$("#net"); n.textContent = navigator.onLine ? "online" : "offline"; n.className = "net"+(navigator.onLine?"":" off"); }
+addEventListener("online", ()=>{ setNet(); carregarArremessos(); }); addEventListener("offline", setNet); setNet();
+
+/* Navegação */
+function show(v){
+  if(!document.getElementById("v-"+v)) v = "painel";
+  document.querySelectorAll("section.view").forEach(s => s.classList.toggle("on", s.id==="v-"+v));
+  document.querySelectorAll("nav a").forEach(a => a.classList.toggle("on", a.dataset.v===v));
+  if(v!=="assistente") scrollTo(0,0);
+}
+addEventListener("hashchange", () => show(location.hash.slice(1)));
+
+/* ================= Regras ================= */
+const CATS = ["Todas","U-12","Arremessos","Jogo","Lances","Conduta","Equipamento"];
+let cat = "Todas"; const openIdx = {};
+const norm = s => s.normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
+REGRAS.forEach((r,i) => { r.i = i; r._s = norm([r.t,r.r,(r.d||[]).join(" "),r.ref,r.k||"",r.c,(r.tabela||[]).join(" ")].join(" ")); });
+function hl(text, terms){
+  let out = esc(text);
+  terms.forEach(t => {
+    if(t.length < 3) return;
+    const src = norm(out); let res = "", i = 0, idx;
+    while((idx = src.indexOf(t, i)) > -1){ res += out.slice(i, idx)+"<mark>"+out.slice(idx, idx+t.length)+"</mark>"; i = idx+t.length; }
+    if(i > 0) out = res + out.slice(i);
+  });
+  return out;
+}
+function renderCats(){ $("#cats").innerHTML = CATS.map(c => `<button class="chip${c===cat?" on":""}" data-c="${c}">${c}</button>`).join(""); }
+function renderRules(){
+  const q = norm($("#q").value.trim()), terms = q.split(/\s+/).filter(Boolean);
+  $("#qClr").style.display = q ? "block" : "none";
+  let list = REGRAS.filter(r => (cat==="Todas" || (cat==="U-12" ? r.u : r.c===cat)) && terms.every(t => r._s.includes(t)));
+  if(terms.length){
+    const score = r => terms.reduce((s,t) => s + (norm(r.t).includes(t)?10:0) + (norm(r.k||"").includes(t)?3:0) + (norm(r.r).includes(t)?1:0), 0);
+    list = list.slice().sort((a,b) => score(b)-score(a) || a.i-b.i);
+  }
+  if(!list.length){
+    $("#rules").innerHTML = `<div class="card empty">Nada encontrado para “${esc($("#q").value)}”.<br><br><button class="btn p" id="askAi">Perguntar ao Assistente</button></div>`;
+    $("#askAi").onclick = () => { $("#txt").value = $("#q").value; location.hash = "assistente"; enviar(); };
+    return;
+  }
+  const auto = terms.length > 0 && list.length <= 3;
+  $("#rules").innerHTML = list.map(r => {
+    const open = openIdx[r.i] || auto;
+    const tab = r.tabela ? `<table class="ttable"><tbody>${r.tabela.map(x => `<tr><td>${x[0]} arremessos</td><td>${x[1]}</td></tr>`).join("")}</tbody></table>` : "";
+    const det = (r.d && r.d.length) ? `<ul>${r.d.map(x => `<li>${hl(x,terms)}</li>`).join("")}</ul>` : "";
+    const more = (tab||det) ? `<div class="more">${tab}${det}</div>` : "";
+    return `<div class="card rule${open?" open":""}" data-i="${r.i}"><button aria-expanded="${open}">
+      <div class="rt"><b>${hl(r.t,terms)}</b>${more?'<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>':""}</div>
+      <p class="rr">${hl(r.r,terms)}</p>
+      <div class="meta"><span class="badge">Regra ${esc(r.ref)}</span><span class="badge">pág. ${esc(r.p)}</span>${r.u?'<span class="badge u">U-12</span>':""}</div>
+      </button>${more}</div>`;
+  }).join("");
+}
+$("#cats").addEventListener("click", e => { const b = e.target.closest(".chip"); if(!b) return; cat = b.dataset.c; renderCats(); renderRules(); });
+$("#rules").addEventListener("click", e => { const c = e.target.closest(".rule"); if(!c || !e.target.closest("button")) return; c.classList.toggle("open"); openIdx[+c.dataset.i] = c.classList.contains("open"); });
+$("#q").addEventListener("input", renderRules);
+$("#qClr").addEventListener("click", () => { $("#q").value = ""; renderRules(); $("#q").focus(); });
+const QUICK = [["Limite de arremessos","limite de arremessos"],["Visitas ao montinho","visitas ao montinho"],["Entradas extras","entradas extras"],["Mercy","mercy"],["Tacos","tacos"],["Substituições","substituicoes"],["Protesto","protesto"],["Celular","celular"]];
+$("#quick").innerHTML = QUICK.map(x => `<button class="chip" data-q="${x[1]}">${x[0]}</button>`).join("");
+$("#quick").addEventListener("click", e => { const b = e.target.closest(".chip"); if(!b) return; cat = "Todas"; renderCats(); $("#q").value = b.dataset.q; location.hash = "regras"; renderRules(); });
+
+/* ================= Jogos ================= */
+let gFilter = "br", brSeed = "1A";
+function gameHTML(g){
+  if(g.fase==="evento") return `<div class="card game ev"><div class="hr">${g.hora||"—"}${g.hora?`<small>BSB ${brasilia(g.hora)}</small>`:""}</div><div class="teams"><div class="tm"><b>${esc(g.evento)}</b></div>${g.campo?`<div class="info">IPL Academy · ${esc(g.campo)}</div>`:""}</div></div>`;
+  const nm = t => /^[1-4][ABC]$/.test(t) ? seed(t) : t;
+  const tm = (t, sc, lado) => `<div class="tm${t==="Brasil"?" br":""}"><span>${esc(nm(t))} <span class="muted small">${lado}</span></span><span class="sc">${sc!=null?sc:""}</span></div>`;
+  const fase = g.titulo || FASES[g.fase] || ("Grupo "+g.fase);
+  const info = [fase, g.n?("Jogo "+g.n):null, g.campo?("IPL Academy · "+g.campo):null, g.sorteio?"mandante por sorteio":null].filter(Boolean).join(" · ");
+  return `<div class="card game${isBR(g)?" brg":""}"><div class="hr">${g.hora||"a def."}${g.hora?`<small>BSB ${brasilia(g.hora)}</small>`:""}</div><div class="teams">${tm(g.visitante,g.placarV,"visit.")}${tm(g.mandante,g.placarM,"mand.")}<div class="info">${esc(info)}${g.obs?" · "+esc(g.obs):""}</div></div></div>`;
+}
+function renderPath(){
+  const fase = "12".includes(brSeed[0]) ? "SR" : "PR";
+  const rows = DATA.jogos.filter(g => g.fase===fase && (g.visitante===brSeed || g.mandante===brSeed)).map(g => {
+    const opp = g.visitante===brSeed ? g.mandante : g.visitante;
+    const lado = g.sorteio ? "mandante por sorteio" : (g.mandante===brSeed ? "Brasil mandante" : "Brasil visitante");
+    return `<tr><td>${fmtDia(g.data)}</td><td><b>× ${esc(seed(opp))}</b><br><span class="muted small">${lado}${g.hora?" · "+g.hora:" · horário a definir"}</span></td></tr>`;
+  }).join("");
+  return `<div class="day"><div class="dayh"><b>23 a 26/11 · 2ª fase</b><span>${FASES[fase]}</span></div><div class="card">
+    <div class="small muted" style="margin-bottom:6px">Adversários do Brasil conforme a posição no Grupo A</div>
+    <div class="chips" id="seedChips">${["1A","2A","3A","4A"].map(s => `<button class="chip${s===brSeed?" on":""}" data-s="${s}">${s[0]}º do grupo</button>`).join("")}</div>
+    <table class="path"><tbody>${rows}</tbody></table>
+    ${fase==="SR"?'<div class="small muted" style="margin-top:8px">O jogo contra o outro classificado do Grupo A não se repete: vale o resultado da 1ª fase.</div>':""}</div></div>`;
+}
+function renderGames(){
+  document.querySelectorAll("#gFilter button").forEach(b => b.classList.toggle("on", b.dataset.f===gFilter));
+  if(gFilter==="grp"){
+    $("#games").innerHTML = `<h3>Grupos (ranking WBSC)</h3><div class="grp">${Object.keys(DATA.grupos).map(k => `<div class="card"><b>Grupo ${k}</b><ol>${DATA.grupos[k].map(t => `<li${t[0]==="Brasil"?' class="br"':""}>${esc(t[0])} <span>${t[1]}º</span></li>`).join("")}</ol></div>`).join("")}</div>
+      <h3>Formato</h3><div class="card small"><p style="margin:0 0 8px">1º e 2º de cada grupo vão para a <b>Super Ronda</b>. 3º e 4º vão para a <b>Ronda de Classificação</b>.</p><p style="margin:0 0 8px">O resultado da 1ª fase entre times que avançam juntos é levado para a fase seguinte.</p><p style="margin:0">Dia 27: 1º × 2º da Super Ronda na final, 3º × 4º pelo bronze.</p></div>
+      <p class="small" style="margin:10px 2px"><a href="${esc(DATA.torneio.site)}/teams" target="_blank" rel="noopener">Elencos e estatísticas oficiais — WBSC Américas</a></p>`;
+    return;
+  }
+  const list = gFilter==="br" ? DATA.jogos.filter(g => isBR(g) || g.fase==="evento" || g.fase==="F") : DATA.jogos;
+  const by = {}; list.forEach(g => (by[g.data] = by[g.data] || []).push(g));
+  let html = "";
+  Object.keys(by).sort().forEach(d => {
+    if(gFilter==="br" && d>"2026-11-22" && d<"2026-11-27") return;
+    if(gFilter==="br" && d==="2026-11-27") html += renderPath();
+    html += `<div class="day"><div class="dayh"><b>${fmtDia(d,true)}</b><span>${d<"2026-11-23"?"Fase de grupos":d<"2026-11-27"?"2ª fase":"Finais"}</span></div>${by[d].map(gameHTML).join("")}</div>`;
+  });
+  $("#games").innerHTML = html;
+}
+$("#gFilter").addEventListener("click", e => { const b = e.target.closest("button"); if(!b) return; gFilter = b.dataset.f; renderGames(); });
+$("#games").addEventListener("click", e => { const b = e.target.closest("#seedChips .chip"); if(!b) return; brSeed = b.dataset.s; renderGames(); });
+
+function renderNext(){
+  const now = Date.now(), hoje = hojeRD();
+  const next = DATA.jogos.find(g => isBR(g) && g.hora && new Date(g.data+"T"+g.hora+":00-04:00").getTime() + 3*3600e3 > now);
+  if(!next){ $("#nextGame").innerHTML = `<div class="card next"><div class="lbl">Próximo jogo</div><div class="vs">2ª fase</div><div class="when">Adversário e horário saem após a fase de grupos.</div></div>`; return; }
+  const opp = next.visitante==="Brasil" ? next.mandante : next.visitante;
+  const diff = new Date(next.data+"T"+next.hora+":00-04:00") - now;
+  let rel; if(diff < 0) rel = "Em andamento"; else if(next.data===hoje) rel = "Hoje"; else { const dd = Math.round((new Date(next.data+"T12:00:00Z") - new Date(hoje+"T12:00:00Z"))/864e5); rel = dd===1 ? "Amanhã" : "Em "+dd+" dias"; }
+  $("#nextGame").innerHTML = `<div class="card next"><div class="lbl">Próximo jogo · Jogo ${next.n}</div><div class="vs">Brasil × ${esc(opp)}</div>
+    <div class="when">${fmtDia(next.data,true)} · ${next.hora} em Santo Domingo · ${brasilia(next.hora)} em Brasília</div>
+    <div class="where">IPL Academy · ${esc(next.campo)} · Brasil ${next.mandante==="Brasil"?"mandante":"visitante"}</div><span class="tag">${rel}</span></div>`;
+}
+
+/* ================= Arremessos ================= */
+let pDay = null;
+const torneioDias = () => { const out = []; let d = DATA.torneio.inicio; while(d <= DATA.torneio.fim){ out.push(d); d = Arremessos.addDias(d,1); } return out; };
+const diaPadrao = () => { const h = hojeRD(), ds = torneioDias(); return h < ds[0] ? ds[0] : h > ds[ds.length-1] ? ds[ds.length-1] : h; };
+function atletas(){
+  const map = {};
+  DATA.elenco.forEach(a => map[a.nome] = Object.assign({log:{}}, a));
+  ROWS.forEach(r => { const a = map[r.atleta] || (map[r.atleta] = {nome:r.atleta, curto:r.atleta, num:"", log:{}}); a.log[r.data] = (a.log[r.data]||0) + (+r.arremessos||0); });
+  return Object.values(map);
+}
+const sit = (a, dia) => Arremessos.situacao(a.log, dia);
+function statusTag(s){
+  if(s.estado==="violacao") return {cls:"violacao", tag:"Acima do limite"};
+  if(s.estado==="descanso") return {cls:"descanso", tag:"Descanso até "+fmtDia(s.descansoAte).slice(4)};
+  if(s.estado==="limitado") return {cls:"limitado", tag:"Máx. "+s.limiteDia};
+  return {cls:"livre", tag:"Disponível"};
+}
+function linhaTexto(s){
+  if(s.estado==="descanso") return `Descanso obrigatório. Volta a arremessar em <b>${fmtDia(s.voltaEm)}</b>. Pode jogar em outra posição.`;
+  if(s.estado==="violacao") return `<b style="color:var(--red)">Passou do limite da regra.</b> Conferir a contagem com o Comissário Técnico.`;
+  const p = [];
+  p.push(s.hoje > 0 ? `Arremessou <b>${s.hoje}</b> neste dia. Pode mais <b>${s.restante}</b>.` : `Pode arremessar até <b>${s.limiteDia}</b>.`);
+  if(s.acumuladoAntes > 0) p.push(`Vem de ${s.diasSeguidosAntes} dia${s.diasSeguidosAntes>1?"s":""} seguido${s.diasSeguidosAntes>1?"s":""} (${s.acumuladoAntes} arremessos), que contam no limite e no descanso.`);
+  if(s.terceiroDia) p.push("É o 3º dia seguido: no dia seguinte não pode arremessar.");
+  if(s.hoje > 0 && s.descansoSeParar != null) p.push("Se parar agora: " + (s.descansoSeParar ? s.descansoSeParar+" dia"+(s.descansoSeParar>1?"s":"")+" de descanso." : "sem descanso."));
+  if(s.proximaFaixa) p.push(`Com mais ${s.proximaFaixa.faltam} arremesso${s.proximaFaixa.faltam>1?"s":""} passa para ${s.proximaFaixa.dias} dia${s.proximaFaixa.dias>1?"s":""} de descanso.`);
+  return p.join(" ");
+}
+function pitcherHTML(a, dia){
+  const s = sit(a, dia), st = statusTag(s);
+  const pa = Math.min(100, s.acumuladoAntes/85*100), ph = Math.min(100-pa, s.hoje/85*100);
+  const bar = s.estado==="descanso" ? "" : `<div class="bar"><i style="width:${pa}%;background:#C3C8D4"></i><i style="width:${ph}%;background:${s.estado==="violacao"?"var(--red)":"var(--green)"}"></i></div>`;
+  const hist = Object.keys(a.log).sort().filter(d => d <= dia && a.log[d] > 0).map(d => `<span>${fmtDia(d)} <b>${a.log[d]}</b></span>`).join("");
+  return `<div class="card pit"><div class="top"><div class="num">${esc(a.num||"–")}</div><div class="nm"><b>${esc(a.curto)}</b><span>Arremessa ${a.arremessa==="E"?"canhoto":"destro"}</span></div><span class="st ${st.cls}">${st.tag}</span></div>${bar}<div class="line">${linhaTexto(s)}</div>${hist?`<div class="hist">${hist}</div>`:""}</div>`;
+}
+function renderPitchers(){
+  const ds = torneioDias(); if(!pDay) pDay = diaPadrao();
+  $("#dayChips").innerHTML = ds.map(d => `<button class="chip${d===pDay?" on":""}" data-d="${d}">${fmtDia(d)}<small>${DATA.jogos.some(g => g.data===d && isBR(g)) ? "jogo do Brasil" : (d > "2026-11-22" ? "2ª fase" : "sem jogo")}</small></button>`).join("");
+  const all = atletas();
+  const usados = all.filter(a => Object.keys(a.log).some(d => d <= pDay && a.log[d] > 0));
+  const rank = a => ({violacao:0,limitado:1,descanso:2,livre:3})[sit(a,pDay).estado];
+  usados.sort((a,b) => rank(a)-rank(b) || (+a.num||99)-(+b.num||99));
+  const livres = all.filter(a => !usados.includes(a)).sort((a,b) => (+a.num)-(+b.num));
+  $("#pitchers").innerHTML = (usados.length ? usados.map(a => pitcherHTML(a,pDay)).join("") : `<div class="card empty"><b style="color:var(--ink)">Nenhum arremesso registrado até ${fmtDia(pDay)}.</b><br><span class="small">Mande pelo Assistente (“Davi 32, Gabriel 18”) ou registre abaixo. A página calcula limite e descanso de cada atleta.</span></div>`)
+    + (livres.length ? `<div class="card"><div class="small muted" style="margin-bottom:8px">Sem arremessos na sequência · podem arremessar até 85</div><div class="free">${livres.map(a => `<span>${esc(a.num)} ${esc(a.curto)}</span>`).join("")}</div></div>` : "");
+}
+$("#dayChips").addEventListener("click", e => { const b = e.target.closest(".chip"); if(!b) return; pDay = b.dataset.d; renderPitchers(); });
+function situacaoTexto(dia){
+  return atletas().map(a => { const s = sit(a, dia);
+    const t = s.estado==="descanso" ? `descanso até ${s.descansoAte} (volta ${s.voltaEm})` : s.estado==="violacao" ? "acima do limite" : `disponível, máximo ${s.limiteDia}${s.hoje?`, já arremessou ${s.hoje} hoje (restam ${s.restante})`:""}${s.terceiroDia?", seria o 3º dia seguido":""}`;
+    const h = Object.keys(a.log).sort().filter(d => a.log[d] > 0).map(d => d+": "+a.log[d]).join(", ");
+    return `#${a.num} ${a.nome} (${a.arremessa==="E"?"canhoto":"destro"}): ${t}${h?" | histórico: "+h:""}`; }).join("\n");
+}
+function renderSummary(){
+  const dia = diaPadrao(), g = {violacao:[],livre:[],limitado:[],descanso:[]};
+  $("#pDayLbl").textContent = "· " + fmtDia(dia);
+  atletas().forEach(a => { const s = sit(a, dia); g[s.estado].push(a.curto + (s.estado==="limitado" ? " ("+s.limiteDia+")" : s.estado==="descanso" ? " (volta "+fmtDia(s.voltaEm).slice(4)+")" : "")); });
+  const row = (cls,t,arr) => arr.length ? `<div style="margin:8px 0"><span class="st ${cls}">${t} · ${arr.length}</span><div class="small" style="margin-top:6px">${esc(arr.join(", "))}</div></div>` : "";
+  $("#pSummary").innerHTML = `<a href="#arremessos" class="card" style="display:block;text-decoration:none;color:inherit">${row("violacao","Acima do limite",g.violacao)}${row("limitado","Com limite",g.limitado)}${row("descanso","Em descanso",g.descanso)}${row("livre","Livres",g.livre)}</a>`;
+}
+function renderRegs(){
+  if(!ROWS.length){ $("#regs").innerHTML = `<div class="small muted">Nenhum registro ainda.</div>`; return; }
+  $("#regs").innerHTML = `<table class="reg"><tbody>${ROWS.slice().reverse().map(r => `<tr><td>${fmtDia(r.data)}${r.jogo?" · J"+r.jogo:""}</td><td>${esc(curto(r.atleta))}</td><td class="n">${r.arremessos}</td><td style="width:44px"><button data-id="${r.id}" aria-label="Apagar registro">✕</button></td></tr>`).join("")}</tbody></table>`;
+}
+$("#regs").addEventListener("click", async e => {
+  const b = e.target.closest("button[data-id]"); if(!b) return;
+  const r = ROWS.find(x => String(x.id)===b.dataset.id); if(!r) return;
+  if(!(await confirmar(`Apagar ${curto(r.atleta)} · ${r.arremessos} arremessos (${fmtDia(r.data)})?`))) return;
+  try{ await rpc("u12_apagar", {p_id: r.id}); await carregarArremessos(); toast("Registro apagado."); }catch(err){ toast(err.message, true); }
+});
+function renderSim(){
+  const v = parseInt($("#simIn").value,10), F = Arremessos.FAIXAS; let k = -1;
+  if(isNaN(v) || v <= 0) $("#simOut").textContent = "—";
+  else if(v > 85){ $("#simOut").innerHTML = '<span style="color:var(--red)">Acima de 85</span>'; k = 4; }
+  else { const dd = Arremessos.diasDescanso(v); k = F.findIndex(f => v <= f[0]); $("#simOut").textContent = dd ? dd+" dia"+(dd>1?"s":"")+" de descanso" : "Sem descanso"; }
+  $("#simLeg").innerHTML = ["1–30","31–45","46–60","61–75","76–85"].map((l,i) => `<div${i===k?' class="on"':""}><b>${l}</b>${["livre","1 dia","2 dias","3 dias","4 dias"][i]}</div>`).join("");
+}
+$("#simIn").addEventListener("input", renderSim);
+function renderForm(){
+  $("#fAt").innerHTML = `<option value="">Atleta</option>` + DATA.elenco.slice().sort((a,b) => (+a.num)-(+b.num)).map(a => `<option value="${esc(a.nome)}">${esc(a.num)} · ${esc(a.curto)}</option>`).join("");
+  $("#fDia").innerHTML = torneioDias().map(d => `<option value="${d}"${d===diaPadrao()?" selected":""}>${fmtDia(d)}</option>`).join("");
+  const sync = () => { const g = DATA.jogos.find(x => x.data===$("#fDia").value && isBR(x) && x.n); $("#fJogo").value = g ? g.n : ""; };
+  $("#fDia").onchange = sync; sync();
+}
+$("#fOk").addEventListener("click", async () => {
+  const at = $("#fAt").value, n = parseInt($("#fN").value,10);
+  if(!at || isNaN(n) || n < 0 || n > 150){ toast("Escolha o atleta e informe os arremessos.", true); return; }
+  await gravar([{atleta: at, arremessos: n, data: $("#fDia").value, jogo: parseInt($("#fJogo").value,10) || null}]);
+  $("#fN").value = "";
+});
+
+/* Supabase */
+async function sb(path, opts){
+  const r = await fetch(SB_URL + path, Object.assign({headers:{apikey:SB_KEY, Authorization:"Bearer "+SB_KEY, "Content-Type":"application/json"}}, opts||{}));
+  const j = await r.json().catch(() => null);
+  if(!r.ok) throw new Error((j && (j.message || j.hint)) || ("Erro "+r.status));
+  return j;
+}
+async function rpc(fn, args, tentar){
+  let pin = store.get("u12pin");
+  if(!pin){ pin = await pedirPin(); if(!pin) throw new Error("Registro cancelado."); }
+  try{ const out = await sb("/rest/v1/rpc/"+fn, {method:"POST", body: JSON.stringify(Object.assign({p_pin: pin}, args))}); store.set("u12pin", pin); return out; }
+  catch(e){ if(/PIN/.test(e.message) && !tentar){ store.set("u12pin", null); toast("PIN incorreto.", true); return rpc(fn, args, true); } throw e; }
+}
+async function carregarArremessos(){
+  try{ ROWS = await sb("/rest/v1/u12_arremessos?select=id,data,jogo,atleta,arremessos&order=data.asc,id.asc"); store.set("u12rows", ROWS); }
+  catch(e){ ROWS = store.get("u12rows") || ROWS; }
+  renderPitchers(); renderSummary(); renderRegs();
+}
+async function gravar(itens){
+  try{ await rpc("u12_registrar", {p_itens: itens}); await carregarArremessos(); toast("Arremessos registrados."); return true; }
+  catch(e){ toast(e.message, true); return false; }
+}
+
+/* Diálogos */
+function pedirPin(){
+  return new Promise(res => { const d = $("#pinDlg"); $("#pinIn").value = ""; d.showModal(); setTimeout(() => $("#pinIn").focus(), 50);
+    d.onclose = () => res(d.returnValue==="ok" ? $("#pinIn").value.trim() : null); });
+}
+function confirmar(txt){ return Promise.resolve(window.confirm(txt)); }
+function toast(t, erro){
+  const el = document.createElement("div"); el.textContent = t;
+  el.style.cssText = `position:fixed;left:50%;transform:translateX(-50%);top:calc(env(safe-area-inset-top) + 76px);background:${erro?"var(--red)":"var(--navy)"};color:#fff;padding:12px 16px;border-radius:12px;font-weight:600;z-index:50;max-width:90%;box-shadow:0 6px 18px rgba(0,0,0,.2)`;
+  document.body.appendChild(el); setTimeout(() => el.remove(), 3200);
+}
+
+/* ================= Assistente ================= */
+const HIST = store.get("u12chat") || [];
+const SUG = ["Quantas visitas ao montinho posso fazer?","Como funciona a entrada extra?","Quem pode arremessar amanhã?","Posso usar taco de alumínio?","Quando o jogo acaba por diferença de placar?"];
+$("#sug").innerHTML = SUG.map(s => `<button class="chip">${s}</button>`).join("");
+$("#sug").addEventListener("click", e => { const b = e.target.closest(".chip"); if(!b) return; $("#txt").value = b.textContent; enviar(); });
+const fmtResp = t => esc(t).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>");
+function addMsg(role, html, cls){ const d = document.createElement("div"); d.className = "msg "+role+(cls?" "+cls:""); d.innerHTML = html; $("#chat").appendChild(d); d.scrollIntoView({block:"end", behavior:"smooth"}); return d; }
+function renderChat(){ $("#chat").innerHTML = ""; HIST.slice(-20).forEach(m => addMsg(m.role==="user"?"u":"a", m.role==="user" ? esc(m.content) : fmtResp(m.content))); }
+function salvarHist(){ store.set("u12chat", HIST.slice(-30)); }
+
+function confirmCard(itens, duvidas){
+  const d = document.createElement("div"); d.className = "confirm";
+  const linhas = itens.map((i,k) => `<tr><td>${esc(curto(i.atleta))}<br><span class="small muted">${fmtDia(i.data)}${i.jogo?" · Jogo "+i.jogo:""}</span></td><td>${i.arremessos}</td></tr>`).join("");
+  d.innerHTML = `<b>Registrar estes arremessos?</b>${itens.length?`<table><tbody>${linhas}</tbody></table>`:""}${duvidas.length?`<div class="small" style="color:var(--amber);margin:6px 0">${duvidas.map(esc).join("<br>")}</div>`:""}
+    <div class="acts">${itens.length?'<button class="btn g" data-a="ok">Confirmar</button>':""}<button class="btn o" data-a="no">Cancelar</button></div>`;
+  $("#chat").appendChild(d); d.scrollIntoView({block:"end", behavior:"smooth"});
+  d.addEventListener("click", async e => {
+    const b = e.target.closest("button"); if(!b) return;
+    d.querySelectorAll("button").forEach(x => x.disabled = true);
+    if(b.dataset.a==="ok"){
+      const ok = await gravar(itens);
+      if(ok){
+        const dia = itens[0].data;
+        const res = itens.map(i => { const a = atletas().find(x => x.nome===i.atleta); const s = sit(a, Arremessos.addDias(dia,1)); return `${curto(i.atleta)}: ${s.estado==="descanso" ? "descanso até "+fmtDia(s.descansoAte)+", volta "+fmtDia(s.voltaEm) : "disponível amanhã, máximo "+s.limiteDia}`; }).join("\n");
+        d.innerHTML = `<b>Registrado.</b><div class="small" style="white-space:pre-wrap;margin-top:6px">${esc(res)}</div>`;
+        HIST.push({role:"assistant", content:"Registrado.\n"+res}); salvarHist();
+      } else d.querySelectorAll("button").forEach(x => x.disabled = false);
+    } else { d.innerHTML = '<span class="small muted">Registro cancelado.</span>'; }
+  });
+}
+let enviando = false;
+async function enviar(){
+  const t = $("#txt").value.trim(); if(!t || enviando) return;
+  if(!navigator.onLine){ toast("Sem internet. O Assistente precisa de conexão; a aba Regras funciona offline.", true); return; }
+  enviando = true; $("#txt").value = ""; autoH();
+  addMsg("u", esc(t)); const w = addMsg("a", '<span class="dots">Consultando o livro de regras</span>', "wait");
+  const dia = diaPadrao();
+  try{
+    const r = await fetch("/api/perguntar", {method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify({
+      pergunta: t, hoje: hojeRD(),
+      elenco: DATA.elenco.map(a => ({num:a.num, nome:a.nome})),
+      jogosBR: DATA.jogos.filter(g => isBR(g) && g.n).map(g => ({data:g.data, n:g.n, desc:g.visitante+" x "+g.mandante})),
+      situacao: "Dia de referência: "+dia+"\n"+situacaoTexto(dia),
+      historico: HIST.slice(-6)
+    })});
+    const j = await r.json().catch(() => ({erro:"Resposta inválida do servidor."}));
+    w.remove();
+    if(!r.ok || j.erro) throw new Error(j.erro || ("Erro "+r.status));
+    HIST.push({role:"user", content:t});
+    if(j.tipo==="arremessos"){ confirmCard(j.itens||[], j.duvidas||[]); }
+    else { addMsg("a", fmtResp(j.texto)); HIST.push({role:"assistant", content:j.texto}); }
+    salvarHist();
+  }catch(e){ w.remove(); addMsg("a", esc(e.message), "err"); }
+  enviando = false;
+}
+$("#send").addEventListener("click", enviar);
+$("#txt").addEventListener("keydown", e => { if(e.key==="Enter" && !e.shiftKey){ e.preventDefault(); enviar(); } });
+function autoH(){ const t = $("#txt"); t.style.height = "auto"; t.style.height = Math.min(120, t.scrollHeight)+"px"; }
+$("#txt").addEventListener("input", autoH);
+
+/* Voz */
+const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+let rec = null, gravando = false, base = "";
+if(!SR){ $("#micHint").textContent = "Para falar, use o microfone do teclado do celular. Ex.: “Davi 32, Gabriel 18”."; }
+$("#mic").addEventListener("click", () => {
+  if(!SR){ $("#txt").focus(); toast("Use o microfone do teclado para ditar.", false); return; }
+  if(gravando){ rec && rec.stop(); return; }
+  rec = new SR(); rec.lang = "pt-BR"; rec.interimResults = true; rec.continuous = false;
+  base = $("#txt").value ? $("#txt").value.trim()+" " : "";
+  rec.onresult = e => { let s = ""; for(const r of e.results) s += r[0].transcript; $("#txt").value = base + s; autoH(); };
+  rec.onend = () => { gravando = false; $("#mic").classList.remove("rec"); if($("#txt").value.trim()) enviar(); };
+  rec.onerror = e => { gravando = false; $("#mic").classList.remove("rec"); if(e.error==="not-allowed") toast("Permita o microfone nas configurações do navegador.", true); };
+  try{ rec.start(); gravando = true; $("#mic").classList.add("rec"); }catch(e){ toast("Não foi possível usar o microfone.", true); }
+});
+
+/* ================= Início ================= */
+function renderPainel(){
+  renderNext(); renderSummary();
+  $("#pend").innerHTML = PENDENCIAS.map(p => `<li>${esc(p)}</li>`).join("");
+  $("#upd").textContent = "Calendário atualizado em " + new Date(DATA.atualizado).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit",timeZone:"America/Sao_Paulo"}) + " (Brasília)";
+}
+function boot(d){
+  DATA = d; ROWS = store.get("u12rows") || [];
+  renderPainel(); renderGames(); renderPitchers(); renderRegs(); renderForm(); renderSim(); renderCats(); renderRules(); renderChat();
+  show(location.hash.slice(1) || "painel");
+  carregarArremessos();
+}
+fetch("/regras/data.json", {cache:"no-store"}).then(r => { if(!r.ok) throw 0; return r.json(); })
+  .then(d => { store.set("u12data", d); boot(d); })
+  .catch(() => { const c = store.get("u12data"); if(c) boot(c); else $("main").innerHTML = '<div class="card empty">Sem conexão e sem dados salvos. Abra a página uma vez com internet.</div>'; });
+setInterval(() => { if(DATA) renderNext(); }, 60000);
+if("serviceWorker" in navigator) addEventListener("load", () => navigator.serviceWorker.register("/regras/sw.js", {scope:"/regras/"}).catch(() => {}));
+}
+</script>
+</body>
+</html>

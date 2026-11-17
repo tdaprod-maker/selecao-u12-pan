@@ -1,0 +1,569 @@
+{
+ "atualizado": "2026-11-17T18:10:00-03:00",
+ "torneio": {
+  "nome": "Campeonato Pan-Americano Sub-12 2026",
+  "local": "IPL Academy, Guerra (Santo Domingo), República Dominicana",
+  "inicio": "2026-11-20",
+  "fim": "2026-11-27",
+  "fuso": "GMT-4 (1 hora a menos que Brasília)",
+  "site": "https://www.wbscamericas.org/en/events/2026-campeonato-panamericano-sub-12-u-12-pan-american-championship-2026"
+ },
+ "grupos": {
+  "A": [
+   [
+    "Brasil",
+    21
+   ],
+   [
+    "Cuba",
+    12
+   ],
+   [
+    "Nicarágua",
+    15
+   ],
+   [
+    "EUA",
+    3
+   ]
+  ],
+  "B": [
+   [
+    "Argentina",
+    35
+   ],
+   [
+    "Curaçao",
+    31
+   ],
+   [
+    "Rep. Dominicana",
+    8
+   ],
+   [
+    "Venezuela",
+    5
+   ]
+  ],
+  "C": [
+   [
+    "México",
+    6
+   ],
+   [
+    "Panamá",
+    9
+   ],
+   [
+    "Peru",
+    34
+   ],
+   [
+    "Porto Rico",
+    7
+   ]
+  ]
+ },
+ "jogos": [
+  {
+   "n": 1,
+   "data": "2026-11-20",
+   "hora": "09:00",
+   "campo": "Estádio 1",
+   "fase": "A",
+   "visitante": "Cuba",
+   "mandante": "EUA"
+  },
+  {
+   "n": 2,
+   "data": "2026-11-20",
+   "hora": "09:00",
+   "campo": "Estádio 2",
+   "fase": "C",
+   "visitante": "Panamá",
+   "mandante": "Porto Rico"
+  },
+  {
+   "n": 0,
+   "data": "2026-11-20",
+   "hora": "11:45",
+   "campo": "Estádio 1",
+   "fase": "evento",
+   "evento": "Cerimônia de abertura"
+  },
+  {
+   "n": 3,
+   "data": "2026-11-20",
+   "hora": "12:30",
+   "campo": "Estádio 1",
+   "fase": "B",
+   "visitante": "Argentina",
+   "mandante": "Rep. Dominicana"
+  },
+  {
+   "n": 4,
+   "data": "2026-11-20",
+   "hora": "12:30",
+   "campo": "Estádio 2",
+   "fase": "A",
+   "visitante": "Nicarágua",
+   "mandante": "Brasil"
+  },
+  {
+   "n": 5,
+   "data": "2026-11-20",
+   "hora": "15:00",
+   "campo": "Estádio 1",
+   "fase": "C",
+   "visitante": "Peru",
+   "mandante": "México"
+  },
+  {
+   "n": 6,
+   "data": "2026-11-20",
+   "hora": "15:00",
+   "campo": "Estádio 2",
+   "fase": "B",
+   "visitante": "Curaçao",
+   "mandante": "Venezuela"
+  },
+  {
+   "n": 7,
+   "data": "2026-11-21",
+   "hora": "09:30",
+   "campo": "Estádio 1",
+   "fase": "A",
+   "visitante": "Nicarágua",
+   "mandante": "Cuba"
+  },
+  {
+   "n": 8,
+   "data": "2026-11-21",
+   "hora": "09:30",
+   "campo": "Estádio 2",
+   "fase": "A",
+   "visitante": "Brasil",
+   "mandante": "EUA"
+  },
+  {
+   "n": 9,
+   "data": "2026-11-21",
+   "hora": "12:00",
+   "campo": "Estádio 1",
+   "fase": "B",
+   "visitante": "Rep. Dominicana",
+   "mandante": "Venezuela"
+  },
+  {
+   "n": 10,
+   "data": "2026-11-21",
+   "hora": "12:00",
+   "campo": "Estádio 2",
+   "fase": "B",
+   "visitante": "Argentina",
+   "mandante": "Curaçao"
+  },
+  {
+   "n": 11,
+   "data": "2026-11-21",
+   "hora": "14:30",
+   "campo": "Estádio 1",
+   "fase": "C",
+   "visitante": "Peru",
+   "mandante": "Panamá"
+  },
+  {
+   "n": 12,
+   "data": "2026-11-21",
+   "hora": "14:30",
+   "campo": "Estádio 2",
+   "fase": "C",
+   "visitante": "México",
+   "mandante": "Porto Rico"
+  },
+  {
+   "n": 13,
+   "data": "2026-11-22",
+   "hora": "09:30",
+   "campo": "Estádio 1",
+   "fase": "A",
+   "visitante": "Cuba",
+   "mandante": "Brasil"
+  },
+  {
+   "n": 14,
+   "data": "2026-11-22",
+   "hora": "09:30",
+   "campo": "Estádio 2",
+   "fase": "C",
+   "visitante": "Porto Rico",
+   "mandante": "Peru"
+  },
+  {
+   "n": 15,
+   "data": "2026-11-22",
+   "hora": "12:00",
+   "campo": "Estádio 1",
+   "fase": "C",
+   "visitante": "Panamá",
+   "mandante": "México"
+  },
+  {
+   "n": 16,
+   "data": "2026-11-22",
+   "hora": "12:00",
+   "campo": "Estádio 2",
+   "fase": "B",
+   "visitante": "Venezuela",
+   "mandante": "Argentina"
+  },
+  {
+   "n": 17,
+   "data": "2026-11-22",
+   "hora": "14:30",
+   "campo": "Estádio 1",
+   "fase": "B",
+   "visitante": "Curaçao",
+   "mandante": "Rep. Dominicana"
+  },
+  {
+   "n": 18,
+   "data": "2026-11-22",
+   "hora": "14:30",
+   "campo": "Estádio 2",
+   "fase": "A",
+   "visitante": "EUA",
+   "mandante": "Nicarágua"
+  },
+  {
+   "n": 0,
+   "data": "2026-11-23",
+   "fase": "SR",
+   "visitante": "2C",
+   "mandante": "1B"
+  },
+  {
+   "n": 0,
+   "data": "2026-11-23",
+   "fase": "SR",
+   "visitante": "2A",
+   "mandante": "1C"
+  },
+  {
+   "n": 0,
+   "data": "2026-11-23",
+   "fase": "SR",
+   "visitante": "2B",
+   "mandante": "1A"
+  },
+  {
+   "n": 22,
+   "data": "2026-11-23",
+   "fase": "PR",
+   "visitante": "4C",
+   "mandante": "3B"
+  },
+  {
+   "n": 23,
+   "data": "2026-11-23",
+   "fase": "PR",
+   "visitante": "4A",
+   "mandante": "3C"
+  },
+  {
+   "n": 24,
+   "data": "2026-11-23",
+   "fase": "PR",
+   "visitante": "4B",
+   "mandante": "3A"
+  },
+  {
+   "n": 0,
+   "data": "2026-11-24",
+   "fase": "SR",
+   "visitante": "2B",
+   "mandante": "1C"
+  },
+  {
+   "n": 0,
+   "data": "2026-11-24",
+   "fase": "SR",
+   "visitante": "1A",
+   "mandante": "1B",
+   "sorteio": true
+  },
+  {
+   "n": 0,
+   "data": "2026-11-24",
+   "fase": "SR",
+   "visitante": "2A",
+   "mandante": "2C",
+   "sorteio": true
+  },
+  {
+   "n": 28,
+   "data": "2026-11-24",
+   "fase": "PR",
+   "visitante": "4B",
+   "mandante": "3C"
+  },
+  {
+   "n": 29,
+   "data": "2026-11-24",
+   "fase": "PR",
+   "visitante": "3A",
+   "mandante": "3B",
+   "sorteio": true
+  },
+  {
+   "n": 30,
+   "data": "2026-11-24",
+   "fase": "PR",
+   "visitante": "4A",
+   "mandante": "4C",
+   "sorteio": true
+  },
+  {
+   "n": 0,
+   "data": "2026-11-25",
+   "fase": "SR",
+   "visitante": "2B",
+   "mandante": "2C",
+   "sorteio": true
+  },
+  {
+   "n": 0,
+   "data": "2026-11-25",
+   "fase": "SR",
+   "visitante": "1C",
+   "mandante": "1A",
+   "sorteio": true
+  },
+  {
+   "n": 0,
+   "data": "2026-11-25",
+   "fase": "SR",
+   "visitante": "2A",
+   "mandante": "1B"
+  },
+  {
+   "n": 34,
+   "data": "2026-11-25",
+   "fase": "PR",
+   "visitante": "4B",
+   "mandante": "4C",
+   "sorteio": true
+  },
+  {
+   "n": 35,
+   "data": "2026-11-25",
+   "fase": "PR",
+   "visitante": "3C",
+   "mandante": "3A",
+   "sorteio": true
+  },
+  {
+   "n": 36,
+   "data": "2026-11-25",
+   "fase": "PR",
+   "visitante": "4A",
+   "mandante": "3B"
+  },
+  {
+   "n": 0,
+   "data": "2026-11-26",
+   "fase": "SR",
+   "visitante": "2C",
+   "mandante": "1A"
+  },
+  {
+   "n": 0,
+   "data": "2026-11-26",
+   "fase": "SR",
+   "visitante": "1B",
+   "mandante": "1C",
+   "sorteio": true
+  },
+  {
+   "n": 0,
+   "data": "2026-11-26",
+   "fase": "SR",
+   "visitante": "2A",
+   "mandante": "2B",
+   "sorteio": true
+  },
+  {
+   "n": 40,
+   "data": "2026-11-26",
+   "fase": "PR",
+   "visitante": "4C",
+   "mandante": "3A"
+  },
+  {
+   "n": 41,
+   "data": "2026-11-26",
+   "fase": "PR",
+   "visitante": "3B",
+   "mandante": "3C",
+   "sorteio": true
+  },
+  {
+   "n": 42,
+   "data": "2026-11-26",
+   "fase": "PR",
+   "visitante": "4A",
+   "mandante": "4B",
+   "sorteio": true
+  },
+  {
+   "n": 43,
+   "data": "2026-11-27",
+   "fase": "F",
+   "visitante": "4º da Super Ronda",
+   "mandante": "3º da Super Ronda",
+   "titulo": "Disputa do 3º lugar"
+  },
+  {
+   "n": 44,
+   "data": "2026-11-27",
+   "fase": "F",
+   "visitante": "2º da Super Ronda",
+   "mandante": "1º da Super Ronda",
+   "titulo": "Final"
+  },
+  {
+   "n": 0,
+   "data": "2026-11-27",
+   "fase": "evento",
+   "evento": "Cerimônia de encerramento"
+  }
+ ],
+ "elenco": [
+  {
+   "num": "35",
+   "nome": "André Takao Cesetti Kina",
+   "curto": "André Kina",
+   "bate": "D",
+   "arremessa": "D"
+  },
+  {
+   "num": "7",
+   "nome": "Antony Honorato dos Santos Araújo",
+   "curto": "Antony Araújo",
+   "bate": "D",
+   "arremessa": "D"
+  },
+  {
+   "num": "1",
+   "nome": "Cesar Seiki Imoto",
+   "curto": "Cesar Imoto",
+   "bate": "E",
+   "arremessa": "D"
+  },
+  {
+   "num": "30",
+   "nome": "Eduardo França Amorim Filho",
+   "curto": "Eduardo Amorim Filho",
+   "bate": "D",
+   "arremessa": "D"
+  },
+  {
+   "num": "5",
+   "nome": "Felipe Filoni Yoshida",
+   "curto": "Felipe Yoshida",
+   "bate": "D",
+   "arremessa": "D"
+  },
+  {
+   "num": "32",
+   "nome": "Gabriel Marques Maia",
+   "curto": "Gabriel Maia",
+   "bate": "D",
+   "arremessa": "D"
+  },
+  {
+   "num": "28",
+   "nome": "Guilherme Watanabe Jimenes Amador",
+   "curto": "Guilherme Amador",
+   "bate": "D",
+   "arremessa": "D"
+  },
+  {
+   "num": "6",
+   "nome": "Heitor Maruo Kanabushi",
+   "curto": "Heitor Kanabushi",
+   "bate": "E",
+   "arremessa": "D"
+  },
+  {
+   "num": "38",
+   "nome": "Heitor Wong Pires",
+   "curto": "Heitor Pires",
+   "bate": "E",
+   "arremessa": "E"
+  },
+  {
+   "num": "27",
+   "nome": "Lucas Castello Branco Jelski",
+   "curto": "Lucas Jelski",
+   "bate": "D",
+   "arremessa": "D"
+  },
+  {
+   "num": "8",
+   "nome": "Lucas Kiyoharu Yonamine",
+   "curto": "Lucas Yonamine",
+   "bate": "E",
+   "arremessa": "E"
+  },
+  {
+   "num": "26",
+   "nome": "Miguel Arthur Bevilaqua Barbosa da Silva",
+   "curto": "Miguel Silva",
+   "bate": "D",
+   "arremessa": "D"
+  },
+  {
+   "num": "34",
+   "nome": "Pedro Gonçalves Tonzar Pereira",
+   "curto": "Pedro Pereira",
+   "bate": "D",
+   "arremessa": "D"
+  },
+  {
+   "num": "89",
+   "nome": "Pedro Vinicius Batista",
+   "curto": "Pedro Batista",
+   "bate": "D",
+   "arremessa": "D"
+  },
+  {
+   "num": "22",
+   "nome": "Theo Yuji Nomi Takahashi",
+   "curto": "Theo Takahashi",
+   "bate": "D",
+   "arremessa": "D"
+  },
+  {
+   "num": "53",
+   "nome": "Tony Ryuzo Okimasu",
+   "curto": "Tony Okimasu",
+   "bate": "E",
+   "arremessa": "E"
+  },
+  {
+   "num": "17",
+   "nome": "Victor Yukio Nakashima dos Santos",
+   "curto": "Victor Santos",
+   "bate": "D",
+   "arremessa": "D"
+  },
+  {
+   "num": "10",
+   "nome": "Davi Matos de Carvalho Cansian",
+   "curto": "Davi Cansian",
+   "bate": "D",
+   "arremessa": "D"
+  }
+ ]
+}
