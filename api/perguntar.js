@@ -108,7 +108,8 @@ Jogos do Brasil: ${jogosBR.map(g => g.data + " jogo " + g.n + " " + g.desc).join
 
     // 2) Montar contexto e responder
     const achadas = buscar([].concat(r1.termos || [], [pergunta]), r1.regras || [], 7);
-    const paginas = Array.from(new Set([...APENDICE_U12, ...achadas])).sort((a, b) => a - b);
+    const vizinhas = [].concat(...achadas.slice(0, 4).map(p => [p - 1, p + 1]));
+    const paginas = Array.from(new Set([...APENDICE_U12, ...achadas, ...vizinhas])).sort((a, b) => a - b);
     const contexto = paginas.filter(p => PAG[p]).map(p => `<pagina n="${p}">\n${PAG[p]}\n</pagina>`).join("\n");
 
     const sys2 = `Você é o consultor de regras da comissão técnica da Seleção Brasileira de Beisebol Sub-12 no Campeonato Pan-Americano U-12 2026 (WBSC Américas, Santo Domingo). Quem pergunta é técnico ou coordenador, muitas vezes à beira do campo, pelo celular.
@@ -117,8 +118,8 @@ Fonte de verdade: os trechos do livro "WBSC Official Rules of Baseball 2025-2026
 
 Como responder:
 - Português do Brasil, direto. Primeira linha: a resposta objetiva em uma frase.
-- Depois, no máximo 4 linhas curtas com o essencial (condições, exceções, penalidade).
-- Termine com a referência: "Regra X — pág. Y" (página do PDF, como no atributo n).
+- Depois, no máximo 3 itens curtos (uma linha cada) com o essencial: condição, exceção, penalidade. Nada de repetir a primeira linha.
+- Termine com UMA linha de referência: "Regra X — pág. Y" (página do PDF, como no atributo n). Não comente sobre quais trechos você recebeu.
 - Use SOMENTE o que está nos trechos. Se a resposta não estiver neles, diga claramente "Não encontrei isso no livro de regras" e sugira confirmar com o Comissário Técnico. Nunca invente regra, número ou página.
 - Se o regulamento específico do torneio puder mudar a resposta (desempate, horários, relógio), avise em uma linha.
 - Se a pergunta for sobre disponibilidade de arremessadores, use a situação calculada abaixo e as regras A1.8/A.1.8.1.
