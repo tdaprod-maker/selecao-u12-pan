@@ -21,7 +21,13 @@ async function claude(model, system, messages, max_tokens) {
   });
   const j = await r.json();
   if (!r.ok) throw new Error((j.error && j.error.message) || "Falha na API (" + r.status + ")");
-  return (j.content || []).filter(b => b.type === "text").map(b => b.text).join("").trim();
+  const txt = (j.content || []).filter(b => b.type === "text").map(b => b.text).join("").trim();
+  if (!txt) throw Object.assign(new Error("Resposta vazia (" + (j.stop_reason || "?") + ")"), { vazio: true });
+  return txt;
+}
+async function claudeSeguro(model, system, messages, max_tokens) {
+  try { return await claude(model, system, messages, max_tokens); }
+  catch (e) { if (e.vazio) return await claude(model, system, messages, max_tokens * 2); throw e; }
 }
 
 function json(txt) {
@@ -92,7 +98,7 @@ Caso contrário (dúvida de regra, de disponibilidade de arremessadores, de cale
 
 Elenco do Brasil (número – nome): ${elenco.map(a => a.num + " – " + a.nome).join("; ")}
 Jogos do Brasil: ${jogosBR.map(g => g.data + " jogo " + g.n + " " + g.desc).join("; ")}`;
-    const r1 = json(await claude(MODELO_RAPIDO, sys1, [{ role: "user", content: pergunta }], 600));
+    const r1 = json(await claudeSeguro(MODELO_RAPIDO, sys1, [{ role: "user", content: pergunta }], 1500));
 
     if (r1.tipo === "arremessos") {
       const nomes = new Set(elenco.map(a => a.nome));
@@ -116,6 +122,7 @@ Como responder:
 - Use SOMENTE o que está nos trechos. Se a resposta não estiver neles, diga claramente "Não encontrei isso no livro de regras" e sugira confirmar com o Comissário Técnico. Nunca invente regra, número ou página.
 - Se o regulamento específico do torneio puder mudar a resposta (desempate, horários, relógio), avise em uma linha.
 - Se a pergunta for sobre disponibilidade de arremessadores, use a situação calculada abaixo e as regras A1.8/A.1.8.1.
+- Vocabulário do beisebol no Brasil: rebatedor (não "batedor"), arremessador, receptor/catcher, out (eliminação), base por bolas, entrada.
 - Sem emojis, sem markdown pesado (no máximo **negrito** pontual).
 
 Hoje (Santo Domingo): ${hoje}
@@ -132,7 +139,7 @@ ${contexto}`;
     const alt = [];
     msgs.forEach(m => { if (alt.length && alt[alt.length - 1].role === m.role) alt[alt.length - 1].content += "\n" + m.content; else alt.push(m); });
 
-    const resposta = await claude(MODELO_RESPOSTA, sys2, alt, 700);
+    const resposta = await claudeSeguro(MODELO_RESPOSTA, sys2, alt, 2500);
     return res.status(200).json({ tipo: "resposta", texto: resposta, paginas });
   } catch (e) {
     return res.status(500).json({ erro: String(e.message || e).slice(0, 300) });
