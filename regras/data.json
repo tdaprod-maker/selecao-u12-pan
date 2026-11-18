@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-17T18:10:00-03:00",
+ "atualizado": "2026-11-18T17:15:00-03:00",
  "torneio": {
   "nome": "Campeonato Pan-Americano Sub-12 2026",
   "local": "IPL Academy, Guerra (Santo Domingo), República Dominicana",
@@ -65,6 +65,15 @@
   ]
  },
  "jogos": [
+  {
+   "n": 0,
+   "data": "2026-11-19",
+   "hora": "12:00",
+   "campo": "Estádio 1",
+   "fase": "treino",
+   "evento": "Treino oficial do Brasil",
+   "obs": "Banco da 1ª base · horário de 1 hora"
+  },
   {
    "n": 1,
    "data": "2026-11-20",

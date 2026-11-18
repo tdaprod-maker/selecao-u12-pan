@@ -1,5 +1,5 @@
 /* Offline: app em cache; dados e API sempre pela rede primeiro */
-const CACHE = "u12-regras-v2";
+const CACHE = "u12-regras-v3";
 const CORE = ["/regras/", "/regras/pitch.js", "/regras/regras-conteudo.js", "/regras/data.json", "/regras/manifest.webmanifest",
   "/regras/logo-u12-sm.png", "/regras/logo-panam.png", "/regras/icon-180.png",
   "/regras/fonts/bebas-neue-latin-400-normal.woff2", "/regras/fonts/barlow-latin-400-normal.woff2",
@@ -9,8 +9,13 @@ self.addEventListener("activate", e => { e.waitUntil(caches.keys().then(ks => Pr
 self.addEventListener("fetch", e => {
   const req = e.request, url = new URL(req.url);
   if (req.method !== "GET" || url.origin !== location.origin || !url.pathname.startsWith("/regras")) return;
+  // Internet ruim: espera a rede no máximo 3,5 s; depois usa a cópia salva (e atualiza em segundo plano)
+  const rede = fetch(req).then(res => { if (res.ok) { const copy = res.clone(); caches.open(CACHE).then(c => c.put(req, copy)); } return res; });
   e.respondWith(
-    fetch(req).then(res => { if (res.ok) { const copy = res.clone(); caches.open(CACHE).then(c => c.put(req, copy)); } return res; })
-      .catch(() => caches.match(req, { ignoreSearch: true }).then(r => r || caches.match("/regras/")))
+    caches.match(req, { ignoreSearch: true }).then(salvo => {
+      if (!salvo) return rede.catch(() => caches.match("/regras/"));
+      const limite = new Promise(r => setTimeout(() => r(salvo), 3500));
+      return Promise.race([rede.catch(() => salvo), limite]);
+    })
   );
 });

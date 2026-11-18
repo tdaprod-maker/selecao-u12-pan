@@ -413,6 +413,7 @@ $("#quick").addEventListener("click", e => { const b = e.target.closest(".chip")
 /* ================= Jogos ================= */
 let gFilter = "br", brSeed = "1A";
 function gameHTML(g){
+  if(g.fase==="treino") return `<div class="card game brg"><div class="hr">${g.hora}<small>BSB ${brasilia(g.hora)}</small></div><div class="teams"><div class="tm br"><b>${esc(g.evento)}</b></div><div class="info">IPL Academy · ${esc(g.campo)} · ${esc(g.obs||"")}</div></div></div>`;
   if(g.fase==="evento") return `<div class="card game ev"><div class="hr">${g.hora||"—"}${g.hora?`<small>BSB ${brasilia(g.hora)}</small>`:""}</div><div class="teams"><div class="tm"><b>${esc(g.evento)}</b></div>${g.campo?`<div class="info">IPL Academy · ${esc(g.campo)}</div>`:""}</div></div>`;
   const nm = t => /^[1-4][ABC]$/.test(t) ? seed(t) : t;
   const tm = (t, sc, lado) => `<div class="tm${t==="Brasil"?" br":""}"><span>${esc(nm(t))} <span class="muted small">${lado}</span></span><span class="sc">${sc!=null?sc:""}</span></div>`;
@@ -441,13 +442,13 @@ function renderGames(){
       <p class="small" style="margin:10px 2px"><a href="${esc(DATA.torneio.site)}/teams" target="_blank" rel="noopener">Elencos e estatísticas oficiais — WBSC Américas</a></p>`;
     return;
   }
-  const list = gFilter==="br" ? DATA.jogos.filter(g => isBR(g) || g.fase==="evento" || g.fase==="F") : DATA.jogos;
+  const list = gFilter==="br" ? DATA.jogos.filter(g => isBR(g) || g.fase==="evento" || g.fase==="treino" || g.fase==="F") : DATA.jogos;
   const by = {}; list.forEach(g => (by[g.data] = by[g.data] || []).push(g));
   let html = "";
   Object.keys(by).sort().forEach(d => {
     if(gFilter==="br" && d>"2026-11-22" && d<"2026-11-27") return;
     if(gFilter==="br" && d==="2026-11-27") html += renderPath();
-    html += `<div class="day"><div class="dayh"><b>${fmtDia(d,true)}</b><span>${d<"2026-11-23"?"Fase de grupos":d<"2026-11-27"?"2ª fase":"Finais"}</span></div>${by[d].map(gameHTML).join("")}</div>`;
+    html += `<div class="day"><div class="dayh"><b>${fmtDia(d,true)}</b><span>${d<"2026-11-20"?"Pré-torneio":d<"2026-11-23"?"Fase de grupos":d<"2026-11-27"?"2ª fase":"Finais"}</span></div>${by[d].map(gameHTML).join("")}</div>`;
   });
   $("#games").innerHTML = html;
 }
@@ -456,8 +457,14 @@ $("#games").addEventListener("click", e => { const b = e.target.closest("#seedCh
 
 function renderNext(){
   const now = Date.now(), hoje = hojeRD();
-  const next = DATA.jogos.find(g => isBR(g) && g.hora && new Date(g.data+"T"+g.hora+":00-04:00").getTime() + 3*3600e3 > now);
+  const fim = g => new Date(g.data+"T"+g.hora+":00-04:00").getTime() + (g.fase==="treino" ? 1 : 3)*3600e3;
+  const next = DATA.jogos.find(g => (isBR(g) || g.fase==="treino") && g.hora && fim(g) > now);
   if(!next){ $("#nextGame").innerHTML = `<div class="card next"><div class="lbl">Próximo jogo</div><div class="vs">2ª fase</div><div class="when">Adversário e horário saem após a fase de grupos.</div></div>`; return; }
+  const diff0 = new Date(next.data+"T"+next.hora+":00-04:00") - now;
+  const rel0 = diff0 < 0 ? "Agora" : next.data===hoje ? "Hoje" : (Math.round((new Date(next.data+"T12:00:00Z") - new Date(hoje+"T12:00:00Z"))/864e5)===1 ? "Amanhã" : "Em breve");
+  if(next.fase==="treino"){ $("#nextGame").innerHTML = `<div class="card next"><div class="lbl">Próximo compromisso</div><div class="vs">Treino oficial</div>
+    <div class="when">${fmtDia(next.data,true)} · ${next.hora} em Santo Domingo · ${brasilia(next.hora)} em Brasília</div>
+    <div class="where">IPL Academy · ${esc(next.campo)} · ${esc(next.obs)}</div><span class="tag">${rel0}</span></div>`; return; }
   const opp = next.visitante==="Brasil" ? next.mandante : next.visitante;
   const diff = new Date(next.data+"T"+next.hora+":00-04:00") - now;
   let rel; if(diff < 0) rel = "Em andamento"; else if(next.data===hoje) rel = "Hoje"; else { const dd = Math.round((new Date(next.data+"T12:00:00Z") - new Date(hoje+"T12:00:00Z"))/864e5); rel = dd===1 ? "Amanhã" : "Em "+dd+" dias"; }
@@ -633,7 +640,7 @@ async function enviar(){
     const r = await fetch("/api/perguntar", {method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify({
       pergunta: t, hoje: hojeRD(),
       elenco: DATA.elenco.map(a => ({num:a.num, nome:a.nome})),
-      jogosBR: DATA.jogos.filter(g => isBR(g) && g.n).map(g => ({data:g.data, n:g.n, desc:g.visitante+" x "+g.mandante+" ("+g.hora+", IPL Academy "+g.campo+", Brasil "+(g.mandante==="Brasil"?"mandante, uniforme branco":"visitante, uniforme azul")+")"})),
+      jogosBR: DATA.jogos.filter(g => (isBR(g) && g.n) || g.fase==="treino").map(g => g.fase==="treino" ? ({data:g.data, n:"treino", desc:g.evento+" ("+g.hora+", IPL Academy "+g.campo+", "+g.obs+")"}) : ({data:g.data, n:g.n, desc:g.visitante+" x "+g.mandante+" ("+g.hora+", IPL Academy "+g.campo+", Brasil "+(g.mandante==="Brasil"?"mandante, uniforme branco":"visitante, uniforme azul")+")"})),
       situacao: "Dia de referência: "+dia+"\n"+situacaoTexto(dia),
       historico: HIST.slice(-6)
     })});
