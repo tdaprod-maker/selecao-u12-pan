@@ -203,6 +203,11 @@ mark{background:var(--gold-soft);color:inherit;border-radius:3px;padding:0 1px}
 .reg td.n{text-align:right;font-weight:800}
 .reg button{border:0;background:none;color:var(--red);font-weight:700;padding:8px}
 .check li{margin:8px 0}
+.info-d summary{cursor:pointer;font-weight:700;color:var(--navy);min-height:28px;list-style:none}
+.info-d summary::-webkit-details-marker{display:none}
+.info-d summary::after{content:" +";color:var(--mid)}
+.info-d[open] summary::after{content:" −"}
+.info-d[open] summary{margin-bottom:6px}
 .foot{font-size:13px;color:var(--mid);text-align:center;margin-top:26px}
 .foot img{height:34px;display:block;margin:0 auto 8px;opacity:.8}
 
@@ -238,6 +243,8 @@ dialog input{width:100%;font-size:26px;letter-spacing:.3em;text-align:center;pad
     <div id="nextGame"></div>
     <h3>Arremessadores <span id="pDayLbl" class="muted" style="font:600 14px var(--body);letter-spacing:0"></span></h3>
     <div id="pSummary"></div>
+    <h3>Informações do torneio</h3>
+    <details class="card info-d"><summary>Sede, delegação, elegibilidade, hospedagem…</summary><div id="infoT"></div></details>
     <h3>Confirmar no congresso técnico</h3>
     <div class="card"><ul class="check" id="pend" style="margin:0;padding-left:18px"></ul></div>
     <h3>Atalhos de regras</h3>
@@ -414,7 +421,7 @@ $("#quick").addEventListener("click", e => { const b = e.target.closest(".chip")
 let gFilter = "br", brSeed = "1A";
 function gameHTML(g){
   if(g.fase==="treino") return `<div class="card game brg"><div class="hr">${g.hora}<small>BSB ${brasilia(g.hora)}</small></div><div class="teams"><div class="tm br"><b>${esc(g.evento)}</b></div><div class="info">IPL Academy · ${esc(g.campo)} · ${esc(g.obs||"")}</div></div></div>`;
-  if(g.fase==="evento") return `<div class="card game ev"><div class="hr">${g.hora||"—"}${g.hora?`<small>BSB ${brasilia(g.hora)}</small>`:""}</div><div class="teams"><div class="tm"><b>${esc(g.evento)}</b></div>${g.campo?`<div class="info">IPL Academy · ${esc(g.campo)}</div>`:""}</div></div>`;
+  if(g.fase==="evento") return `<div class="card game ev"><div class="hr">${g.hora||"—"}${g.hora?`<small>BSB ${brasilia(g.hora)}</small>`:""}</div><div class="teams"><div class="tm"><b>${esc(g.evento)}</b></div>${(g.campo||g.obs)?`<div class="info">${[g.campo?"IPL Academy · "+esc(g.campo):"",esc(g.obs||"")].filter(Boolean).join(" · ")}</div>`:""}</div></div>`;
   const nm = t => /^[1-4][ABC]$/.test(t) ? seed(t) : t;
   const tm = (t, sc, lado) => `<div class="tm${t==="Brasil"?" br":""}"><span>${esc(nm(t))} <span class="muted small">${lado}</span></span><span class="sc">${sc!=null?sc:""}</span></div>`;
   const fase = g.titulo || FASES[g.fase] || ("Grupo "+g.fase);
@@ -677,6 +684,7 @@ $("#mic").addEventListener("click", () => {
 /* ================= Início ================= */
 function renderPainel(){
   renderNext(); renderSummary();
+  $("#infoT").innerHTML = (DATA.info||[]).map(([k,v]) => `<div style="padding:8px 0;border-bottom:1px solid var(--line)"><div class="small muted" style="font-weight:700">${esc(k)}</div><div>${esc(v)}</div></div>`).join("").replace(/border-bottom:1px solid var\(--line\)"><div class="small muted" style="font-weight:700">([^<]*)<\/div><div>([^<]*)<\/div><\/div>$/, '"><div class="small muted" style="font-weight:700">$1</div><div>$2</div></div>');
   $("#pend").innerHTML = PENDENCIAS.map(p => `<li>${esc(p)}</li>`).join("");
   $("#upd").textContent = "Calendário atualizado em " + new Date(DATA.atualizado).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit",timeZone:"America/Sao_Paulo"}) + " (Brasília)";
 }

@@ -2,7 +2,7 @@
  "atualizado": "2026-11-18T17:15:00-03:00",
  "torneio": {
   "nome": "Campeonato Pan-Americano Sub-12 2026",
-  "local": "IPL Academy, Guerra (Santo Domingo), República Dominicana",
+  "local": "IPL Academy, Boca Chica (Santo Domingo), República Dominicana",
   "inicio": "2026-11-20",
   "fim": "2026-11-27",
   "fuso": "GMT-4 (1 hora a menos que Brasília)",
@@ -73,6 +73,14 @@
    "fase": "treino",
    "evento": "Treino oficial do Brasil",
    "obs": "Banco da 1ª base · horário de 1 hora"
+  },
+  {
+   "n": 0,
+   "data": "2026-11-19",
+   "hora": "19:00",
+   "fase": "evento",
+   "evento": "Congresso técnico (reunião pré-torneio)",
+   "obs": "Local a anunciar · levar os passaportes dos 18 atletas"
   },
   {
    "n": 1,
@@ -574,5 +582,55 @@
    "bate": "D",
    "arremessa": "D"
   }
+ ],
+ "info": [
+  [
+   "Nome oficial",
+   "Campeonato Pan-Americano Sub-12, classificatório para a Copa do Mundo Sub-12 da WBSC (Taipé Chinês 2027)"
+  ],
+  [
+   "Sede",
+   "IPL Academy, Boca Chica (Santo Domingo), Estádios 1 e 2"
+  ],
+  [
+   "Congresso técnico",
+   "19/11 às 19:00, local a anunciar. Checagem de passaportes para elegibilidade"
+  ],
+  [
+   "Elegibilidade",
+   "Atletas nascidos em 2014 e 2015"
+  ],
+  [
+   "Delegação oficial",
+   "18 atletas + 3 técnicos (incluindo o manager) + 1 delegado"
+  ],
+  [
+   "Chegada e saída",
+   "Chegada em 18/11, saída em 28/11"
+  ],
+  [
+   "Hospedagem",
+   "Hotel, café, almoço, jantar e transporte local pagos pelo comitê organizador para a delegação oficial. Extras pagos pela federação"
+  ],
+  [
+   "Lavanderia",
+   "Opções indicadas pelo comitê, pagas por cada delegação"
+  ],
+  [
+   "Seguro",
+   "Responsabilidade civil e seguro médico por conta de cada federação"
+  ],
+  [
+   "Regras",
+   "Regras oficiais e regulamento de torneios da WBSC. Tacos: regra A1.7"
+  ],
+  [
+   "Bola oficial",
+   "A anunciar"
+  ],
+  [
+   "Encerramento",
+   "Cerimônia logo após a final, em 27/11"
+  ]
  ]
 }

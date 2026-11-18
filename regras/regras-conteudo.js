@@ -206,7 +206,10 @@ window.REGRAS = [
 ];
 
 window.PENDENCIAS = [
+  "Levar os passaportes dos 18 atletas: a elegibilidade (nascidos em 2014 e 2015) é conferida no congresso.",
+  "Horário da cerimônia de abertura: o calendário atualizado diz 11:45; o documento de informações diz 15:00.",
   "Critérios de desempate na classificação dos grupos (não estão neste livro de regras).",
+  "Bola oficial do torneio (ainda a anunciar).",
   "Se haverá relógio de arremesso (pitch clock) e de intervalo no evento.",
   "Se a regra de diferença de placar vale na final do Pan.",
   "Lista de tacos aprovados e como será a checagem.",
