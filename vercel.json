@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    { "source": "/regra", "destination": "/regras/", "permanent": false },
+    { "source": "/Regras", "destination": "/regras/", "permanent": false },
+    { "source": "/REGRAS", "destination": "/regras/", "permanent": false },
+    { "source": "/comissao", "destination": "/regras/", "permanent": false },
+    { "source": "/comissao-tecnica", "destination": "/regras/", "permanent": false },
+    { "source": "/ct", "destination": "/regras/", "permanent": false }
+  ]
+}
