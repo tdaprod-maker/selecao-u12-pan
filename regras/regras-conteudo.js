@@ -263,9 +263,7 @@ window.PENDENCIAS_OLD = [
 
 window.PENDENCIAS = [
   "Critérios de desempate na classificação dos grupos (não estavam nos slides enviados).",
-  "Horário da cerimônia de abertura: o calendário atualizado diz 11:45; o documento de informações diz 15:00.",
-  "Bola oficial do torneio.",
-  "Sorteio de mandante/visitante da Super Ronda (tabela ainda em branco no congresso).",
+  "Sorteio de mandante/visitante da Super Ronda: será feito após a classificação da 1ª fase.",
   "Horários e campos da Super Ronda e da Ronda de Classificação.",
   "Documento de regras de campo (ground rules), que a organização vai enviar."
 ];

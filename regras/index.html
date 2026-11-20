@@ -225,6 +225,61 @@ nav a.ai.on span.dot{background:var(--gold);color:var(--navy)}
 dialog{border:0;border-radius:18px;padding:20px;max-width:340px;width:calc(100% - 32px)}
 dialog::backdrop{background:rgba(13,34,85,.45)}
 dialog input{width:100%;font-size:26px;letter-spacing:.3em;text-align:center;padding:12px;border:1px solid var(--line);border-radius:12px;margin:12px 0}
+
+/* Tabela de controle de arremessos */
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--card);-webkit-overflow-scrolling:touch}
+.pc{border-collapse:separate;border-spacing:0;font-size:14px;min-width:100%}
+.pc th,.pc td{border-bottom:1px solid var(--line);border-right:1px solid var(--line);padding:0;text-align:center;white-space:nowrap}
+.pc thead th{background:var(--navy);color:#fff;font-weight:700;font-size:12px;padding:6px 4px;line-height:1.2;position:sticky;top:0}
+.pc thead th small{display:block;font-weight:500;opacity:.75;font-size:10.5px}
+.pc thead th.br{background:var(--green)}
+.pc .nm{position:sticky;left:0;background:#fff;text-align:left;padding:6px 8px;min-width:132px;max-width:150px;overflow:hidden;text-overflow:ellipsis;z-index:1;font-weight:600}
+.pc thead .nm{background:var(--navy);z-index:2}
+.pc .nm span{color:var(--gold);background:var(--navy);border-radius:5px;padding:1px 5px;margin-right:6px;font:400 15px var(--head)}
+.pc td.c button{all:unset;display:grid;place-items:center;width:48px;height:40px;cursor:pointer;font-weight:800;font-size:15px;box-sizing:border-box}
+.pc td.c button:focus-visible{outline:3px solid var(--gold);outline-offset:-3px}
+.pc td.c.n button{color:var(--navy);background:#EEF2FA}
+.pc td.c.v button{color:#fff;background:var(--red)}
+.pc td.c.x button{color:var(--mid);background:repeating-linear-gradient(135deg,#ECEDE8 0 6px,#E2E3DD 6px 12px);font-size:16px}
+.pc td.c.hoje{background:var(--gold-soft)}
+.pc thead th.hoje{box-shadow:inset 0 -4px 0 var(--gold)}
+.pc td.tot{font-weight:800;padding:0 8px;color:var(--navy)}
+.pc tr.vazio .nm{color:var(--mid);font-weight:500}
+.leg{display:flex;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--mid);margin:10px 2px}
+.leg i{display:inline-block;width:16px;height:16px;border-radius:4px;vertical-align:-3px;margin-right:5px}
+.acts2{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 4px}
+.acts2 .btn{flex:1;min-width:150px}
+#cellDlg input{font-size:30px;letter-spacing:0}
+#cellDlg .meta{font-size:14px;color:var(--mid);margin-top:4px}
+#print{display:none}
+@media print{
+  @page{size:A4 landscape;margin:9mm}
+  html,body{background:#fff!important}
+  header,nav,main,dialog,.toast{display:none!important}
+  #print{display:block!important;color:#000;font-family:"Barlow",Arial,sans-serif}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+#print .ph{display:flex;align-items:center;gap:10px;margin-bottom:3mm}
+#print .ph img{height:14mm}
+#print .ph h1{font:400 20pt/1 "Bebas Neue",Impact,sans-serif;margin:0;letter-spacing:.02em}
+#print .ph p{margin:1mm 0 0;font-size:8.5pt}
+#print .ph .rt{margin-left:auto;text-align:right;font-size:8.5pt}
+#print table.pt{width:100%;border-collapse:collapse;table-layout:fixed}
+#print .pt th,#print .pt td{border:.3mm solid #000;text-align:center;font-size:9pt;padding:0}
+#print .pt thead th{background:#0D2255;color:#fff;font-size:8.5pt;padding:1.2mm .5mm;line-height:1.15}
+#print .pt thead th.br{background:#1E8C3A}
+#print .pt thead th small{display:block;font-weight:400;font-size:7pt}
+#print .pt td{height:7mm}
+#print .pt td.n0{width:9mm;font-weight:700}
+#print .pt td.nm{text-align:left;padding-left:1.5mm;font-size:9.5pt;white-space:nowrap;overflow:hidden}
+#print .pt td.x{background:repeating-linear-gradient(135deg,#ddd 0 1.5mm,#bbb 1.5mm 3mm);font-weight:700}
+#print .pt td.v{font-weight:800;font-size:11pt}
+#print .pf{display:grid;grid-template-columns:auto 1fr;gap:6mm;margin-top:3mm;font-size:8.3pt;align-items:start}
+#print .pf table{border-collapse:collapse}
+#print .pf td{border:.3mm solid #000;padding:.8mm 2mm;text-align:center}
+#print .pf td.h{background:#0D2255;color:#fff;font-weight:700}
+#print .pf ul{margin:0;padding-left:4mm}
+#print .pf li{margin:.4mm 0}
 </style>
 </head>
 <body>
@@ -278,6 +333,12 @@ dialog input{width:100%;font-size:26px;letter-spacing:.3em;text-align:center;pad
   <!-- ARREMESSOS -->
   <section class="view" id="v-arremessos">
     <h2>Arremessos</h2>
+    <h3 style="margin-top:4px">Tabela de controle</h3>
+    <div class="tbl-wrap"><table class="pc" id="pcTbl"></table></div>
+    <div class="leg"><span><i style="background:#EEF2FA;border:1px solid #C9D3EA"></i>arremessos no dia</span><span><i style="background:repeating-linear-gradient(135deg,#ECEDE8 0 4px,#D5D7D0 4px 8px)"></i>X = descanso obrigatório</span><span><i style="background:var(--red)"></i>acima do limite</span></div>
+    <p class="small muted" style="margin:0 2px">Toque numa célula para lançar ou corrigir o total do atleta no dia. Os dados ficam salvos e acumulam até o fim do torneio.</p>
+    <div class="acts2"><button class="btn p" id="prBlank">Imprimir tabela em branco</button><button class="btn o" id="prFull">Imprimir preenchida</button></div>
+    <h3>Situação por dia</h3>
     <div class="chips" id="dayChips"></div>
     <div id="pitchers"></div>
     <h3>Registrar manualmente</h3>
@@ -324,6 +385,16 @@ dialog input{width:100%;font-size:26px;letter-spacing:.3em;text-align:center;pad
   <a href="#regras" data-v="regras"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4.5A1.5 1.5 0 0 1 5.5 3H20v15H5.5A1.5 1.5 0 0 0 4 19.5z"/><path d="M4 19.5A1.5 1.5 0 0 0 5.5 21H20v-3M8 7h8M8 11h6"/></svg>Regras</a>
 </div></nav>
 
+<dialog id="cellDlg">
+  <form method="dialog" id="cellForm">
+    <b style="font:400 24px var(--head);color:var(--navy)" id="cellTit">Arremessos</b>
+    <div class="meta" id="cellMeta"></div>
+    <input id="cellIn" type="number" inputmode="numeric" min="0" max="150" aria-label="Total de arremessos no dia">
+    <div class="small muted" style="margin:-4px 0 10px">Total do dia, somando os dois jogos se houver. 0 apaga.</div>
+    <div style="display:flex;gap:8px"><button class="btn o" value="cancel" style="flex:1">Cancelar</button><button class="btn g" value="ok" style="flex:1">Salvar</button></div>
+  </form>
+</dialog>
+<div id="print"></div>
 <dialog id="pinDlg">
   <form method="dialog" id="pinForm">
     <b style="font:400 24px var(--head);color:var(--navy)">PIN de registro</b>
@@ -573,6 +644,71 @@ $("#fOk").addEventListener("click", async () => {
   $("#fN").value = "";
 });
 
+
+/* ===== Tabela de controle (estilo WBSC) ===== */
+const abrev = {"Nicarágua":"NIC","EUA":"EUA","Cuba":"CUB"};
+function jogoDoDia(d){ return DATA.jogos.find(g => g.data===d && isBR(g)); }
+function cabDia(d){
+  const g = jogoDoDia(d);
+  const sub = g ? `J${g.n} · ${abrev[g.visitante==="Brasil"?g.mandante:g.visitante]||""}` : (d > "2026-11-22" && d < "2026-11-27" ? "2ª fase" : d==="2026-11-27" ? "finais" : "—");
+  return {txt: fmtDia(d), sub, br: !!g};
+}
+function celula(a, d){
+  const p = a.log[d] || 0, st = sit(a, d);
+  if(p > 0) return {cls: st.estado==="violacao" ? "v" : "n", txt: String(p)};
+  if(st.estado==="descanso") return {cls:"x", txt:"X"};
+  return {cls:"", txt:""};
+}
+function ordemElenco(){ return atletas().slice().sort((a,b) => (+a.num||999)-(+b.num||999)); }
+function renderTabela(){
+  const ds = torneioDias(), hoje = hojeRD();
+  const head = `<thead><tr><th class="nm">Atleta</th>${ds.map(d => { const c = cabDia(d); return `<th class="${c.br?"br":""}${d===hoje?" hoje":""}">${c.txt}<small>${esc(c.sub)}</small></th>`; }).join("")}<th>Total</th></tr></thead>`;
+  const lista = ordemElenco();
+  const body = lista.map(a => {
+    const tot = Object.values(a.log).reduce((x,y) => x+y, 0);
+    return `<tr class="${tot?"":"vazio"}"><td class="nm"><span>${esc(a.num||"–")}</span>${esc(a.curto)}</td>${ds.map(d => { const c = celula(a,d); return `<td class="c ${c.cls}${d===hoje?" hoje":""}"><button data-a="${esc(a.nome)}" data-d="${d}" aria-label="${esc(a.curto)}, ${fmtDia(d)}: ${c.txt||"vazio"}">${c.txt}</button></td>`; }).join("")}<td class="tot">${tot||""}</td></tr>`;
+  }).join("");
+  $("#pcTbl").innerHTML = head + `<tbody>${body}</tbody>`;
+}
+$("#pcTbl").addEventListener("click", async e => {
+  const b = e.target.closest("button[data-a]"); if(!b) return;
+  const nome = b.dataset.a, d = b.dataset.d, a = atletas().find(x => x.nome===nome);
+  const g = jogoDoDia(d);
+  $("#cellTit").textContent = (a ? a.num+" · "+a.curto : nome);
+  $("#cellMeta").textContent = fmtDia(d, true) + (g ? ` · Jogo ${g.n}` : "");
+  $("#cellIn").value = a && a.log[d] ? a.log[d] : "";
+  const dlg = $("#cellDlg"); dlg.returnValue = ""; dlg.showModal(); setTimeout(() => { $("#cellIn").focus(); $("#cellIn").select(); }, 50);
+  dlg.onclose = async () => {
+    if(dlg.returnValue!=="ok") return;
+    const v = parseInt($("#cellIn").value || "0", 10);
+    if(isNaN(v) || v < 0 || v > 150){ toast("Número inválido.", true); return; }
+    try{ await rpc("u12_definir", {p_atleta: nome, p_data: d, p_total: v, p_jogo: g ? g.n : null}); await carregarArremessos(); toast(v ? "Salvo." : "Apagado."); }
+    catch(err){ toast(err.message, true); }
+  };
+});
+function imprimir(preenchida){
+  const ds = torneioDias(), lista = ordemElenco();
+  const head = `<thead><tr><th style="width:9mm">Nº</th><th style="width:44mm;text-align:left;padding-left:1.5mm">Atleta</th><th style="width:9mm">Arr.</th>${ds.map(d => { const c = cabDia(d); return `<th class="${c.br?"br":""}">${c.txt}<small>${esc(c.sub)}</small></th>`; }).join("")}<th style="width:13mm">Total</th></tr></thead>`;
+  const rows = lista.map(a => {
+    const tot = Object.values(a.log).reduce((x,y) => x+y, 0);
+    return `<tr><td class="n0">${esc(a.num)}</td><td class="nm">${esc(a.curto)}</td><td>${a.arremessa==="E"?"E":"D"}</td>${ds.map(d => { if(!preenchida) return "<td></td>"; const c = celula(a,d); return `<td class="${c.cls==="x"?"x":c.txt?"v":""}">${c.txt}</td>`; }).join("")}<td class="v">${preenchida && tot ? tot : ""}</td></tr>`;
+  }).join("");
+  const extra = "";
+  const agora = new Date().toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit",timeZone:"America/Santo_Domingo"});
+  $("#print").innerHTML = `<div class="ph"><img src="/regras/logo-u12-sm.png" alt=""><div><h1>Controle de arremessos · Brasil Sub-12</h1><p>Pan-Americano U-12 2026 · Santo Domingo · Regra A1.8.1 (WBSC) e congresso técnico de 19/11</p></div>
+    <div class="rt">${preenchida ? "Situação em "+agora+" (Santo Domingo)" : "Anotar o total de arremessos do dia · marcar X nos dias de descanso"}<br>Manager: ____________________</div></div>
+    <table class="pt">${head}<tbody>${rows}${extra}</tbody></table>
+    <div class="pf"><table><tr><td class="h">Arremessos</td><td>1–30</td><td>31–45</td><td>46–60</td><td>61–75</td><td>76–85</td></tr><tr><td class="h">Descanso</td><td>sem</td><td>1 dia</td><td>2 dias</td><td>3 dias</td><td>4 dias</td></tr></table>
+    <ul><li><b>Máximo de 85 por dia.</b> Dois jogos no mesmo dia: somar. Atingiu o máximo no meio do bastão: termina o rebatedor.</li>
+    <li><b>Dias seguidos:</b> o descanso conta pela soma dos dias seguidos. 3º dia seguido só se os 2 anteriores somarem até 30. Nunca 4 dias seguidos.</li>
+    <li>Comissário avisa aos <b>65 arremessos</b>. Asterisco (*) no line-up devolvido = arremessador inelegível no jogo.</li>
+    <li>Arremessador inicial: anunciar no WhatsApp até 1 h após o último jogo do dia. Passar do limite: expulsão do manager, suspensão e multa mínima de US$ 2.000.</li></ul></div>`;
+  const imgs = [...document.querySelectorAll("#print img")];
+  Promise.all(imgs.map(i => i.complete ? 1 : new Promise(r => { i.onload = i.onerror = r; }))).then(() => setTimeout(() => window.print(), 100));
+}
+$("#prBlank").addEventListener("click", () => imprimir(false));
+$("#prFull").addEventListener("click", () => imprimir(true));
+
 /* Supabase */
 async function sb(path, opts){
   const r = await fetch(SB_URL + path, Object.assign({headers:{apikey:SB_KEY, Authorization:"Bearer "+SB_KEY, "Content-Type":"application/json"}}, opts||{}));
@@ -589,7 +725,7 @@ async function rpc(fn, args, tentar){
 async function carregarArremessos(){
   try{ ROWS = await sb("/rest/v1/u12_arremessos?select=id,data,jogo,atleta,arremessos&order=data.asc,id.asc"); store.set("u12rows", ROWS); }
   catch(e){ ROWS = store.get("u12rows") || ROWS; }
-  renderPitchers(); renderSummary(); renderRegs();
+  renderPitchers(); renderSummary(); renderRegs(); renderTabela();
 }
 async function gravar(itens){
   try{ await rpc("u12_registrar", {p_itens: itens}); await carregarArremessos(); toast("Arremessos registrados."); return true; }
@@ -603,7 +739,7 @@ function pedirPin(){
 }
 function confirmar(txt){ return Promise.resolve(window.confirm(txt)); }
 function toast(t, erro){
-  const el = document.createElement("div"); el.textContent = t;
+  const el = document.createElement("div"); el.className = "toast"; el.textContent = t;
   el.style.cssText = `position:fixed;left:50%;transform:translateX(-50%);top:calc(env(safe-area-inset-top) + 76px);background:${erro?"var(--red)":"var(--navy)"};color:#fff;padding:12px 16px;border-radius:12px;font-weight:600;z-index:50;max-width:90%;box-shadow:0 6px 18px rgba(0,0,0,.2)`;
   document.body.appendChild(el); setTimeout(() => el.remove(), 3200);
 }
@@ -693,7 +829,7 @@ function renderPainel(){
 }
 function boot(d){
   DATA = d; ROWS = store.get("u12rows") || [];
-  renderPainel(); renderGames(); renderPitchers(); renderRegs(); renderForm(); renderSim(); renderCats(); renderRules(); renderChat();
+  renderPainel(); renderGames(); renderPitchers(); renderRegs(); renderTabela(); renderForm(); renderSim(); renderCats(); renderRules(); renderChat();
   show(location.hash.slice(1) || "painel");
   carregarArremessos();
 }
