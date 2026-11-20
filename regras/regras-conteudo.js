@@ -3,7 +3,7 @@
 window.REGRAS = [
   /* ---------- U-12 ---------- */
   { c: "U-12", u: 1, t: "Duração do jogo", r: "6 entradas.",
-    d: ["Jogo interrompido vale como regulamentar com 4 entradas completas, ou 3½ se o mandante estiver vencendo.",
+    d: ["O jogo passa a valer (regulamentar) a partir da 4ª entrada completa (confirmado no congresso técnico).",
         "Antes de encerrar um jogo interrompido, os árbitros esperam no mínimo 60 e no máximo 90 minutos."],
     ref: "A1.2 · A1.6.1.6", p: "159, 163", k: "innings entradas regulamentar chuva tempo" },
 
@@ -21,12 +21,12 @@ window.REGRAS = [
         "Visitas ao montinho: +1 visita livre a cada 3 entradas extras. Visitas não usadas no tempo normal não passam para as extras."],
     ref: "A1.4.2.1 · 13.11.1", p: "160, 102", k: "extra innings empate desempate gerente corredor fantasma ghost runner" },
 
-  { c: "U-12", u: 1, t: "Rebatedor designado (DH)", r: "Não existe DH no U-12. O arremessador rebate na sua posição do line-up.",
+  { c: "U-12", u: 1, t: "Rebatedor designado (DH)", r: "Não existe DH no U-12. O arremessador rebate na sua posição do line-up. Por isso também não existe a regra Ohtani.",
     d: [], ref: "A1.1", p: "159", k: "designated hitter dh bateador designado" },
 
   { c: "U-12", u: 1, t: "Roubo de base, lead-off e pickoff", r: "Permitidos. Proibido deslizar de cabeça no home.",
-    d: ["Quem desliza de cabeça no home é out. A bola continua em jogo até a jogada terminar."],
-    ref: "A1.5.3.1", p: "162", k: "steal roubo lead off pickoff deslizar cabeça slide headfirst home" },
+    d: ["Quem desliza de cabeça no home é out. A bola continua em jogo até a jogada terminar.","Não há limite de pickoffs (tentativas de eliminar o corredor na base), confirmado no congresso técnico."],
+    ref: "A1.5.3.1", p: "162", k: "steal roubo lead off pickoff limite tentativas deslizar cabeça slide headfirst home" },
 
   { c: "U-12", u: 1, t: "Comemoração de home run", r: "Ninguém do time pode tocar o rebatedor antes de ele pisar no home.",
     d: ["1ª vez: advertência ao manager.", "Reincidência: multa ao time e expulsão do manager."],
@@ -88,6 +88,7 @@ window.REGRAS = [
 
   { c: "Arremessos", t: "Troca de arremessador", r: "O novo arremessador tem que enfrentar pelo menos um rebatedor até o fim (out ou chegar à base), salvo lesão.",
     d: ["O arremessador que começa a entrada, ao cruzar a linha de falta, também tem que enfrentar o 1º rebatedor (salvo rebatedor substituto ou lesão).",
+        "Se o arremessador sai do montinho e continua no jogo em outra posição, conta como um pedido de tempo (visita). Confirmado no congresso técnico.",
         "Arremessador que vai para outra posição só pode voltar a arremessar uma vez no jogo.",
         "Ele também não pode trocar de posição mais de uma vez na mesma entrada.",
         "Acenar para o bullpen já oficializa a troca."],
@@ -241,6 +242,10 @@ window.REGRAS = [
     d: ["Brasil: branco quando mandante, azul quando visitante.", "Pedido de troca de cor do uniforme: por escrito à Comissão Técnica, que responde por escrito."],
     ref: "Congresso técnico 19/11", p: "—", k: "uniforme cor camisa branco azul mandante visitante" },
 
+  { c: "Jogo", u: 1, t: "Banco (dugout)", r: "Mandante fica no banco da 3ª base. Visitante fica no banco da 1ª base.",
+    d: ["Brasil: banco da 3ª base quando mandante (uniforme branco), banco da 1ª base quando visitante (uniforme azul).","No treino oficial de 19/11 o Brasil usou o banco da 1ª base."],
+    ref: "Congresso técnico 19/11", p: "—", k: "dugout banco primeira terceira base mandante visitante lado" },
+
   { c: "Jogo",
     t: "Regras de campo (ground rules)",
     r: "Discutidas no primeiro dia, antes de cada jogo. Depois a organização envia um documento a todos os times.",
@@ -269,6 +274,7 @@ window.PENDENCIAS = [
 ];
 window.ROTINA = [
   ["Na véspera", "Anunciar o arremessador inicial no grupo de WhatsApp até 1 hora depois do último jogo do dia. Depois disso, troca só com motivo válido e aprovação da Comissão Técnica."],
+  ["Banco", "Mandante no banco da 3ª base; visitante no banco da 1ª base. Cada jogo do Brasil mostra o lado na aba Jogos."],
   ["90 min antes", "Entregar o line-up aos Comissários Técnicos, com nome completo e número de todos, reservas incluídos."],
   ["Pré-jogo", "30 min de rebatida na gaiola e 10 min de infield em campo alternativo (mandante primeiro). Sair do campo de jogo 60 min antes."],
   ["Equipamento", "Sem chuteira de travas de metal (atletas e técnicos). Capacete de dupla aba. Cartão de jogadas só de papel."],

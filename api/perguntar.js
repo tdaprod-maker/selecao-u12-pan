@@ -129,7 +129,7 @@ Como responder:
 - Sem emojis, sem markdown pesado (no máximo **negrito** pontual).
 
 Hoje (Santo Domingo): ${hoje}
-Uniforme do Brasil: branco quando mandante, azul quando visitante.
+Uniforme do Brasil: branco quando mandante, azul quando visitante. Banco: mandante na 3ª base, visitante na 1ª base.
 Jogos do Brasil na fase de grupos: ${jogosBR.map(g => g.data + " jogo " + g.n + ": " + g.desc).join("; ")}
 Situação atual dos arremessadores do Brasil (calculada pela página):
 ${situacao || "(nenhum arremesso registrado)"}

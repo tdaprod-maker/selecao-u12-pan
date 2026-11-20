@@ -162,11 +162,14 @@ mark{background:var(--gold-soft);color:inherit;border-radius:3px;padding:0 1px}
 .path tr:last-child td{border-bottom:0}
 .path td:first-child{color:var(--mid);white-space:nowrap;width:74px}
 
-.uni{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;padding:3px 9px 3px 6px;border-radius:99px;margin-top:6px}
+.uni{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;padding:3px 9px 3px 6px;border-radius:99px;margin:6px 6px 0 0}
 .uni::before{content:"";width:12px;height:12px;border-radius:50%;flex:none}
 .uni.w{background:#fff;color:var(--navy);border:1px solid var(--line)}.uni.w::before{background:#fff;border:2px solid var(--navy)}
 .uni.b{background:var(--navy-soft);color:var(--navy)}.uni.b::before{background:var(--navy)}
 .next .uni{margin:12px 0 0 8px}
+.uni.dg{background:var(--gold-soft);color:#6B5200}
+.uni.dg::before{background:var(--gold);border-radius:2px}
+.next .uni.dg{margin-left:8px}
 /* Arremessadores */
 .pit{padding:14px 16px}
 .pit .top{display:flex;align-items:center;gap:12px}
@@ -424,7 +427,7 @@ const hojeRD = () => new Date(Date.now() - 4*3600e3).toISOString().slice(0,10);
 const seed = c => { const m = /^([1-4])([ABC])$/.exec(c||""); return m ? m[1]+"º do Grupo "+m[2] : c; };
 const isBR = g => g.visitante==="Brasil" || g.mandante==="Brasil";
 const uniforme = mand => mand ? "Uniforme branco" : "Uniforme azul";
-const uniBadge = mand => `<span class="uni ${mand?"w":"b"}">${uniforme(mand)}</span>`;
+const uniBadge = mand => `<span class="uni ${mand?"w":"b"}">${uniforme(mand)}</span><span class="uni dg">${mand?"Banco da 3ª base":"Banco da 1ª base"}</span>`;
 const curto = nome => { const a = (DATA.elenco||[]).find(x => x.nome===nome); return a ? a.curto : nome; };
 
 /* Rede */
@@ -833,7 +836,7 @@ async function enviar(){
     const r = await fetch("/api/perguntar", {method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify({
       pergunta: t, hoje: hojeRD(),
       elenco: DATA.elenco.map(a => ({num:a.num, nome:a.nome})),
-      jogosBR: DATA.jogos.filter(g => (isBR(g) && g.n) || g.fase==="treino").map(g => g.fase==="treino" ? ({data:g.data, n:"treino", desc:g.evento+" ("+g.hora+", IPL Academy "+g.campo+", "+g.obs+")"}) : ({data:g.data, n:g.n, desc:g.visitante+" x "+g.mandante+" ("+g.hora+", IPL Academy "+g.campo+", Brasil "+(g.mandante==="Brasil"?"mandante, uniforme branco":"visitante, uniforme azul")+")"})),
+      jogosBR: DATA.jogos.filter(g => (isBR(g) && g.n) || g.fase==="treino").map(g => g.fase==="treino" ? ({data:g.data, n:"treino", desc:g.evento+" ("+g.hora+", IPL Academy "+g.campo+", "+g.obs+")"}) : ({data:g.data, n:g.n, desc:g.visitante+" x "+g.mandante+" ("+g.hora+", IPL Academy "+g.campo+", Brasil "+(g.mandante==="Brasil"?"mandante, uniforme branco, banco da 3ª base":"visitante, uniforme azul, banco da 1ª base")+")"})),
       situacao: "Dia de referência: "+dia+"\n"+situacaoTexto(dia),
       historico: HIST.slice(-6)
     })});
