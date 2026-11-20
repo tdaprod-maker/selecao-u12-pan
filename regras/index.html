@@ -686,28 +686,76 @@ $("#pcTbl").addEventListener("click", async e => {
     catch(err){ toast(err.message, true); }
   };
 });
-function imprimir(preenchida){
-  const ds = torneioDias(), lista = ordemElenco();
-  const head = `<thead><tr><th style="width:9mm">Nº</th><th style="width:44mm;text-align:left;padding-left:1.5mm">Atleta</th><th style="width:9mm">Arr.</th>${ds.map(d => { const c = cabDia(d); return `<th class="${c.br?"br":""}">${c.txt}<small>${esc(c.sub)}</small></th>`; }).join("")}<th style="width:13mm">Total</th></tr></thead>`;
-  const rows = lista.map(a => {
-    const tot = Object.values(a.log).reduce((x,y) => x+y, 0);
-    return `<tr><td class="n0">${esc(a.num)}</td><td class="nm">${esc(a.curto)}</td><td>${a.arremessa==="E"?"E":"D"}</td>${ds.map(d => { if(!preenchida) return "<td></td>"; const c = celula(a,d); return `<td class="${c.cls==="x"?"x":c.txt?"v":""}">${c.txt}</td>`; }).join("")}<td class="v">${preenchida && tot ? tot : ""}</td></tr>`;
-  }).join("");
-  const extra = "";
+/* PDF gerado no próprio celular (window.print não funciona em app/tela inicial no iPhone) */
+let libsPDF = null;
+function carregarJS(src){ return new Promise((ok, erro) => { const t = document.createElement("script"); t.src = src; t.onload = ok; t.onerror = erro; document.head.appendChild(t); }); }
+function libs(){ return libsPDF || (libsPDF = carregarJS("/regras/vendor/jspdf.umd.min.js").then(() => carregarJS("/regras/vendor/jspdf.plugin.autotable.min.js"))); }
+function logoData(){ return new Promise(ok => { const i = new Image(); i.onload = () => { const c = document.createElement("canvas"); c.width = i.naturalWidth; c.height = i.naturalHeight; c.getContext("2d").drawImage(i,0,0); try{ ok({d:c.toDataURL("image/png"), w:i.naturalWidth, h:i.naturalHeight}); }catch(e){ ok(null); } }; i.onerror = () => ok(null); i.src = "/regras/logo-u12-sm.png"; }); }
+async function gerarPDF(preenchida){
+  await libs();
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({orientation:"landscape", unit:"mm", format:"a4"});
+  const W = 297, M = 9, ds = torneioDias(), lista = ordemElenco();
+  const logo = await logoData();
+  if(logo) doc.addImage(logo.d, "PNG", M, M, 11*logo.w/logo.h, 11);
+  doc.setFont("helvetica","bold"); doc.setFontSize(15); doc.setTextColor(13,34,85);
+  doc.text("CONTROLE DE ARREMESSOS - BRASIL SUB-12", M+12, M+5);
+  doc.setFont("helvetica","normal"); doc.setFontSize(8); doc.setTextColor(60);
+  doc.text("Pan-Americano U-12 2026 · Santo Domingo · Regra A1.8.1 (WBSC) e congresso técnico de 19/11", M+12, M+10);
   const agora = new Date().toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit",timeZone:"America/Santo_Domingo"});
-  $("#print").innerHTML = `<div class="ph"><img src="/regras/logo-u12-sm.png" alt=""><div><h1>Controle de arremessos · Brasil Sub-12</h1><p>Pan-Americano U-12 2026 · Santo Domingo · Regra A1.8.1 (WBSC) e congresso técnico de 19/11</p></div>
-    <div class="rt">${preenchida ? "Situação em "+agora+" (Santo Domingo)" : "Anotar o total de arremessos do dia · marcar X nos dias de descanso"}<br>Manager: ____________________</div></div>
-    <table class="pt">${head}<tbody>${rows}${extra}</tbody></table>
-    <div class="pf"><table><tr><td class="h">Arremessos</td><td>1–30</td><td>31–45</td><td>46–60</td><td>61–75</td><td>76–85</td></tr><tr><td class="h">Descanso</td><td>sem</td><td>1 dia</td><td>2 dias</td><td>3 dias</td><td>4 dias</td></tr></table>
-    <ul><li><b>Máximo de 85 por dia.</b> Dois jogos no mesmo dia: somar. Atingiu o máximo no meio do bastão: termina o rebatedor.</li>
-    <li><b>Dias seguidos:</b> o descanso conta pela soma dos dias seguidos. 3º dia seguido só se os 2 anteriores somarem até 30. Nunca 4 dias seguidos.</li>
-    <li>Comissário avisa aos <b>65 arremessos</b>. Asterisco (*) no line-up devolvido = arremessador inelegível no jogo.</li>
-    <li>Arremessador inicial: anunciar no WhatsApp até 1 h após o último jogo do dia. Passar do limite: expulsão do manager, suspensão e multa mínima de US$ 2.000.</li></ul></div>`;
-  const imgs = [...document.querySelectorAll("#print img")];
-  Promise.all(imgs.map(i => i.complete ? 1 : new Promise(r => { i.onload = i.onerror = r; }))).then(() => setTimeout(() => window.print(), 100));
+  doc.text(preenchida ? "Situação em "+agora+" (Santo Domingo)" : "Anotar o total de arremessos do dia · marcar X nos dias de descanso", W-M, M+5, {align:"right"});
+  doc.text("Manager: ______________________________", W-M, M+10, {align:"right"});
+  const head = [["Nº","Atleta","Arr.", ...ds.map(d => { const c = cabDia(d); return c.txt+"\n"+c.sub; }), "Total"]];
+  const marcas = {};
+  const body = lista.map((a,ri) => {
+    const tot = Object.values(a.log).reduce((x,y) => x+y, 0);
+    return [a.num, a.curto, a.arremessa==="E"?"E":"D", ...ds.map((d,ci) => { if(!preenchida) return ""; const c = celula(a,d); if(c.cls) marcas[ri+":"+(ci+3)] = c.cls; return c.txt; }), preenchida && tot ? String(tot) : ""];
+  });
+  const brCols = new Set(ds.map((d,i) => cabDia(d).br ? i+3 : -1));
+  doc.autoTable({
+    head, body, startY: M+14, margin:{left:M, right:M}, theme:"grid",
+    styles:{font:"helvetica", fontSize:9, cellPadding:{top:1.6,bottom:1.6,left:1.2,right:1.2}, minCellHeight:7.1, lineColor:[0,0,0], lineWidth:.25, textColor:[0,0,0], halign:"center", valign:"middle"},
+    headStyles:{fillColor:[13,34,85], textColor:255, fontSize:8, fontStyle:"bold", minCellHeight:9},
+    columnStyles:{0:{cellWidth:10, fontStyle:"bold"}, 1:{cellWidth:46, halign:"left"}, 2:{cellWidth:10}, [3+ds.length]:{cellWidth:15, fontStyle:"bold"}},
+    didParseCell: h => {
+      if(h.section==="head" && brCols.has(h.column.index)) h.cell.styles.fillColor = [30,140,58];
+      if(h.section==="body"){ const m = marcas[h.row.index+":"+h.column.index];
+        if(m==="x"){ h.cell.styles.fillColor = [205,205,205]; h.cell.styles.fontStyle = "bold"; }
+        if(m==="n"){ h.cell.styles.fontStyle = "bold"; h.cell.styles.fontSize = 11; }
+        if(m==="v"){ h.cell.styles.fillColor = [180,35,24]; h.cell.styles.textColor = 255; h.cell.styles.fontStyle = "bold"; } }
+    }
+  });
+  let y = doc.lastAutoTable.finalY + 4;
+  doc.autoTable({
+    startY:y, margin:{left:M}, tableWidth:88, theme:"grid",
+    body:[["Arremessos","1-30","31-45","46-60","61-75","76-85"],["Descanso","sem","1 dia","2 dias","3 dias","4 dias"]],
+    styles:{fontSize:8, halign:"center", lineColor:[0,0,0], lineWidth:.25, textColor:[0,0,0], cellPadding:1.2},
+    columnStyles:{0:{fillColor:[13,34,85], textColor:255, fontStyle:"bold", cellWidth:20}}
+  });
+  doc.setFontSize(7.8); doc.setTextColor(0);
+  const regras = ["Máximo de 85 por dia. Dois jogos no mesmo dia: somar. Atingiu o máximo no meio do bastão: termina o rebatedor.",
+    "Dias seguidos: o descanso conta pela soma dos dias seguidos. 3º dia seguido só se os 2 anteriores somarem até 30. Nunca 4 dias seguidos.",
+    "Comissário avisa aos 65 arremessos. Asterisco (*) no line-up devolvido = arremessador inelegível no jogo.",
+    "Arremessador inicial: anunciar no WhatsApp até 1 h após o último jogo do dia. Passar do limite: expulsão do manager, suspensão e multa mínima de US$ 2.000."];
+  regras.forEach((r,i) => doc.text("• "+r, M+94, y+3+i*4, {maxWidth: W-M-(M+94)}));
+  return doc.output("blob");
 }
-$("#prBlank").addEventListener("click", () => imprimir(false));
-$("#prFull").addEventListener("click", () => imprimir(true));
+async function imprimir(preenchida, botao){
+  const txt = botao.textContent; botao.disabled = true; botao.textContent = "Gerando PDF…";
+  const janela = window.open("", "_blank");
+  try{
+    const blob = await gerarPDF(preenchida);
+    const url = URL.createObjectURL(blob);
+    const nome = preenchida ? "arremessos-brasil-u12.pdf" : "arremessos-brasil-u12-em-branco.pdf";
+    if(janela){ janela.location.href = url; }
+    else { const a = document.createElement("a"); a.href = url; a.download = nome; document.body.appendChild(a); a.click(); a.remove(); }
+    toast("PDF pronto. Use Compartilhar > Imprimir.");
+  }catch(e){ if(janela) janela.close(); toast("Não foi possível gerar o PDF. Verifique a internet e tente de novo.", true); }
+  botao.disabled = false; botao.textContent = txt;
+}
+$("#prBlank").addEventListener("click", e => imprimir(false, e.currentTarget));
+$("#prFull").addEventListener("click", e => imprimir(true, e.currentTarget));
+if("requestIdleCallback" in window) requestIdleCallback(() => libs().catch(() => { libsPDF = null; })); else setTimeout(() => libs().catch(() => { libsPDF = null; }), 3000);
 
 /* Supabase */
 async function sb(path, opts){
