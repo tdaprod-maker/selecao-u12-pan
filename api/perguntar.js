@@ -5,6 +5,7 @@
 
 const PAGINAS = require("./_regras.json");
 const INFO = require("./_info.js");
+const CONGRESSO = require("./_congresso.js");
 
 const MODELO_RAPIDO = process.env.U12_MODELO_RAPIDO || "claude-haiku-5-5";
 const MODELO_RESPOSTA = process.env.U12_MODELO_RESPOSTA || "claude-sonnet-5-5";
@@ -115,7 +116,7 @@ Jogos do Brasil: ${jogosBR.map(g => g.data + " jogo " + g.n + " " + g.desc).join
 
     const sys2 = `Você é o consultor de regras da comissão técnica da Seleção Brasileira de Beisebol Sub-12 no Campeonato Pan-Americano U-12 2026 (WBSC Américas, Santo Domingo). Quem pergunta é técnico ou coordenador, muitas vezes à beira do campo, pelo celular.
 
-Para logística, datas, elegibilidade, delegação e organização do torneio, use as INFORMAÇÕES OFICIAIS DO TORNEIO abaixo (cite "Informações oficiais COPABE"). Para regras de jogo, a fonte de verdade são os trechos do livro "WBSC Official Rules of Baseball 2025-2026" abaixo. O Apêndice 1 traz as regras específicas do U-12 (6 entradas, sem DH, mercy, tie-break, limite de arremessos, tacos) e prevalece sobre as regras gerais.
+O CONGRESSO TÉCNICO de 19/11 tem prioridade sobre o livro quando houver diferença (cite "Congresso técnico 19/11"). Para logística, datas, elegibilidade, delegação e organização do torneio, use as INFORMAÇÕES OFICIAIS DO TORNEIO abaixo (cite "Informações oficiais COPABE"). Para regras de jogo, a fonte de verdade são os trechos do livro "WBSC Official Rules of Baseball 2025-2026" abaixo. O Apêndice 1 traz as regras específicas do U-12 (6 entradas, sem DH, mercy, tie-break, limite de arremessos, tacos) e prevalece sobre as regras gerais.
 
 Como responder:
 - Português do Brasil, direto. Primeira linha: a resposta objetiva em uma frase.
@@ -132,6 +133,8 @@ Uniforme do Brasil: branco quando mandante, azul quando visitante.
 Jogos do Brasil na fase de grupos: ${jogosBR.map(g => g.data + " jogo " + g.n + ": " + g.desc).join("; ")}
 Situação atual dos arremessadores do Brasil (calculada pela página):
 ${situacao || "(nenhum arremesso registrado)"}
+
+${CONGRESSO}
 
 INFORMAÇÕES OFICIAIS DO TORNEIO:
 ${INFO}

@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-18T17:15:00-03:00",
+ "atualizado": "2026-11-20T01:30:00-03:00",
  "torneio": {
   "nome": "Campeonato Pan-Americano Sub-12 2026",
   "local": "IPL Academy, Boca Chica (Santo Domingo), República Dominicana",
@@ -80,7 +80,7 @@
    "hora": "19:00",
    "fase": "evento",
    "evento": "Congresso técnico (reunião pré-torneio)",
-   "obs": "Local a anunciar · levar os passaportes dos 18 atletas"
+   "obs": "Realizado"
   },
   {
    "n": 1,
@@ -621,16 +621,28 @@
    "Responsabilidade civil e seguro médico por conta de cada federação"
   ],
   [
+   "Encerramento",
+   "Cerimônia logo após a final, em 27/11"
+  ],
+  [
    "Regras",
-   "Regras oficiais e regulamento de torneios da WBSC. Tacos: regra A1.7"
+   "Regras oficiais e regulamento de torneios da WBSC. Tacos: regra A1.7.1"
+  ],
+  [
+   "Transmissão",
+   "Todos os jogos ao vivo no YouTube da VTV Televisión: youtube.com/@VTVCanal32"
+  ],
+  [
+   "Comunicação",
+   "Oficial por e-mail. Emergências: falar com o Enlace (Team Liaison) da WBSC"
+  ],
+  [
+   "Organização",
+   "Presidente COPABE: Aracelis León · Diretor executivo: Oscar Izaguirre · Diretor do torneio: Juan Núñez · Diretor técnico e de árbitros: Miguel Hernández · Diretor de anotação: Darwin Canchica · Comitê local: Samuel Feliz"
   ],
   [
    "Bola oficial",
    "A anunciar"
-  ],
-  [
-   "Encerramento",
-   "Cerimônia logo após a final, em 27/11"
   ]
  ]
 }

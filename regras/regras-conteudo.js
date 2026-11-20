@@ -7,10 +7,12 @@ window.REGRAS = [
         "Antes de encerrar um jogo interrompido, os árbitros esperam no mínimo 60 e no máximo 90 minutos."],
     ref: "A1.2 · A1.6.1.6", p: "159, 163", k: "innings entradas regulamentar chuva tempo" },
 
-  { c: "U-12", u: 1, t: "Regra de diferença de placar (mercy)", r: "Fim de jogo com 15 ou mais corridas de diferença depois de o time que perde rebater 4 entradas, ou com 10 ou mais depois de rebater 5.",
-    d: ["Conta as entradas em que o time que está perdendo já completou o ataque.",
-        "Não vale no jogo do título. Vale na disputa de 3º lugar."],
-    ref: "A1.4.1.1 · 6.71.1", p: "159, 32", k: "mercy run rule nocaute diferença 10 15 corridas knockout" },
+  { c: "U-12",
+    u: 1,
+    t: "Regra de diferença de placar (mercy)",
+    r: "Fim de jogo com 15 ou mais corridas de diferença depois de 4 entradas, ou com 10 ou mais depois de 5.",
+    d: ["Se o mandante estiver perdendo, ele precisa rebater o mesmo número de entradas que o visitante antes de o jogo acabar.", "NÃO vale no jogo final (confirmado no congresso técnico). Vale na disputa de 3º lugar."],
+    ref: "A1.4.1.1 · Congresso técnico 19/11", p: "159", k: "mercy run rule nocaute diferença 10 15 corridas knockout final" },
 
   { c: "U-12", u: 1, t: "Entradas extras (tie-break)", r: "A partir da 7ª entrada, cada time começa o ataque com corredores na 1ª e na 2ª base, sem outs.",
     d: ["A ordem de rebatedores segue normalmente. Se a 6ª terminou com o nº 8, a 7ª começa com o nº 9 rebatendo, o nº 7 na 2ª base e o nº 8 na 1ª (ou corredores substitutos deles).",
@@ -30,12 +32,19 @@ window.REGRAS = [
     d: ["1ª vez: advertência ao manager.", "Reincidência: multa ao time e expulsão do manager."],
     ref: "A1.5.2", p: "162", k: "home run comemoração tocar celebração" },
 
-  { c: "U-12", u: 1, t: "Tacos permitidos", r: "Comprimento máximo de 33 polegadas (83 cm).",
-    d: ["Não madeira (uma peça ou várias) e madeira composta: BPF (Bat Performance Factor) igual ou menor que 1.",
-        "Se o BPF não estiver impresso no taco, é preciso apresentar prova do fabricante ou certificação equivalente à Comissão Técnica.",
-        "Madeira inteiriça: só modelos da lista oficial de tacos aprovados da WBSC do ano.",
-        "Taco não aprovado ou alterado é retirado do jogo."],
-    ref: "A1.7 · A1.7.1.1", p: "164", k: "bat taco bpf alumínio composto madeira 33 polegadas" },
+  { c: "U-12",
+    u: 1,
+    t: "Tacos permitidos",
+    r: "Comprimento máximo de 33 polegadas (0,83 m). Não madeira e madeira composta: BPF igual ou menor que 1.",
+    d: ["O BPF caiu de 1.15 (Pan de 2024) para 1, o mesmo dos tacos de madeira de uma peça.", "Se o BPF não estiver visível no taco, apresentar prova do fabricante ou certificação equivalente à Comissão Técnica para aprovação.", "Madeira de uma peça: só modelos da lista oficial de tacos de madeira aprovados pela COPABE – WBSC Américas do ano.", "Taco não aprovado ou alterado é retirado do jogo."],
+    ref: "A1.7.1 · Congresso técnico 19/11", p: "164", k: "bat taco bpf alumínio composto madeira 33 polegadas lista aprovada" },
+
+  { c: "U-12",
+    u: 1,
+    t: "O que mudou desde o Pan de 2024",
+    r: "Acabou a regra de reentrada, acabou o rebatedor designado e o BPF dos tacos caiu de 1.15 para 1.",
+    d: ["Quem sai do jogo não volta mais, em nenhuma hipótese.", "O arremessador rebate na sua posição do line-up."],
+    ref: "Congresso técnico 19/11", p: "—", k: "mudanças reentrada re-entry dh rebatedor designado bpf 2024 novidades" },
 
   { c: "U-12", u: 1, t: "Campo U-12", r: "Bases a 75 pés (22,86 m). Placa do arremessador a 51 pés (15,54 m) do home.",
     d: ["Montinho: altura de 6 polegadas (15 cm), diâmetro de 14 pés (4,27 m).",
@@ -46,13 +55,13 @@ window.REGRAS = [
     ref: "Dimensões oficiais", p: "11", k: "campo medidas distância montinho bases cerca field dimensions" },
 
   /* ---------- ARREMESSOS ---------- */
-  { c: "Arremessos", u: 1, t: "Limite de arremessos e descanso", r: "Máximo de 85 arremessos por dia. O descanso obrigatório depende do total.",
+  { c: "Arremessos",
+    u: 1,
+    t: "Limite de arremessos e descanso",
+    r: "Máximo de 85 arremessos por dia. O descanso obrigatório depende do total.",
     tabela: [["1 a 30", "sem descanso"], ["31 a 45", "1 dia"], ["46 a 60", "2 dias"], ["61 a 75", "3 dias"], ["76 a 85", "4 dias"]],
-    d: ["Arremessos em dois jogos no mesmo dia são somados.",
-        "Se chegar ao máximo no meio de um bastão, termina aquele rebatedor e sai.",
-        "Em descanso, o atleta pode jogar em outra posição. Só não pode arremessar.",
-        "A contagem oficial é do Comissário Técnico, com base nos anotadores oficiais. Os indisponíveis saem num relatório diário."],
-    ref: "A1.8 · A.1.8.1", p: "166–168", k: "pitch count contagem limite descanso rest 85 arremessos lançamentos" },
+    d: ["Aviso de cortesia: o Comissário Técnico avisa o árbitro de home e os managers quando o arremessador chega a 65 arremessos.", "Se chegar ao máximo no meio de um bastão, termina aquele rebatedor e sai.", "O manager/coach não pode visitar o arremessador duas vezes durante o mesmo rebatedor, mesmo que ele esteja no limite.", "Arremessos em dois jogos no mesmo dia são somados.", "Em descanso, o atleta pode jogar em outra posição. Só não pode arremessar.", "Se o line-up devolvido pelo Comissário Técnico tiver asterisco (*) ao lado de um arremessador, ele não pode arremessar naquele jogo por restrição de arremessos."],
+    ref: "A1.8.1 · Congresso técnico 19/11", p: "166–168", k: "pitch count contagem limite descanso rest 85 65 aviso asterisco arremessos lançamentos" },
 
   { c: "Arremessos", u: 1, t: "Arremessar em dias seguidos", r: "Só pode arremessar no 3º dia seguido se a soma dos 2 dias anteriores for de até 30. Nunca 4 dias seguidos.",
     d: ["Em dias seguidos, o limite do dia é 85 menos o que ele já arremessou na sequência. Ex.: 29 em dois dias → máximo de 56 no terceiro.",
@@ -64,14 +73,18 @@ window.REGRAS = [
     d: ["Se o manager não trocar o arremessador antes de passar do limite, o Comissário Técnico manda o árbitro parar o jogo e o arremessador é substituído."],
     ref: "A1.8 · A.1.8.1", p: "167–168", k: "multa penalidade expulsão pitch count violação" },
 
-  { c: "Arremessos", t: "Visitas ao montinho", r: "3 visitas livres por jogo. Uma 2ª visita ao mesmo arremessador na mesma entrada obriga a trocá-lo.",
-    d: ["Visita livre é a conferência em que o arremessador não é trocado.",
-        "Ir até o catcher ou um infielder e ele levar o recado ao arremessador conta como visita.",
-        "Com o mesmo rebatedor, não pode haver 2ª visita. Se o manager insistir depois do aviso, é expulso e o arremessador termina aquele rebatedor e sai.",
-        "Exceção: se entrar um rebatedor substituto, pode ir ao montinho de novo, mas tem que trocar o arremessador.",
-        "A visita termina quando o técnico sai do círculo de 18 pés (5,49 m) ao redor da placa.",
-        "Já usou as 3 visitas? Qualquer nova ida ao montinho obriga a trocar o arremessador. Ir direto ao árbitro anunciar a troca também conta como visita."],
-    ref: "13.11", p: "102–105", k: "visita montinho mound visit trip conferência" },
+  { c: "Arremessos",
+    t: "Visitas ao montinho",
+    r: "3 visitas defensivas livres por jogo, +1 a cada 3 entradas extras. Duas visitas ao mesmo arremessador na mesma entrada obrigam a trocá-lo.",
+    d: ["Depois das 3 visitas livres, ou na 2ª visita da entrada, o técnico que vai fazer várias trocas envolvendo o arremessador tem que ir ANTES ao árbitro de home anunciar as trocas. Se for direto ao montinho, as mudanças não valem e o arremessador tem que sair do jogo.", "Não pode visitar o arremessador duas vezes durante o mesmo rebatedor, mesmo com ele no limite de arremessos.", "Ir até o catcher ou um infielder e ele levar o recado ao arremessador conta como visita.", "Relógio da visita: 30 segundos, ativado quando o técnico cruza a linha de foul."],
+    ref: "13.11 · Congresso técnico 19/11", p: "102–105", k: "visita montinho mound visit trip conferência defensiva" },
+
+  { c: "Jogo",
+    u: 1,
+    t: "Reuniões ofensivas",
+    r: "3 reuniões ofensivas por jogo, +1 a cada 3 entradas extras.",
+    d: [],
+    ref: "Congresso técnico 19/11", p: "—", k: "reunião ofensiva offensive meeting conversa rebatedor corredor tempo ataque" },
 
   { c: "Arremessos", t: "Troca de arremessador", r: "O novo arremessador tem que enfrentar pelo menos um rebatedor até o fim (out ou chegar à base), salvo lesão.",
     d: ["O arremessador que começa a entrada, ao cruzar a linha de falta, também tem que enfrentar o 1º rebatedor (salvo rebatedor substituto ou lesão).",
@@ -80,12 +93,11 @@ window.REGRAS = [
         "Acenar para o bullpen já oficializa a troca."],
     ref: "7.6.2 · 7.6.5 · 13.11.5–6", p: "40, 41, 105", k: "troca substituição relevo reliever arremessador voltar" },
 
-  { c: "Arremessos", t: "Aquecimento", r: "Até 8 arremessos de aquecimento, dentro do tempo do relógio.",
-    d: ["Entre entradas, o catcher lança para a 2ª base quando faltarem 30 segundos.",
-        "Arremessador que entra no jogo: 8 arremessos, parando quando faltarem 15 segundos.",
-        "Substituto de jogador lesionado (que não seja arremessador): 5 arremessos.",
-        "Violação: bola para o rebatedor."],
-    ref: "13.4 · 7.6.8", p: "94, 42", k: "warm up aquecimento 8 arremessos" },
+  { c: "Arremessos",
+    t: "Aquecimento entre entradas",
+    r: "Entre entradas: 90 segundos OU 5 arremessos de aquecimento. O relógio começa no 3º out.",
+    d: ["Arremessador que entra vindo do bullpen: relógio de 90 segundos, ativado quando ele pisa na faixa de advertência (warning track).", "Substituto de jogador lesionado (que não seja arremessador): 5 arremessos."],
+    ref: "13.4 · Congresso técnico 19/11", p: "94", k: "warm up aquecimento arremessos entre entradas 5 90 segundos" },
 
   { c: "Arremessos", t: "Balk", r: "Com corredor em base, ato ilegal do arremessador: todos os corredores avançam uma base.",
     d: ["Exceção: se o rebatedor e todos os corredores avançaram pelo menos uma base na jogada, ela vale e o balk é ignorado.",
@@ -98,21 +110,33 @@ window.REGRAS = [
     ref: "3.4.4", p: "16", k: "luva glove cor branca cinza" },
 
   /* ---------- JOGO ---------- */
-  { c: "Jogo", t: "Relógios (pitch clock)", r: "Sem corredores, o arremessador tem 20 s. Visita ao montinho: 30 s. No U-12, troca de arremessador e intervalo entre entradas: 90 s.",
-    d: ["O rebatedor tem 10 s para entrar na caixa e deve manter um pé dentro entre os arremessos. Exceções: rebateu, swing, check swing, bunt, wild pitch, \"time\" pedido, 3 bolas achando que foi bola.",
-        "Violação do arremessador ou da defesa: bola. Do rebatedor ou do ataque: strike.",
-        "Sair da placa não para o relógio, a menos que o árbitro conceda \"time\"."],
-    ref: "13.5 · Apêndice 3 (C1–C4)", p: "94–96, 190–194", k: "pitch clock relógio tempo segundos 20 90 intervalo" },
+  { c: "Jogo",
+    u: 1,
+    t: "Relógios do jogo",
+    r: "Entre entradas: 90 s ou 5 arremessos de aquecimento. Troca de arremessador: 90 s. Visita ao montinho: 30 s.",
+    d: ["Entre entradas: ativado quando sai o 3º out.", "Troca de arremessador: ativado quando o arremessador vindo do bullpen pisa na faixa de advertência.", "Visita ao montinho: ativado quando o técnico cruza a linha de foul.", "No congresso só foram apresentados esses três relógios. Não foi apresentado relógio entre arremessos (20 s)."],
+    ref: "13.5 · Apêndice 3 · Congresso técnico 19/11", p: "94–96, 190–194", k: "pitch clock relógio tempo segundos 90 30 intervalo" },
 
-  { c: "Jogo", t: "Line-up", r: "10 minutos antes do jogo, no home: o mandante entrega primeiro, depois o visitante, em 3 vias.",
-    d: ["Nome, número e posição de cada titular.",
-        "Liste os reservas, mas esquecer algum não o torna inelegível.",
-        "Depois da entrega, o line-up é oficial e o árbitro assume o jogo. Ele também explica as regras de campo (ground rules)."],
-    ref: "5.3 · 5.5", p: "21–22", k: "lineup line-up escalação súmula batting order" },
+  { c: "Jogo",
+    u: 1,
+    t: "Line-up",
+    r: "Entregar aos Comissários Técnicos 90 minutos antes do início do jogo.",
+    d: ["Todos os atletas, incluindo os reservas, com nome completo e número do uniforme.", "Atleta que se lesionar no aquecimento pode ser trocado no line-up inicial pelo manager na reunião de home, sem contar como substituição. Avisar o Diretor Técnico/Comissário imediatamente, antes da reunião de home.", "Asterisco (*) ao lado de um arremessador no line-up devolvido pelo Comissário: ele não pode arremessar no jogo por restrição de arremessos."],
+    ref: "5.3 · 5.5 · Congresso técnico 19/11", p: "21–22", k: "lineup line-up escalação súmula batting order 90 minutos comissário" },
 
-  { c: "Jogo", u: 1, t: "Treino antes do jogo", r: "Treino de rebatida: 20 min mandante + 20 min visitante. Infield: 10 + 10.",
-    d: ["Pessoal da delegação deve sair do campo 60 minutos antes do horário do jogo. Descumprir causa perda de credencial e punição à federação."],
-    ref: "5.2.6.1 · nota 4.1", p: "20, 18", k: "bp treino rebatida infield pré-jogo aquecimento" },
+  { c: "Jogo",
+    u: 1,
+    t: "Anúncio do arremessador inicial",
+    r: "Informar no grupo de WhatsApp o arremessador inicial do próximo jogo até 1 hora depois do fim do último jogo do dia.",
+    d: ["Depois do anúncio, não pode trocar o arremessador sem motivo válido e aprovação da Comissão Técnica.", "Não cumprir está sujeito a multa."],
+    ref: "Congresso técnico 19/11", p: "—", k: "arremessador inicial abridor starting pitcher anúncio whatsapp multa" },
+
+  { c: "Jogo",
+    u: 1,
+    t: "Treino antes do jogo",
+    r: "30 minutos de rebatida na gaiola (batting cage) e 10 minutos de infield em campo alternativo. O mandante treina primeiro.",
+    d: ["Na Ronda de Abertura (fase de grupos) não há cerimônia antes dos jogos.", "Pessoal da delegação deve sair do campo de jogo 60 minutos antes do horário do jogo."],
+    ref: "Nota 4.1 · Congresso técnico 19/11", p: "18", k: "bp treino rebatida gaiola cage infield pré-jogo aquecimento" },
 
   { c: "Jogo", t: "Rebatedor fora da ordem", r: "Quem é out é o rebatedor correto, e só se a defesa apelar antes do próximo arremesso.",
     d: ["O rebatedor certo pode entrar antes de o errado virar corredor ou ser out, herdando a contagem.",
@@ -165,10 +189,12 @@ window.REGRAS = [
     ref: "10.6", p: "73", k: "slide deslize double play dupla jogada" },
 
   /* ---------- CONDUTA ---------- */
-  { c: "Conduta", u: 1, t: "Celular e aparelhos eletrônicos", r: "Proibido usar durante os jogos para falar com campo, banco, bullpen, vestiário ou arquibancada.",
-    d: ["Única exceção: comunicação entre banco e bullpen, com aparelho aprovado antes pela WBSC.",
-        "Câmeras e microfones no banco, bullpen ou campo só com aprovação da WBSC."],
-    ref: "A3.1", p: "173", k: "celular telefone eletrônico tablet rádio walkie" },
+  { c: "Conduta",
+    u: 1,
+    t: "Celular, relógio e aparelhos eletrônicos",
+    r: "Proibidos durante os jogos para falar com campo, banco, bullpen, vestiário ou arquibancada. Inclui smartwatch.",
+    d: ["Vale para celular, smartphone, relógio inteligente, notebook, tablet, filmadora e walkie-talkie.", "Sem microfones ou câmeras no banco, no bullpen ou no campo sem aprovação da WBSC.", "Qualquer outro equipamento eletrônico precisa de aprovação prévia da WBSC.", "Cartões de jogadas não eletrônicos (de papel, no punho) são permitidos."],
+    ref: "A3.1 · Congresso técnico 19/11", p: "173", k: "celular telefone eletrônico tablet rádio walkie smartwatch relógio cartão de jogadas" },
 
   { c: "Conduta", t: "Quem pode reclamar com o árbitro", r: "Só o manager discute, contesta ou protesta uma decisão.",
     d: ["Coaches nunca, a não ser que tenham sido indicados por um manager expulso ou ausente.",
@@ -176,13 +202,17 @@ window.REGRAS = [
         "Assistentes não podem sair do banco ou do bullpen para apelar."],
     ref: "4.2.3–4.2.5 · 4.3", p: "18–19", k: "manager coach reclamar discutir árbitro expulsão" },
 
-  { c: "Conduta", t: "Protesto", r: "Só sobre aplicação de regra. Nunca sobre decisão de julgamento do árbitro.",
-    d: ["Feito ao árbitro principal na hora, antes do próximo lance.",
-        "Se o jogo termina na jogada: até os infielders saírem do território fair e o catcher sair do círculo de terra.",
-        "O árbitro anuncia que o jogo segue sob protesto e registra a situação.",
-        "Se o protesto for aceito e puder ter mudado o resultado, o jogo é retomado do ponto do protesto.",
-        "Manager expulso não protesta. Quem protesta é o substituto dele."],
-    ref: "7.12", p: "46–47", k: "protesto protest reclamação" },
+  { c: "Conduta",
+    t: "Protesto",
+    r: "Feito ao árbitro de home, dizendo qual regra está sendo protestada. Custa US$ 200.",
+    d: ["Só sobre aplicação de regra. Nunca sobre decisão de julgamento do árbitro.", "O árbitro de home avisa o manager adversário e os Comissários Técnicos do jogo, que decidem juntos.", "Fazer na hora, antes do próximo lance.", "Manager expulso não protesta. Quem protesta é o substituto dele."],
+    ref: "7.12 · Congresso técnico 19/11", p: "46–47", k: "protesto protest reclamação 200 dólares" },
+
+  { c: "Conduta",
+    t: "Apelação ao Júri",
+    r: "Só decisões da Comissão Técnica que não envolvam as Regras Oficiais podem ir ao Júri de Apelação. Custa US$ 100.",
+    d: ["Prazo: 3 horas depois de receber a notificação da decisão.", "Enviar por escrito, com cópia da decisão e o material de apoio.", "Atleta, manager ou coach suspenso por um jogo ou mais cumpre o próximo jogo mesmo assim, enquanto o Júri analisa."],
+    ref: "Congresso técnico 19/11", p: "—", k: "apelação júri appeal recurso suspensão 100 dólares" },
 
   { c: "Conduta", t: "Coaches de base", r: "Dois coaches de uniforme, dentro dos boxes.",
     d: ["No arremesso, não podem estar mais perto da linha que a borda interna do box, nem mais perto do home que a borda da frente.",
@@ -197,15 +227,28 @@ window.REGRAS = [
     ref: "7.13", p: "47–48", k: "briga fight confusão expulsão suspensão" },
 
   /* ---------- EQUIPAMENTO ---------- */
-  { c: "Equipamento", u: 1, t: "Capacete e proteção", r: "Capacete com dupla aba é obrigatório para rebatedor e corredores.",
-    d: ["Catcher usa capacete e máscara, inclusive no aquecimento e no bullpen.",
-        "Bat boys: capacete com dupla aba.",
-        "Coaches de base: capacete recomendado, não obrigatório.",
-        "Protetor de cotovelo: um só, de até 10 polegadas (25 cm)."],
-    ref: "A1.3 · 3.5", p: "159, 16", k: "capacete helmet proteção catcher máscara cotovelo" }
+  { c: "Equipamento",
+    u: 1,
+    t: "Capacete, proteção e chuteiras",
+    r: "Capacete com dupla aba obrigatório para os jogadores. Chuteira com trava de metal é PROIBIDA para jogadores e técnicos.",
+    d: ["Catchers, inclusive os de aquecimento e bullpen, usam equipamento de proteção.", "Coaches de base: capacete recomendado.", "Cartões de jogadas não eletrônicos são permitidos.", "Protetor de cotovelo: um só, de até 10 polegadas (25 cm)."],
+    ref: "A1.3 · 3.5 · Congresso técnico 19/11", p: "159, 16", k: "capacete helmet proteção catcher máscara spikes travas metal chuteira" },
+
+  { c: "Equipamento",
+    u: 1,
+    t: "Uniformes",
+    r: "Nenhuma mudança nos uniformes cadastrados sem aprovação prévia da Comissão Técnica.",
+    d: ["Brasil: branco quando mandante, azul quando visitante.", "Pedido de troca de cor do uniforme: por escrito à Comissão Técnica, que responde por escrito."],
+    ref: "Congresso técnico 19/11", p: "—", k: "uniforme cor camisa branco azul mandante visitante" },
+
+  { c: "Jogo",
+    t: "Regras de campo (ground rules)",
+    r: "Discutidas no primeiro dia, antes de cada jogo. Depois a organização envia um documento a todos os times.",
+    d: [],
+    ref: "Congresso técnico 19/11", p: "—", k: "ground rules regras de campo terreno" }
 ];
 
-window.PENDENCIAS = [
+window.PENDENCIAS_OLD = [
   "Levar os passaportes dos 18 atletas: a elegibilidade (nascidos em 2014 e 2015) é conferida no congresso.",
   "Horário da cerimônia de abertura: o calendário atualizado diz 11:45; o documento de informações diz 15:00.",
   "Critérios de desempate na classificação dos grupos (não estão neste livro de regras).",
@@ -216,4 +259,21 @@ window.PENDENCIAS = [
   "Como a regra de eletrônicos (A3.1) será aplicada no banco.",
   "Horários e campos da Super Ronda e da Ronda de Classificação.",
   "Como sai o relatório diário de arremessadores indisponíveis."
+];
+
+window.PENDENCIAS = [
+  "Critérios de desempate na classificação dos grupos (não estavam nos slides enviados).",
+  "Horário da cerimônia de abertura: o calendário atualizado diz 11:45; o documento de informações diz 15:00.",
+  "Bola oficial do torneio.",
+  "Sorteio de mandante/visitante da Super Ronda (tabela ainda em branco no congresso).",
+  "Horários e campos da Super Ronda e da Ronda de Classificação.",
+  "Documento de regras de campo (ground rules), que a organização vai enviar."
+];
+window.ROTINA = [
+  ["Na véspera", "Anunciar o arremessador inicial no grupo de WhatsApp até 1 hora depois do último jogo do dia. Depois disso, troca só com motivo válido e aprovação da Comissão Técnica."],
+  ["90 min antes", "Entregar o line-up aos Comissários Técnicos, com nome completo e número de todos, reservas incluídos."],
+  ["Pré-jogo", "30 min de rebatida na gaiola e 10 min de infield em campo alternativo (mandante primeiro). Sair do campo de jogo 60 min antes."],
+  ["Equipamento", "Sem chuteira de travas de metal (atletas e técnicos). Capacete de dupla aba. Cartão de jogadas só de papel."],
+  ["No banco", "Celular e smartwatch guardados. Nenhum aparelho eletrônico durante o jogo."],
+  ["Durante o jogo", "3 visitas defensivas e 3 reuniões ofensivas. Aviso do Comissário aos 65 arremessos. Protesto custa US$ 200."]
 ];

@@ -241,6 +241,8 @@ dialog input{width:100%;font-size:26px;letter-spacing:.3em;text-align:center;pad
   <!-- PAINEL -->
   <section class="view" id="v-painel">
     <div id="nextGame"></div>
+    <h3>Rotina do dia de jogo</h3>
+    <div class="card" id="rotina"></div>
     <h3>Arremessadores <span id="pDayLbl" class="muted" style="font:600 14px var(--body);letter-spacing:0"></span></h3>
     <div id="pSummary"></div>
     <h3>Informações do torneio</h3>
@@ -413,7 +415,7 @@ $("#cats").addEventListener("click", e => { const b = e.target.closest(".chip");
 $("#rules").addEventListener("click", e => { const c = e.target.closest(".rule"); if(!c || !e.target.closest("button")) return; c.classList.toggle("open"); openIdx[+c.dataset.i] = c.classList.contains("open"); });
 $("#q").addEventListener("input", renderRules);
 $("#qClr").addEventListener("click", () => { $("#q").value = ""; renderRules(); $("#q").focus(); });
-const QUICK = [["Limite de arremessos","limite de arremessos"],["Visitas ao montinho","visitas ao montinho"],["Entradas extras","entradas extras"],["Mercy","mercy"],["Tacos","tacos"],["Substituições","substituicoes"],["Protesto","protesto"],["Celular","celular"]];
+const QUICK = [["Limite de arremessos","limite de arremessos"],["Visitas ao montinho","visitas ao montinho"],["Entradas extras","entradas extras"],["Mercy","mercy"],["Tacos","tacos"],["Substituições","substituicoes"],["Protesto","protesto"],["Arremessador inicial","arremessador inicial"],["Spikes de metal","metal"],["Celular","celular"]];
 $("#quick").innerHTML = QUICK.map(x => `<button class="chip" data-q="${x[1]}">${x[0]}</button>`).join("");
 $("#quick").addEventListener("click", e => { const b = e.target.closest(".chip"); if(!b) return; cat = "Todas"; renderCats(); $("#q").value = b.dataset.q; location.hash = "regras"; renderRules(); });
 
@@ -684,6 +686,7 @@ $("#mic").addEventListener("click", () => {
 /* ================= Início ================= */
 function renderPainel(){
   renderNext(); renderSummary();
+  $("#rotina").innerHTML = (window.ROTINA||[]).map(([k,v],i,a) => `<div style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:10px;padding:9px 0;${i<a.length-1?"border-bottom:1px solid var(--line)":""}"><b style="color:var(--navy);font-size:14px">${esc(k)}</b><div style="font-size:15px">${esc(v)}</div></div>`).join("");
   $("#infoT").innerHTML = (DATA.info||[]).map(([k,v]) => `<div style="padding:8px 0;border-bottom:1px solid var(--line)"><div class="small muted" style="font-weight:700">${esc(k)}</div><div>${esc(v)}</div></div>`).join("").replace(/border-bottom:1px solid var\(--line\)"><div class="small muted" style="font-weight:700">([^<]*)<\/div><div>([^<]*)<\/div><\/div>$/, '"><div class="small muted" style="font-weight:700">$1</div><div>$2</div></div>');
   $("#pend").innerHTML = PENDENCIAS.map(p => `<li>${esc(p)}</li>`).join("");
   $("#upd").textContent = "Calendário atualizado em " + new Date(DATA.atualizado).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit",timeZone:"America/Sao_Paulo"}) + " (Brasília)";
