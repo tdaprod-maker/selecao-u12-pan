@@ -287,6 +287,7 @@ window.PENDENCIAS_OLD = [
 ];
 
 window.PENDENCIAS = [
+  "Ronda de Classificação: confirmar se o jogo da 1ª fase contra o 3º do Grupo A conta na classificação do 7º ao 12º (na Super Ronda, conta).",
   "Desempate dos grupos: o app usa o padrão WBSC (confronto direto, TQB...). Confirmar com o Comissário se houver empate.",
   "Sorteio de mandante hoje (22/11), na área da Comissão Técnica do Estádio 2, 10 min após EUA × NCA e DOM × CUW. Define Brasil × Peru (24/11) e Brasil × Argentina (26/11). Mandar alguém da comissão.",
   "Horários e campos da Super Ronda e da Ronda de Classificação.",
