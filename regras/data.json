@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-20T01:20:00-03:00",
+ "atualizado": "2026-11-22T15:55:00-03:00",
  "torneio": {
   "nome": "Campeonato Pan-Americano Sub-12 2026",
   "local": "IPL Academy, Boca Chica (Santo Domingo), República Dominicana",
@@ -652,5 +652,36 @@
    "Sorteio da Super Ronda",
    "Mandante e visitante dos jogos com sorteio serão definidos após a classificação da 1ª fase"
   ]
- ]
+ ],
+ "campanha": {
+  "EUA": "2-0",
+  "Cuba": "2-1",
+  "Nicarágua": "1-1",
+  "Brasil": "0-3",
+  "Venezuela": "3-0",
+  "Curaçao": "1-1",
+  "Rep. Dominicana": "1-1",
+  "Argentina": "0-3",
+  "México": "3-0",
+  "Panamá": "2-1",
+  "Porto Rico": "1-2",
+  "Peru": "0-3"
+ },
+ "seeds": {
+  "4A": "Brasil",
+  "1B": "Venezuela",
+  "4B": "Argentina",
+  "1C": "México",
+  "2C": "Panamá",
+  "3C": "Porto Rico",
+  "4C": "Peru"
+ },
+ "seedsPendentes": {
+  "1A": "EUA ou Cuba ou Nicarágua",
+  "2A": "EUA, Cuba ou Nicarágua",
+  "3A": "EUA, Cuba ou Nicarágua",
+  "2B": "Curaçao ou Rep. Dominicana",
+  "3B": "Curaçao ou Rep. Dominicana"
+ },
+ "classificacaoAtualizada": "22/11 às 15:50 (Brasília), antes de EUA × Nicarágua e Curaçao × Rep. Dominicana"
 }

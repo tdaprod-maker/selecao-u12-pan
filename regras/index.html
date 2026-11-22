@@ -425,7 +425,9 @@ const fmtDia = (iso, longo) => { const d = new Date(iso+"T12:00:00Z"); const s =
 const brasilia = h => { if(!h) return ""; const p = h.split(":"); return String((+p[0]+1)%24).padStart(2,"0")+":"+p[1]; };
 const hojeRD = () => new Date(Date.now() - 4*3600e3).toISOString().slice(0,10);
 const seed = c => { const m = /^([1-4])([ABC])$/.exec(c||""); return m ? m[1]+"º do Grupo "+m[2] : c; };
-const isBR = g => g.visitante==="Brasil" || g.mandante==="Brasil";
+const res = t => (DATA && DATA.seeds && DATA.seeds[t]) || t;
+const isBR = g => res(g.visitante)==="Brasil" || res(g.mandante)==="Brasil";
+const nomeT = t => { const r = res(t); if(r!==t) return r+" ("+t[0]+"º "+t[1]+")"; const pend = DATA && DATA.seedsPendentes && DATA.seedsPendentes[t]; return /^[1-4][ABC]$/.test(t) ? seed(t)+(pend?" · "+pend:"") : t; };
 const uniforme = mand => mand ? "Uniforme branco" : "Uniforme azul";
 const uniBadge = mand => `<span class="uni ${mand?"w":"b"}">${uniforme(mand)}</span><span class="uni dg">${mand?"Banco da 3ª base":"Banco da 1ª base"}</span>`;
 const curto = nome => { const a = (DATA.elenco||[]).find(x => x.nome===nome); return a ? a.curto : nome; };
@@ -494,22 +496,22 @@ $("#quick").innerHTML = QUICK.map(x => `<button class="chip" data-q="${x[1]}">${
 $("#quick").addEventListener("click", e => { const b = e.target.closest(".chip"); if(!b) return; cat = "Todas"; renderCats(); $("#q").value = b.dataset.q; location.hash = "regras"; renderRules(); });
 
 /* ================= Jogos ================= */
-let gFilter = "br", brSeed = "1A";
+let gFilter = "br", brSeed = "4A";
 function gameHTML(g){
   if(g.fase==="treino") return `<div class="card game brg"><div class="hr">${g.hora}<small>BSB ${brasilia(g.hora)}</small></div><div class="teams"><div class="tm br"><b>${esc(g.evento)}</b></div><div class="info">IPL Academy · ${esc(g.campo)} · ${esc(g.obs||"")}</div></div></div>`;
   if(g.fase==="evento") return `<div class="card game ev"><div class="hr">${g.hora||"—"}${g.hora?`<small>BSB ${brasilia(g.hora)}</small>`:""}</div><div class="teams"><div class="tm"><b>${esc(g.evento)}</b></div>${(g.campo||g.obs)?`<div class="info">${[g.campo?"IPL Academy · "+esc(g.campo):"",esc(g.obs||"")].filter(Boolean).join(" · ")}</div>`:""}</div></div>`;
-  const nm = t => /^[1-4][ABC]$/.test(t) ? seed(t) : t;
-  const tm = (t, sc, lado) => `<div class="tm${t==="Brasil"?" br":""}"><span>${esc(nm(t))} <span class="muted small">${lado}</span></span><span class="sc">${sc!=null?sc:""}</span></div>`;
+  const nm = nomeT;
+  const tm = (t, sc, lado) => `<div class="tm${res(t)==="Brasil"?" br":""}"><span>${esc(nm(t))} <span class="muted small">${lado}</span></span><span class="sc">${sc!=null?sc:""}</span></div>`;
   const fase = g.titulo || FASES[g.fase] || ("Grupo "+g.fase);
   const info = [fase, g.n?("Jogo "+g.n):null, g.campo?("IPL Academy · "+g.campo):null, g.sorteio?"mandante por sorteio":null].filter(Boolean).join(" · ");
-  return `<div class="card game${isBR(g)?" brg":""}"><div class="hr">${g.hora||"a def."}${g.hora?`<small>BSB ${brasilia(g.hora)}</small>`:""}</div><div class="teams">${tm(g.visitante,g.placarV,"visit.")}${tm(g.mandante,g.placarM,"mand.")}<div class="info">${esc(info)}${g.obs?" · "+esc(g.obs):""}</div>${isBR(g)?uniBadge(g.mandante==="Brasil"):""}</div></div>`;
+  return `<div class="card game${isBR(g)?" brg":""}"><div class="hr">${g.hora||"a def."}${g.hora?`<small>BSB ${brasilia(g.hora)}</small>`:""}</div><div class="teams">${tm(g.visitante,g.placarV,"visit.")}${tm(g.mandante,g.placarM,"mand.")}<div class="info">${esc(info)}${g.obs?" · "+esc(g.obs):""}</div>${isBR(g)&&!g.sorteio?uniBadge(res(g.mandante)==="Brasil"):""}</div></div>`;
 }
 function renderPath(){
   const fase = "12".includes(brSeed[0]) ? "SR" : "PR";
   const rows = DATA.jogos.filter(g => g.fase===fase && (g.visitante===brSeed || g.mandante===brSeed)).map(g => {
     const opp = g.visitante===brSeed ? g.mandante : g.visitante;
     const lado = g.sorteio ? "mandante por sorteio" : (g.mandante===brSeed ? "Brasil mandante" : "Brasil visitante");
-    return `<tr><td>${fmtDia(g.data)}</td><td><b>× ${esc(seed(opp))}</b><br><span class="muted small">${lado}${g.hora?" · "+g.hora:" · horário a definir"}</span>${g.sorteio?"":"<br>"+uniBadge(g.mandante===brSeed)}</td></tr>`;
+    return `<tr><td>${fmtDia(g.data)}</td><td><b>× ${esc(nomeT(opp))}</b><br><span class="muted small">${lado}${g.hora?" · "+g.hora:" · horário a definir"}</span>${g.sorteio?"":"<br>"+uniBadge(g.mandante===brSeed)}</td></tr>`;
   }).join("");
   return `<div class="day"><div class="dayh"><b>23 a 26/11 · 2ª fase</b><span>${FASES[fase]}</span></div><div class="card">
     <div class="small muted" style="margin-bottom:6px">Adversários do Brasil conforme a posição no Grupo A</div>
@@ -520,7 +522,7 @@ function renderPath(){
 function renderGames(){
   document.querySelectorAll("#gFilter button").forEach(b => b.classList.toggle("on", b.dataset.f===gFilter));
   if(gFilter==="grp"){
-    $("#games").innerHTML = `<h3>Grupos (ranking WBSC)</h3><div class="grp">${Object.keys(DATA.grupos).map(k => `<div class="card"><b>Grupo ${k}</b><ol>${DATA.grupos[k].map(t => `<li${t[0]==="Brasil"?' class="br"':""}>${esc(t[0])} <span>${t[1]}º</span></li>`).join("")}</ol></div>`).join("")}</div>
+    $("#games").innerHTML = `<h3>Grupos · vitórias-derrotas</h3>${DATA.classificacaoAtualizada?`<p class="small muted" style="margin:-4px 2px 8px">Atualizado ${esc(DATA.classificacaoAtualizada)}.</p>`:""}<div class="grp">${Object.keys(DATA.grupos).map(k => `<div class="card"><b>Grupo ${k}</b><ol>${DATA.grupos[k].slice().sort((a,b) => { const c = DATA.campanha||{}; const w = x => c[x] ? (+c[x].split("-")[0])/((+c[x].split("-")[0])+(+c[x].split("-")[1])||1) : 0; return w(b[0])-w(a[0]); }).map(t => `<li${t[0]==="Brasil"?' class="br"':""}>${esc(t[0])} <span>${DATA.campanha&&DATA.campanha[t[0]]?DATA.campanha[t[0]]:t[1]+"º"}</span></li>`).join("")}</ol></div>`).join("")}</div>
       <h3>Formato</h3><div class="card small"><p style="margin:0 0 8px">1º e 2º de cada grupo vão para a <b>Super Ronda</b>. 3º e 4º vão para a <b>Ronda de Classificação</b> (7º ao 12º lugar).</p><p style="margin:0 0 8px">Na Super Ronda contam <b>5 jogos</b> por time: o da 1ª fase contra o outro classificado do mesmo grupo + 4 jogos novos.</p><p style="margin:0 0 8px">Mandante na 2ª fase: o mais bem classificado na 1ª fase. Mesma posição (1º × 1º, 2º × 2º): sorteio de moeda. Nas finais: o mais bem classificado na Super Ronda.</p><p style="margin:0 0 8px">Dia 27: 1º × 2º da Super Ronda na final, 3º × 4º pelo bronze.</p><p style="margin:0">Horários da 2ª fase saem logo após a 1ª fase e podem mudar por causa da TV.</p></div>
       <h3>Desempate (padrão WBSC)</h3><div class="card small"><ol style="margin:0;padding-left:18px"><li>Confronto direto entre os empatados</li><li>TQB: (corridas marcadas ÷ entradas no ataque) − (corridas sofridas ÷ entradas na defesa), nos jogos entre os empatados</li><li>ER-TQB: a mesma conta com corridas limpas</li><li>Média de rebatidas nos jogos entre os empatados</li><li>Sorteio</li></ol><p class="muted" style="margin:8px 0 0">Não estava nos slides do congresso. Confirmar com o Comissário Técnico em caso de empate.</p></div>
       <p class="small" style="margin:10px 2px"><a href="${esc(DATA.torneio.site)}/teams" target="_blank" rel="noopener">Elencos e estatísticas oficiais — WBSC Américas</a></p>`;
@@ -530,8 +532,8 @@ function renderGames(){
   const by = {}; list.forEach(g => (by[g.data] = by[g.data] || []).push(g));
   let html = "";
   Object.keys(by).sort().forEach(d => {
-    if(gFilter==="br" && d>"2026-11-22" && d<"2026-11-27") return;
-    if(gFilter==="br" && d==="2026-11-27") html += renderPath();
+    if(gFilter==="br" && d>"2026-11-22" && d<"2026-11-27" && !by[d].some(g => isBR(g))) return;
+    if(gFilter==="br" && d==="2026-11-27" && !(DATA.seeds && Object.values(DATA.seeds).includes("Brasil"))) html += renderPath();
     html += `<div class="day"><div class="dayh"><b>${fmtDia(d,true)}</b><span>${d<"2026-11-20"?"Pré-torneio":d<"2026-11-23"?"Fase de grupos":d<"2026-11-27"?"2ª fase":"Finais"}</span></div>${by[d].map(gameHTML).join("")}</div>`;
   });
   $("#games").innerHTML = html;
@@ -542,7 +544,14 @@ $("#games").addEventListener("click", e => { const b = e.target.closest("#seedCh
 function renderNext(){
   const now = Date.now(), hoje = hojeRD();
   const fim = g => new Date(g.data+"T"+g.hora+":00-04:00").getTime() + (g.fase==="treino" ? 1 : 3)*3600e3;
-  const next = DATA.jogos.find(g => (isBR(g) || g.fase==="treino") && g.hora && fim(g) > now);
+  let next = DATA.jogos.find(g => (isBR(g) || g.fase==="treino") && g.hora && fim(g) > now);
+  const semHora = DATA.jogos.find(g => isBR(g) && !g.hora && g.data >= hoje);
+  if((!next || (semHora && semHora.data < next.data)) && semHora){
+    const opp = res(semHora.visitante)==="Brasil" ? semHora.mandante : semHora.visitante, mand = res(semHora.mandante)==="Brasil";
+    $("#nextGame").innerHTML = `<div class="card next"><div class="lbl">Próximo jogo · ${esc(FASES[semHora.fase]||"")}${semHora.n?" · Jogo "+semHora.n:""}</div><div class="vs">Brasil × ${esc(res(opp))}</div>
+      <div class="when">${fmtDia(semHora.data,true)} · horário a definir</div><div class="where">${semHora.sorteio?"Mandante por sorteio":"Brasil "+(mand?"mandante":"visitante")}</div>${semHora.sorteio?"":uniBadge(mand)}</div>`;
+    return;
+  }
   if(!next){ $("#nextGame").innerHTML = `<div class="card next"><div class="lbl">Próximo jogo</div><div class="vs">2ª fase</div><div class="when">Adversário e horário saem após a fase de grupos.</div></div>`; return; }
   const diff0 = new Date(next.data+"T"+next.hora+":00-04:00") - now;
   const rel0 = diff0 < 0 ? "Agora" : next.data===hoje ? "Hoje" : (Math.round((new Date(next.data+"T12:00:00Z") - new Date(hoje+"T12:00:00Z"))/864e5)===1 ? "Amanhã" : "Em breve");
@@ -650,11 +659,11 @@ $("#fOk").addEventListener("click", async () => {
 
 
 /* ===== Tabela de controle (estilo WBSC) ===== */
-const abrev = {"Nicarágua":"NIC","EUA":"EUA","Cuba":"CUB"};
+const abrev = {"Nicarágua":"NIC","EUA":"EUA","Cuba":"CUB","Porto Rico":"PUR","Peru":"PER","Argentina":"ARG","Curaçao":"CUW","Rep. Dominicana":"DOM","Venezuela":"VEN","México":"MEX","Panamá":"PAN"};
 function jogoDoDia(d){ return DATA.jogos.find(g => g.data===d && isBR(g)); }
 function cabDia(d){
   const g = jogoDoDia(d);
-  const sub = g ? `J${g.n} · ${abrev[g.visitante==="Brasil"?g.mandante:g.visitante]||""}` : (d > "2026-11-22" && d < "2026-11-27" ? "2ª fase" : d==="2026-11-27" ? "finais" : "—");
+  const sub = g ? `J${g.n} · ${abrev[res(res(g.visitante)==="Brasil"?g.mandante:g.visitante)]||(res(g.visitante)==="Brasil"?g.mandante:g.visitante)}` : (d > "2026-11-22" && d < "2026-11-27" ? "2ª fase" : d==="2026-11-27" ? "finais" : "—");
   return {txt: fmtDia(d), sub, br: !!g};
 }
 function celula(a, d){
@@ -837,8 +846,8 @@ async function enviar(){
     const r = await fetch("/api/perguntar", {method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify({
       pergunta: t, hoje: hojeRD(),
       elenco: DATA.elenco.map(a => ({num:a.num, nome:a.nome})),
-      jogosBR: DATA.jogos.filter(g => (isBR(g) && g.n) || g.fase==="treino").map(g => g.fase==="treino" ? ({data:g.data, n:"treino", desc:g.evento+" ("+g.hora+", IPL Academy "+g.campo+", "+g.obs+")"}) : ({data:g.data, n:g.n, desc:g.visitante+" x "+g.mandante+" ("+g.hora+", IPL Academy "+g.campo+", Brasil "+(g.mandante==="Brasil"?"mandante, uniforme branco, banco da 3ª base":"visitante, uniforme azul, banco da 1ª base")+")"})),
-      situacao: "Dia de referência: "+dia+"\n"+situacaoTexto(dia),
+      jogosBR: DATA.jogos.filter(g => (isBR(g) && g.n) || g.fase==="treino").map(g => g.fase==="treino" ? ({data:g.data, n:"treino", desc:g.evento+" ("+g.hora+", IPL Academy "+g.campo+", "+g.obs+")"}) : ({data:g.data, n:g.n, desc:nomeT(g.visitante)+" (visitante) x "+nomeT(g.mandante)+" (mandante) ("+(g.hora||"horário a definir")+(g.campo?", IPL Academy "+g.campo:"")+", "+(g.sorteio?"mandante por sorteio":"Brasil "+(res(g.mandante)==="Brasil"?"mandante, uniforme branco, banco da 3ª base":"visitante, uniforme azul, banco da 1ª base"))+")"})),
+      situacao: (DATA.campanha ? "Classificação da 1ª fase ("+(DATA.classificacaoAtualizada||"")+"): "+Object.keys(DATA.grupos).map(k => "Grupo "+k+": "+DATA.grupos[k].map(t => t[0]+" "+(DATA.campanha[t[0]]||"")).join(", ")).join(" | ")+". Brasil terminou em 4º do Grupo A (4A) e joga a Ronda de Classificação (7º ao 12º).\n" : "") + "Dia de referência: "+dia+"\n"+situacaoTexto(dia),
       historico: HIST.slice(-6)
     })});
     const j = await r.json().catch(() => ({erro:"Resposta inválida do servidor."}));
