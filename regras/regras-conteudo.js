@@ -288,7 +288,7 @@ window.PENDENCIAS_OLD = [
 
 window.PENDENCIAS = [
   "Desempate dos grupos: o app usa o padrão WBSC (confronto direto, TQB...). Confirmar com o Comissário se houver empate.",
-  "Sorteio de mandante/visitante da Super Ronda: será feito após a classificação da 1ª fase.",
+  "Sorteio de mandante hoje (22/11), na área da Comissão Técnica do Estádio 2, 10 min após EUA × NCA e DOM × CUW. Define Brasil × Peru (24/11) e Brasil × Argentina (26/11). Mandar alguém da comissão.",
   "Horários e campos da Super Ronda e da Ronda de Classificação.",
   "Documento de regras de campo (ground rules), que a organização vai enviar."
 ];

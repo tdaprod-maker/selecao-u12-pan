@@ -499,7 +499,7 @@ $("#quick").addEventListener("click", e => { const b = e.target.closest(".chip")
 let gFilter = "br", brSeed = "4A";
 function gameHTML(g){
   if(g.fase==="treino") return `<div class="card game brg"><div class="hr">${g.hora}<small>BSB ${brasilia(g.hora)}</small></div><div class="teams"><div class="tm br"><b>${esc(g.evento)}</b></div><div class="info">IPL Academy · ${esc(g.campo)} · ${esc(g.obs||"")}</div></div></div>`;
-  if(g.fase==="evento") return `<div class="card game ev"><div class="hr">${g.hora||"—"}${g.hora?`<small>BSB ${brasilia(g.hora)}</small>`:""}</div><div class="teams"><div class="tm"><b>${esc(g.evento)}</b></div>${(g.campo||g.obs)?`<div class="info">${[g.campo?"IPL Academy · "+esc(g.campo):"",esc(g.obs||"")].filter(Boolean).join(" · ")}</div>`:""}</div></div>`;
+  if(g.fase==="evento") return `<div class="card game ev"><div class="hr">${g.hora||"hoje"}${g.hora?`<small>BSB ${brasilia(g.hora)}</small>`:""}</div><div class="teams"><div class="tm"><b>${esc(g.evento)}</b></div>${(g.campo||g.obs)?`<div class="info">${[g.campo?"IPL Academy · "+esc(g.campo):"",esc(g.obs||"")].filter(Boolean).join(" · ")}</div>`:""}</div></div>`;
   const nm = nomeT;
   const tm = (t, sc, lado) => `<div class="tm${res(t)==="Brasil"?" br":""}"><span>${esc(nm(t))} <span class="muted small">${lado}</span></span><span class="sc">${sc!=null?sc:""}</span></div>`;
   const fase = g.titulo || FASES[g.fase] || ("Grupo "+g.fase);
