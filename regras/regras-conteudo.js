@@ -246,6 +246,26 @@ window.REGRAS = [
     d: ["Brasil: banco da 3ª base quando mandante (uniforme branco), banco da 1ª base quando visitante (uniforme azul).","No treino oficial de 19/11 o Brasil usou o banco da 1ª base."],
     ref: "Congresso técnico 19/11", p: "—", k: "dugout banco primeira terceira base mandante visitante lado" },
 
+  { c: "Jogo", u: 1, t: "Formato e chaveamento", r: "1º e 2º de cada grupo vão para a Super Ronda. 3º e 4º jogam a Ronda de Classificação (7º ao 12º lugar).",
+    d: ["Super Ronda: contam 5 jogos para cada time — o jogo da 1ª fase contra o outro classificado do mesmo grupo + 4 jogos novos contra os classificados dos outros grupos.","Os 2 melhores da Super Ronda fazem a final (1º × 2º). O 3º e o 4º disputam o bronze.","Os horários da Super Ronda e da Ronda de Classificação podem mudar por causa da TV e são anunciados logo depois da 1ª fase."],
+    ref: "Reunião técnica 19/11 (doc. COPABE)", p: "—", k: "formato chaveamento super ronda classificação final bronze 5 jogos levado carry over" },
+
+  { c: "Jogo", u: 1, t: "Mandante na 2ª fase e nas finais", r: "Na Super Ronda e na Ronda de Classificação, o mandante é o time mais bem classificado na 1ª fase.",
+    d: ["Entre times com a mesma posição (ex.: 1º A × 1º B), o mandante foi definido por sorteio de moeda.","Nos jogos por medalha, o mandante é o time mais bem classificado na Super Ronda.","Mandante: banco da 3ª base e uniforme branco (Brasil). Visitante: banco da 1ª base e uniforme azul."],
+    ref: "Reunião técnica 19/11 (doc. COPABE)", p: "—", k: "mandante local visitante sorteio moeda super ronda final medalha" },
+
+  { c: "Jogo", u: 1, t: "Desempate na classificação", r: "Padrão WBSC: 1) confronto direto; 2) TQB; 3) ER-TQB; 4) média de rebatidas nos jogos entre os empatados; 5) sorteio.",
+    d: ["TQB = (corridas marcadas ÷ entradas no ataque) − (corridas sofridas ÷ entradas na defesa), só nos jogos entre os times empatados.","ER-TQB: a mesma conta usando só corridas limpas.","Em empate triplo, o TQB ordena os três de uma vez; se dois continuarem iguais, volta-se ao confronto direto entre eles.","Esse é o critério padrão dos torneios WBSC; não estava nos slides do congresso. Confirmar com o Comissário Técnico em caso de empate."],
+    ref: "Regulamento de torneios WBSC", p: "—", k: "desempate empate tqb tie break classificação critério confronto direto" },
+
+  { c: "Equipamento", u: 1, t: "Bolas e checagem de tacos", r: "Bola oficial Rawlings. Cada time recebe 6 bolas para os arremessadores. Os tacos são conferidos e fotografados antes de cada jogo.",
+    d: ["Na gaiola de rebatida (batting cage) há bolas para uso de todos os times."],
+    ref: "Reunião técnica 19/11 (doc. COPABE)", p: "—", k: "bola rawlings 6 bolas tacos checagem foto bat check" },
+
+  { c: "Conduta", u: 1, t: "Cerimônias e roster", r: "Na abertura e no encerramento, uniforme de jogo completo: jersey, calça, boné e chuteira. Proibido short, chinelo e roupa de viagem.",
+    d: ["Encerramento: logo após a final (27/11), com os 3 medalhistas e os premiados individuais. Técnicos com uniforme de jogo ou roupa oficial do time (agasalho vale); sem calçado aberto.","Roster final (FTR): 18 jogadores e 4 oficiais (manager, 2 coaches, chefe de delegação). Até 5 jogadores podem ser substituídos no FTR."],
+    ref: "Reunião técnica 19/11 (doc. COPABE)", p: "—", k: "cerimônia abertura encerramento uniforme roster ftr substituição" },
+
   { c: "Jogo",
     t: "Regras de campo (ground rules)",
     r: "Discutidas no primeiro dia, antes de cada jogo. Depois a organização envia um documento a todos os times.",
@@ -267,7 +287,7 @@ window.PENDENCIAS_OLD = [
 ];
 
 window.PENDENCIAS = [
-  "Critérios de desempate na classificação dos grupos (não estavam nos slides enviados).",
+  "Desempate dos grupos: o app usa o padrão WBSC (confronto direto, TQB...). Confirmar com o Comissário se houver empate.",
   "Sorteio de mandante/visitante da Super Ronda: será feito após a classificação da 1ª fase.",
   "Horários e campos da Super Ronda e da Ronda de Classificação.",
   "Documento de regras de campo (ground rules), que a organização vai enviar."
