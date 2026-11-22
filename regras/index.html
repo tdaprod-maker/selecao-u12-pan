@@ -283,6 +283,19 @@ dialog input{width:100%;font-size:26px;letter-spacing:.3em;text-align:center;pad
 #print .pf td.h{background:#0D2255;color:#fff;font-weight:700}
 #print .pf ul{margin:0;padding-left:4mm}
 #print .pf li{margin:.4mm 0}
+
+/* Meus jogos */
+.mj{display:grid;grid-template-columns:64px minmax(0,1fr);gap:12px;align-items:center;padding:14px}
+.mj .dt{text-align:center;border-right:1px solid var(--line);padding-right:10px}
+.mj .dt b{display:block;font:400 30px/1 var(--head);color:var(--navy)}
+.mj .dt span{font-size:12px;font-weight:700;color:var(--mid);text-transform:uppercase}
+.mj .op{font:400 26px/1.05 var(--head);color:var(--ink);letter-spacing:.01em}
+.mj .hr2{font-size:14px;color:var(--mid);margin-top:2px}
+.mj.prox{border:2px solid var(--navy);box-shadow:0 6px 18px rgba(13,34,85,.12)}
+.mj .tagp{display:inline-block;background:var(--gold);color:var(--navy);font-weight:800;font-size:12px;padding:2px 8px;border-radius:99px;margin-bottom:4px}
+.uni.q{background:#ECEDE8;color:var(--mid)}.uni.q::before{background:repeating-linear-gradient(90deg,#fff 0 6px,var(--navy) 6px 12px)}
+.passados summary{cursor:pointer;font-weight:700;color:var(--mid);padding:10px 2px;list-style:none}
+.passados summary::-webkit-details-marker{display:none}
 </style>
 </head>
 <body>
@@ -298,17 +311,16 @@ dialog input{width:100%;font-size:26px;letter-spacing:.3em;text-align:center;pad
 <main>
   <!-- PAINEL -->
   <section class="view" id="v-painel">
-    <div id="nextGame"></div>
-    <h3>Rotina do dia de jogo</h3>
-    <div class="card" id="rotina"></div>
+    <h3 style="margin-top:4px">Meus jogos</h3>
+    <div id="meus"></div>
     <h3>Arremessadores <span id="pDayLbl" class="muted" style="font:600 14px var(--body);letter-spacing:0"></span></h3>
     <div id="pSummary"></div>
-    <h3>Informações do torneio</h3>
-    <details class="card info-d"><summary>Sede, delegação, elegibilidade, hospedagem…</summary><div id="infoT"></div></details>
-    <h3>Confirmar no congresso técnico</h3>
-    <div class="card"><ul class="check" id="pend" style="margin:0;padding-left:18px"></ul></div>
-    <h3>Atalhos de regras</h3>
-    <div class="chips" id="quick"></div>
+    <h3>Mais</h3>
+    <details class="card info-d"><summary>Rotina do dia de jogo</summary><div id="rotina"></div></details>
+    <details class="card info-d"><summary>Pendências a confirmar</summary><ul class="check" id="pend" style="margin:0;padding-left:18px"></ul></details>
+    <details class="card info-d"><summary>Informações do torneio</summary><div id="infoT"></div></details>
+    <div class="chips" id="quick" style="margin-top:6px"></div>
+    <div id="nextGame" hidden></div>
     <p class="foot"><img src="/regras/logo-panam.png" alt="WBSC U-12 Baseball PanAm"><span id="upd"></span></p>
   </section>
 
@@ -329,7 +341,7 @@ dialog input{width:100%;font-size:26px;letter-spacing:.3em;text-align:center;pad
   <section class="view" id="v-jogos">
     <h2>Jogos</h2>
     <div class="toggle" id="gFilter"><button data-f="br" class="on">Brasil</button><button data-f="all">Todos</button><button data-f="grp">Grupos</button></div>
-    <p class="small muted" style="margin:6px 2px 0">Horários de Santo Domingo. Em Brasília é 1 hora a mais.</p>
+    <p class="small muted" style="margin:6px 2px 0">Horários de Santo Domingo (Brasília: +1 h).</p>
     <div id="games"></div>
   </section>
 
@@ -528,7 +540,15 @@ function renderGames(){
       <p class="small" style="margin:10px 2px"><a href="${esc(DATA.torneio.site)}/teams" target="_blank" rel="noopener">Elencos e estatísticas oficiais — WBSC Américas</a></p>`;
     return;
   }
-  const list = gFilter==="br" ? DATA.jogos.filter(g => isBR(g) || g.fase==="evento" || g.fase==="treino" || g.fase==="F") : DATA.jogos;
+  if(gFilter==="br"){
+    const hoje = hojeRD(), jogos = DATA.jogos.filter(g => isBR(g) && g.fase!=="treino" && g.fase!=="evento");
+    const fut = jogos.filter(g => !jaFoi(g)), pas = jogos.filter(jaFoi);
+    $("#games").innerHTML = '<div style="margin-top:12px"></div>' + fut.map((g,i) => jogoBRHTML(g, i===0)).join("")
+      + (pas.length ? `<details class="passados"><summary>Já jogados (${pas.length}) ›</summary>${pas.map(g => jogoBRHTML(g,false)).join("")}</details>` : "")
+      + '<p class="small muted" style="margin:10px 2px">Calendário completo com cerimônias e todos os jogos: aba “Todos”.</p>';
+    return;
+  }
+  const list = DATA.jogos;
   const by = {}; list.forEach(g => (by[g.data] = by[g.data] || []).push(g));
   let html = "";
   Object.keys(by).sort().forEach(d => {
@@ -657,6 +677,26 @@ $("#fOk").addEventListener("click", async () => {
   $("#fN").value = "";
 });
 
+
+
+/* Meus jogos: lista simples */
+function jogoBRHTML(g, prox){
+  const opp = res(g.visitante)==="Brasil" ? g.mandante : g.visitante, mand = res(g.mandante)==="Brasil";
+  const d = new Date(g.data+"T12:00:00Z");
+  const nomeOpp = res(opp)!==opp ? res(opp) : (DATA.seedsPendentes && DATA.seedsPendentes[opp]) || nomeT(opp);
+  const hora = g.hora ? `${g.hora} · Brasília ${brasilia(g.hora)}${g.campo?" · "+g.campo:""}` : "Horário a definir";
+  const badges = g.sorteio ? `<span class="uni q">Mandante por sorteio · aguardando</span>` : uniBadge(mand);
+  const fase = ({SR:"Super Ronda",PR:"Classificação",F:"Final"})[g.fase] || "Grupo "+g.fase;
+  return `<div class="card mj${prox?" prox":""}"><div class="dt"><span>${DIAS[d.getUTCDay()]}</span><b>${String(d.getUTCDate()).padStart(2,"0")}/${String(d.getUTCMonth()+1).padStart(2,"0")}</b></div>
+    <div>${prox?'<span class="tagp">Próximo</span><br>':""}<div class="op">× ${esc(nomeOpp)}</div><div class="hr2">${esc(hora)} · ${esc(fase)}${g.n?" · J"+g.n:""}</div><div>${badges}</div>${g.placarV!=null?`<div class="hr2"><b>${esc(g.placarV)} × ${esc(g.placarM)}</b></div>`:""}</div></div>`;
+}
+const jaFoi = g => { const hoje = hojeRD(); if(g.data < hoje) return true; if(g.data > hoje || !g.hora) return false; return new Date(g.data+"T"+g.hora+":00-04:00").getTime() + 3*3600e3 < Date.now(); };
+function renderMeus(){
+  const jogos = DATA.jogos.filter(g => isBR(g) && g.fase!=="treino" && g.fase!=="evento");
+  const fut = jogos.filter(g => !jaFoi(g)), pas = jogos.filter(jaFoi);
+  $("#meus").innerHTML = (fut.length ? fut.map((g,i) => jogoBRHTML(g, i===0)).join("") : '<div class="card small muted">Sem jogos futuros cadastrados.</div>')
+    + (pas.length ? `<details class="passados"><summary>Já jogados (${pas.length}) ›</summary>${pas.map(g => jogoBRHTML(g,false)).join("")}</details>` : "");
+}
 
 /* ===== Tabela de controle (estilo WBSC) ===== */
 const abrev = {"Nicarágua":"NIC","EUA":"EUA","Cuba":"CUB","Porto Rico":"PUR","Peru":"PER","Argentina":"ARG","Curaçao":"CUW","Rep. Dominicana":"DOM","Venezuela":"VEN","México":"MEX","Panamá":"PAN"};
@@ -882,7 +922,7 @@ $("#mic").addEventListener("click", () => {
 
 /* ================= Início ================= */
 function renderPainel(){
-  renderNext(); renderSummary();
+  renderNext(); renderMeus(); renderSummary();
   $("#rotina").innerHTML = (window.ROTINA||[]).map(([k,v],i,a) => `<div style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:10px;padding:9px 0;${i<a.length-1?"border-bottom:1px solid var(--line)":""}"><b style="color:var(--navy);font-size:14px">${esc(k)}</b><div style="font-size:15px">${esc(v)}</div></div>`).join("");
   $("#infoT").innerHTML = (DATA.info||[]).map(([k,v]) => `<div style="padding:8px 0;border-bottom:1px solid var(--line)"><div class="small muted" style="font-weight:700">${esc(k)}</div><div>${esc(v)}</div></div>`).join("").replace(/border-bottom:1px solid var\(--line\)"><div class="small muted" style="font-weight:700">([^<]*)<\/div><div>([^<]*)<\/div><\/div>$/, '"><div class="small muted" style="font-weight:700">$1</div><div>$2</div></div>');
   $("#pend").innerHTML = PENDENCIAS.map(p => `<li>${esc(p)}</li>`).join("");
