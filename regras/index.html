@@ -640,7 +640,8 @@ function situacaoTexto(dia){
     return `#${a.num} ${a.nome} (${a.arremessa==="E"?"canhoto":"destro"}): ${t}${h?" | histórico: "+h:""}`; }).join("\n");
 }
 function renderSummary(){
-  const dia = diaPadrao(), g = {violacao:[],livre:[],limitado:[],descanso:[]};
+  const proxBR = DATA.jogos.find(g => isBR(g) && g.fase!=="treino" && g.fase!=="evento" && !jaFoi(g));
+  const dia = proxBR ? proxBR.data : diaPadrao(), g = {violacao:[],livre:[],limitado:[],descanso:[]};
   $("#pDayLbl").textContent = "· " + fmtDia(dia);
   atletas().forEach(a => { const s = sit(a, dia); g[s.estado].push(a.curto + (s.estado==="limitado" ? " ("+s.limiteDia+")" : s.estado==="descanso" ? " (volta "+fmtDia(s.voltaEm).slice(4)+")" : "")); });
   const row = (cls,t,arr) => arr.length ? `<div style="margin:8px 0"><span class="st ${cls}">${t} · ${arr.length}</span><div class="small" style="margin-top:6px">${esc(arr.join(", "))}</div></div>` : "";

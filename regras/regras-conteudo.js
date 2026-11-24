@@ -247,7 +247,7 @@ window.REGRAS = [
     ref: "Congresso técnico 19/11", p: "—", k: "dugout banco primeira terceira base mandante visitante lado" },
 
   { c: "Jogo", u: 1, t: "Formato e chaveamento", r: "1º e 2º de cada grupo vão para a Super Ronda. 3º e 4º jogam a Ronda de Classificação (7º ao 12º lugar).",
-    d: ["Super Ronda: contam 5 jogos para cada time — o jogo da 1ª fase contra o outro classificado do mesmo grupo + 4 jogos novos contra os classificados dos outros grupos.","Os 2 melhores da Super Ronda fazem a final (1º × 2º). O 3º e o 4º disputam o bronze.","Os horários da Super Ronda e da Ronda de Classificação podem mudar por causa da TV e são anunciados logo depois da 1ª fase."],
+    d: ["Super Ronda: contam 5 jogos para cada time — o jogo da 1ª fase contra o outro classificado do mesmo grupo + 4 jogos novos contra os classificados dos outros grupos.","A mesma regra vale na Ronda de Classificação: o Brasil leva o resultado contra a Nicarágua (3A) e soma os 4 jogos novos (confirmado no calendário oficial de 22/11).","Os 2 melhores da Super Ronda fazem a final (1º × 2º). O 3º e o 4º disputam o bronze.","Os horários da Super Ronda e da Ronda de Classificação podem mudar por causa da TV e são anunciados logo depois da 1ª fase."],
     ref: "Reunião técnica 19/11 (doc. COPABE)", p: "—", k: "formato chaveamento super ronda classificação final bronze 5 jogos levado carry over" },
 
   { c: "Jogo", u: 1, t: "Mandante na 2ª fase e nas finais", r: "Na Super Ronda e na Ronda de Classificação, o mandante é o time mais bem classificado na 1ª fase.",
@@ -282,15 +282,11 @@ window.PENDENCIAS_OLD = [
   "Se a regra de diferença de placar vale na final do Pan.",
   "Lista de tacos aprovados e como será a checagem.",
   "Como a regra de eletrônicos (A3.1) será aplicada no banco.",
-  "Horários e campos da Super Ronda e da Ronda de Classificação.",
   "Como sai o relatório diário de arremessadores indisponíveis."
 ];
 
 window.PENDENCIAS = [
-  "Ronda de Classificação: confirmar se o jogo da 1ª fase contra o 3º do Grupo A conta na classificação do 7º ao 12º (na Super Ronda, conta).",
   "Desempate dos grupos: o app usa o padrão WBSC (confronto direto, TQB...). Confirmar com o Comissário se houver empate.",
-  "Sorteio de mandante hoje (22/11), na área da Comissão Técnica do Estádio 2, 10 min após EUA × NCA e DOM × CUW. Define Brasil × Peru (24/11) e Brasil × Argentina (26/11). Mandar alguém da comissão.",
-  "Horários e campos da Super Ronda e da Ronda de Classificação.",
   "Documento de regras de campo (ground rules), que a organização vai enviar."
 ];
 window.ROTINA = [

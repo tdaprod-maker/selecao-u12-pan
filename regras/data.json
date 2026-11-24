@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-11-22T15:55:00-03:00",
+ "atualizado": "2026-11-23T23:15:00-03:00",
  "torneio": {
   "nome": "Campeonato Pan-Americano Sub-12 2026",
   "local": "IPL Academy, Boca Chica (Santo Domingo), República Dominicana",
@@ -261,184 +261,220 @@
    "obs": "Área da Comissão Técnica, IPL Academy Estádio 2 · 10 min após EUA × NCA e DOM × CUW · decide Brasil × Peru (24/11) e Brasil × Argentina (26/11)"
   },
   {
-   "n": 0,
+   "n": 19,
    "data": "2026-11-23",
+   "hora": "09:30",
+   "campo": "Estádio 1",
    "fase": "SR",
-   "visitante": "2C",
-   "mandante": "1B"
-  },
-  {
-   "n": 0,
-   "data": "2026-11-23",
-   "fase": "SR",
-   "visitante": "2A",
-   "mandante": "1C"
-  },
-  {
-   "n": 0,
-   "data": "2026-11-23",
-   "fase": "SR",
-   "visitante": "2B",
-   "mandante": "1A"
+   "visitante": "Panamá",
+   "mandante": "Venezuela"
   },
   {
    "n": 22,
    "data": "2026-11-23",
+   "hora": "09:30",
+   "campo": "Estádio 2",
    "fase": "PR",
-   "visitante": "4C",
-   "mandante": "3B"
+   "visitante": "Brasil",
+   "mandante": "Porto Rico"
+  },
+  {
+   "n": 20,
+   "data": "2026-11-23",
+   "hora": "12:00",
+   "campo": "Estádio 1",
+   "fase": "SR",
+   "visitante": "Cuba",
+   "mandante": "México"
+  },
+  {
+   "n": 21,
+   "data": "2026-11-23",
+   "hora": "12:00",
+   "campo": "Estádio 2",
+   "fase": "SR",
+   "visitante": "Rep. Dominicana",
+   "mandante": "EUA"
   },
   {
    "n": 23,
    "data": "2026-11-23",
+   "hora": "14:30",
+   "campo": "Estádio 1",
    "fase": "PR",
-   "visitante": "4A",
-   "mandante": "3C"
+   "visitante": "Peru",
+   "mandante": "Curaçao"
   },
   {
    "n": 24,
    "data": "2026-11-23",
+   "hora": "14:30",
+   "campo": "Estádio 2",
    "fase": "PR",
-   "visitante": "4B",
-   "mandante": "3A"
-  },
-  {
-   "n": 0,
-   "data": "2026-11-24",
-   "fase": "SR",
-   "visitante": "2B",
-   "mandante": "1C"
-  },
-  {
-   "n": 0,
-   "data": "2026-11-24",
-   "fase": "SR",
-   "visitante": "1A",
-   "mandante": "1B",
-   "sorteio": true
-  },
-  {
-   "n": 0,
-   "data": "2026-11-24",
-   "fase": "SR",
-   "visitante": "2A",
-   "mandante": "2C",
-   "sorteio": true
+   "visitante": "Argentina",
+   "mandante": "Nicarágua"
   },
   {
    "n": 28,
    "data": "2026-11-24",
+   "hora": "09:30",
+   "campo": "Estádio 1",
    "fase": "PR",
-   "visitante": "4B",
-   "mandante": "3C"
+   "visitante": "Argentina",
+   "mandante": "Porto Rico"
+  },
+  {
+   "n": 25,
+   "data": "2026-11-24",
+   "hora": "09:30",
+   "campo": "Estádio 2",
+   "fase": "SR",
+   "visitante": "Rep. Dominicana",
+   "mandante": "México"
+  },
+  {
+   "n": 26,
+   "data": "2026-11-24",
+   "hora": "12:00",
+   "campo": "Estádio 1",
+   "fase": "SR",
+   "visitante": "Venezuela",
+   "mandante": "EUA"
+  },
+  {
+   "n": 27,
+   "data": "2026-11-24",
+   "hora": "12:00",
+   "campo": "Estádio 2",
+   "fase": "SR",
+   "visitante": "Panamá",
+   "mandante": "Cuba"
   },
   {
    "n": 29,
    "data": "2026-11-24",
+   "hora": "14:30",
+   "campo": "Estádio 1",
    "fase": "PR",
-   "visitante": "3A",
-   "mandante": "3B",
-   "sorteio": true
+   "visitante": "Nicarágua",
+   "mandante": "Curaçao"
   },
   {
    "n": 30,
    "data": "2026-11-24",
+   "hora": "14:30",
+   "campo": "Estádio 2",
    "fase": "PR",
-   "visitante": "4A",
-   "mandante": "4C",
-   "sorteio": true
+   "visitante": "Brasil",
+   "mandante": "Peru"
   },
   {
-   "n": 0,
+   "n": 31,
    "data": "2026-11-25",
+   "hora": "09:30",
+   "campo": "Estádio 1",
    "fase": "SR",
-   "visitante": "2B",
-   "mandante": "2C",
-   "sorteio": true
+   "visitante": "México",
+   "mandante": "EUA"
   },
   {
-   "n": 0,
+   "n": 32,
    "data": "2026-11-25",
+   "hora": "09:30",
+   "campo": "Estádio 2",
    "fase": "SR",
-   "visitante": "1C",
-   "mandante": "1A",
-   "sorteio": true
-  },
-  {
-   "n": 0,
-   "data": "2026-11-25",
-   "fase": "SR",
-   "visitante": "2A",
-   "mandante": "1B"
+   "visitante": "Cuba",
+   "mandante": "Venezuela"
   },
   {
    "n": 34,
    "data": "2026-11-25",
+   "hora": "12:00",
+   "campo": "Estádio 1",
    "fase": "PR",
-   "visitante": "4B",
-   "mandante": "4C",
-   "sorteio": true
+   "visitante": "Peru",
+   "mandante": "Argentina"
+  },
+  {
+   "n": 33,
+   "data": "2026-11-25",
+   "hora": "12:00",
+   "campo": "Estádio 2",
+   "fase": "SR",
+   "visitante": "Panamá",
+   "mandante": "Rep. Dominicana"
   },
   {
    "n": 35,
    "data": "2026-11-25",
+   "hora": "14:30",
+   "campo": "Estádio 1",
    "fase": "PR",
-   "visitante": "3C",
-   "mandante": "3A",
-   "sorteio": true
+   "visitante": "Porto Rico",
+   "mandante": "Nicarágua"
   },
   {
    "n": 36,
    "data": "2026-11-25",
+   "hora": "14:30",
+   "campo": "Estádio 2",
    "fase": "PR",
-   "visitante": "4A",
-   "mandante": "3B"
+   "visitante": "Brasil",
+   "mandante": "Curaçao"
   },
   {
-   "n": 0,
+   "n": 37,
    "data": "2026-11-26",
+   "hora": "09:30",
+   "campo": "Estádio 1",
    "fase": "SR",
-   "visitante": "2C",
-   "mandante": "1A"
+   "visitante": "Panamá",
+   "mandante": "EUA"
   },
   {
-   "n": 0,
+   "n": 38,
    "data": "2026-11-26",
+   "hora": "09:30",
+   "campo": "Estádio 2",
    "fase": "SR",
-   "visitante": "1B",
-   "mandante": "1C",
-   "sorteio": true
-  },
-  {
-   "n": 0,
-   "data": "2026-11-26",
-   "fase": "SR",
-   "visitante": "2A",
-   "mandante": "2B",
-   "sorteio": true
+   "visitante": "Venezuela",
+   "mandante": "México"
   },
   {
    "n": 40,
    "data": "2026-11-26",
+   "hora": "12:00",
+   "campo": "Estádio 1",
    "fase": "PR",
-   "visitante": "4C",
-   "mandante": "3A"
+   "visitante": "Argentina",
+   "mandante": "Brasil"
+  },
+  {
+   "n": 39,
+   "data": "2026-11-26",
+   "hora": "12:00",
+   "campo": "Estádio 2",
+   "fase": "SR",
+   "visitante": "Cuba",
+   "mandante": "Rep. Dominicana"
   },
   {
    "n": 41,
    "data": "2026-11-26",
+   "hora": "14:30",
+   "campo": "Estádio 1",
    "fase": "PR",
-   "visitante": "3B",
-   "mandante": "3C",
-   "sorteio": true
+   "visitante": "Porto Rico",
+   "mandante": "Curaçao"
   },
   {
    "n": 42,
    "data": "2026-11-26",
+   "hora": "14:30",
+   "campo": "Estádio 2",
    "fase": "PR",
-   "visitante": "4A",
-   "mandante": "4B",
-   "sorteio": true
+   "visitante": "Peru",
+   "mandante": "Nicarágua"
   },
   {
    "n": 43,
@@ -460,7 +496,8 @@
    "n": 0,
    "data": "2026-11-27",
    "fase": "evento",
-   "evento": "Cerimônia de encerramento"
+   "evento": "Cerimônia de encerramento",
+   "obs": "Logo após a final · horário a definir"
   }
  ],
  "elenco": [
@@ -662,34 +699,37 @@
   ]
  ],
  "campanha": {
-  "EUA": "2-0",
+  "EUA": "3-0",
   "Cuba": "2-1",
-  "Nicarágua": "1-1",
+  "Nicarágua": "1-2",
   "Brasil": "0-3",
   "Venezuela": "3-0",
-  "Curaçao": "1-1",
-  "Rep. Dominicana": "1-1",
+  "Rep. Dominicana": "2-1",
+  "Curaçao": "1-2",
   "Argentina": "0-3",
   "México": "3-0",
   "Panamá": "2-1",
   "Porto Rico": "1-2",
   "Peru": "0-3"
  },
- "seeds": {
-  "4A": "Brasil",
-  "1B": "Venezuela",
-  "4B": "Argentina",
-  "1C": "México",
-  "2C": "Panamá",
-  "3C": "Porto Rico",
-  "4C": "Peru"
- },
- "seedsPendentes": {
-  "1A": "EUA ou Cuba ou Nicarágua",
-  "2A": "EUA, Cuba ou Nicarágua",
-  "3A": "EUA, Cuba ou Nicarágua",
-  "2B": "Curaçao ou Rep. Dominicana",
-  "3B": "Curaçao ou Rep. Dominicana"
- },
- "classificacaoAtualizada": "22/11 às 15:50 (Brasília), antes de EUA × Nicarágua e Curaçao × Rep. Dominicana"
+ "seeds": {},
+ "classificacaoAtualizada": "final da 1ª fase (calendário oficial de 22/11)",
+ "segundaFase": {
+  "Super Ronda": [
+   "EUA (1A)",
+   "Venezuela (1B)",
+   "México (1C)",
+   "Cuba (2A)",
+   "Rep. Dominicana (2B)",
+   "Panamá (2C)"
+  ],
+  "Ronda de Classificação": [
+   "Nicarágua (3A)",
+   "Curaçao (3B)",
+   "Porto Rico (3C)",
+   "Brasil (4A)",
+   "Argentina (4B)",
+   "Peru (4C)"
+  ]
+ }
 }
